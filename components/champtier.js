@@ -11,7 +11,11 @@ export default function ChampTier({ tier, data }) {
           ? { backgroundColor: "#e74c3c" }
           : tier === "A"
           ? { backgroundColor: "#f1c40f" }
-          : { backgroundColor: "#2ecc71" },
+          : tier === "B"
+          ? { backgroundColor: "#3498db" }
+          : tier === "C"
+          ? { backgroundColor: "#2ecc71" }
+          : { backgroundColor: "#ecf0f1" },
       ]}
     >
       <View style={styles.fdWrapper}>
@@ -53,9 +57,12 @@ const styles = StyleSheet.create({
   },
   listWrapper: {
     flex: 8,
-    backgroundColor: "white",
+    backgroundColor: "#34495e",
     paddingLeft: 5,
+    paddingBottom: 5,
     alignItems: "center",
     justifyContent: "center",
+    borderTopRightRadius: 4,
+    borderBottomEndRadius: 4,
   },
 });

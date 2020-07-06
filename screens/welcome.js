@@ -7,9 +7,13 @@ import {
   Image,
   ScrollView,
 } from "react-native";
+
 import { StatusBar } from "expo-status-bar";
 import TeamComps from "./teamcomps";
 import ChampTier from "./champtier";
+import ItemTier from "./itemtier";
+import ClassTier from "./classtier";
+import OriginTier from "./origintier";
 
 export default function Welcome() {
   return (
@@ -27,15 +31,9 @@ export default function Welcome() {
       >
         <TeamComps />
         <ChampTier />
-        <View style={styles.page}>
-          <Text>Items Tier List</Text>
-        </View>
-        <View style={styles.page}>
-          <Text>Classes Tier List</Text>
-        </View>
-        <View style={styles.page}>
-          <Text>Origins Tier List</Text>
-        </View>
+        <ItemTier />
+        <ClassTier />
+        <OriginTier />
       </ScrollView>
     </View>
   );
