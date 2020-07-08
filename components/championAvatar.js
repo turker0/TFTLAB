@@ -1,13 +1,11 @@
 import React from "react";
 import { StyleSheet, Image, View, Dimensions } from "react-native";
+import avatars from "../assets/avatars/avatars";
 
 export default function ChampionAvatar({ name, count }) {
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.logo}
-        source={require("../assets/TwistedFate.png")}
-      />
+      <Image style={styles.logo} source={avatars[name]} />
     </View>
   );
 }

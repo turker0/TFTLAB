@@ -6,7 +6,7 @@ const Comp = {
   name: "Sorcerers",
   champs: [
     {
-      name: "Twisted Fate",
+      name: "TwistedFate",
     },
     {
       name: "Zoe",
@@ -32,31 +32,15 @@ const Comp = {
   ],
   traits: [
     {
-      name: "Sorcerer",
-      count: 6,
+      name: "battlecast",
+      count: 8,
     },
     {
-      name: "Paragon",
-      count: 1,
-    },
-    {
-      name: "Star Guardian",
+      name: "vanguard",
       count: 4,
     },
     {
-      name: "Chrono",
-      count: 2,
-    },
-    {
-      name: "Paragon",
-      count: 1,
-    },
-    {
-      name: "Star Guardian",
-      count: 4,
-    },
-    {
-      name: "Chrono",
+      name: "starguardian",
       count: 2,
     },
   ],

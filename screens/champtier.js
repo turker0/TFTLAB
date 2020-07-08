@@ -6,7 +6,7 @@ import ChampTier from "../components/champtier";
 const ChampTierList = {
   S: [
     {
-      name: "Twisted Fate",
+      name: "TwistedFate",
     },
     {
       name: "Zoe",
@@ -32,7 +32,7 @@ const ChampTierList = {
   ],
   A: [
     {
-      name: "Twisted Fate",
+      name: "TwistedFate",
     },
     {
       name: "Zoe",
@@ -46,7 +46,7 @@ const ChampTierList = {
   ],
   B: [
     {
-      name: "Twisted Fate",
+      name: "TwistedFate",
     },
     {
       name: "Zoe",
@@ -60,7 +60,7 @@ const ChampTierList = {
   ],
   C: [
     {
-      name: "Twisted Fate",
+      name: "TwistedFate",
     },
     {
       name: "Zoe",
@@ -74,7 +74,7 @@ const ChampTierList = {
   ],
   D: [
     {
-      name: "Twisted Fate",
+      name: "TwistedFate",
     },
     {
       name: "Zoe",
