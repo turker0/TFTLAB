@@ -116,20 +116,15 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     elevation: 5,
   },
-  tier: {
-    fontSize: 18,
-    borderRadius: 4,
-    color: "#fff",
-    textAlign: "center",
-  },
   name: {
     width: 200,
     fontSize: 18,
+    fontFamily: "RobotoBold",
+    color: "#fff",
     textAlign: "center",
     marginTop: "-8%",
     marginLeft: (Dimensions.get("window").width * 0.75 - 200) / 2,
     borderTopLeftRadius: 55,
     borderBottomRightRadius: 55,
-    color: "#fff",
   },
 });

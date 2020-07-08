@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import PatchNotes from "../screens/patchnotes";
 import ItemBuilder from "../screens/itembuilder";
 import CompBuilder from "../screens/compbuilder";
-import Home from "../screens/welcome";
+import Home from "../screens/home";
 
 const Tab = createBottomTabNavigator();
 

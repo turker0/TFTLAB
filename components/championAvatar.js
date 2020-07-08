@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 5,
     marginTop: 5,
+    elevation: 5,
   },
   logo: {
     width: (Dimensions.get("window").width * 0.75 - 60) / 5,

@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
   tier: {
     fontSize: 32,
     color: "white",
+    fontFamily: "RobotoBlack",
   },
   listWrapper: {
     flex: 8,

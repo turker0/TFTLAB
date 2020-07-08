@@ -6,7 +6,7 @@ export default function TeamComps() {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.page}>
-        <Text style={styles.title}>Team Comps</Text>
+        <Text style={styles.title}>TFT Team Comps Tier List</Text>
         <View>
           <TeamComp tier="S" name="Sorcerers" />
           <TeamComp tier="S" name="Sorcerers" />
@@ -35,12 +35,19 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     margin: Dimensions.get("window").width * 0.03,
     padding: Dimensions.get("window").width * 0.03,
+    elevation: 5,
   },
   title: {
-    width: 200,
     textAlign: "center",
     fontSize: 18,
-    paddingTop: 5,
-    marginBottom: 20,
+    fontFamily: "RobotoBold",
+    color: "#02233C",
+    marginTop: "-7%",
+    marginBottom: "10%",
+    backgroundColor: "#fff",
+    paddingHorizontal: "5%",
+    paddingVertical: "1%",
+    borderRadius: 4,
+    elevation: 2,
   },
 });

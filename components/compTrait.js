@@ -24,13 +24,16 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     borderRadius: 2,
     padding: 5,
+    elevation: 5,
   },
   trait: {
     fontSize: 10,
     color: "#fff",
+    fontFamily: "RobotoBold",
+    marginLeft: "10%",
   },
   logo: {
-    width: 12,
-    height: 12,
+    width: 10,
+    height: 10,
   },
 });
