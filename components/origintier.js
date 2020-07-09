@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View, Dimensions, FlatList } from "react-native";
-import ChampionAvatar from "./championAvatar";
+import OriginAvatar from "./originAvatar";
 
-export default function ChampTier({ tier, champs }) {
+export default function OriginTier({ tier, origins }) {
   return (
     <View
       style={[
@@ -24,11 +24,9 @@ export default function ChampTier({ tier, champs }) {
         </View>
         <View style={styles.listWrapper}>
           <FlatList
-            data={champs}
+            data={origins}
             numColumns={4}
-            renderItem={({ item }) => (
-              <ChampionAvatar name={item.name} gold={item.gold} />
-            )}
+            renderItem={({ item }) => <OriginAvatar name={item.name} />}
             keyExtractor={(index) => index}
           />
         </View>

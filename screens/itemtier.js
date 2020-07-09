@@ -1,107 +1,50 @@
-import React from "react";
-import { StyleSheet, Text, View, Dimensions, ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  ScrollView,
+  FlatList,
+} from "react-native";
 
-import ChampTier from "../components/champtier";
+import ItemTier from "../components/itemtier";
 
-const ChampTierList = {
-  S: [
-    {
-      name: "TwistedFate",
+const getItems = async (setIsFetched, setChampsList) => {
+  fetch("http://192.168.1.5:3000/api/itemtier/", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
     },
-    {
-      name: "Zoe",
-    },
-    {
-      name: "Ahri",
-    },
-    {
-      name: "Annie",
-    },
-    {
-      name: "Syndra",
-    },
-    {
-      name: "Riven",
-    },
-    {
-      name: "Viktor",
-    },
-    {
-      name: "Janna",
-    },
-  ],
-  A: [
-    {
-      name: "TwistedFate",
-    },
-    {
-      name: "Zoe",
-    },
-    {
-      name: "Ahri",
-    },
-    {
-      name: "Annie",
-    },
-  ],
-  B: [
-    {
-      name: "TwistedFate",
-    },
-    {
-      name: "Zoe",
-    },
-    {
-      name: "Ahri",
-    },
-    {
-      name: "Annie",
-    },
-  ],
-  C: [
-    {
-      name: "TwistedFate",
-    },
-    {
-      name: "Zoe",
-    },
-    {
-      name: "Ahri",
-    },
-    {
-      name: "Annie",
-    },
-  ],
-  D: [
-    {
-      name: "TwistedFate",
-    },
-    {
-      name: "Zoe",
-    },
-    {
-      name: "Ahri",
-    },
-    {
-      name: "Annie",
-    },
-  ],
+  })
+    .then((res) => res.json())
+    .then((resJson) => {
+      setChampsList(resJson);
+    })
+    .catch((error) => console.error(error));
+  setIsFetched(true);
 };
 
-export default function ItemTier() {
-  return (
+export default function ItemsTier() {
+  const [isFetched, setIsFetched] = useState(false);
+  const [itemList, setItemList] = useState(0);
+  useEffect(() => {
+    if (!isFetched) getItems(setIsFetched, setItemList);
+  });
+  return { itemList } ? (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.page}>
         <Text style={styles.title}>Item Tier List</Text>
-
-        <ChampTier tier="S" data={ChampTierList.S} />
-        <ChampTier tier="A" data={ChampTierList.A} />
-        <ChampTier tier="B" data={ChampTierList.B} />
-        <ChampTier tier="C" data={ChampTierList.C} />
-        <ChampTier tier="D" data={ChampTierList.D} />
+        <FlatList
+          data={itemList}
+          renderItem={({ item }) => (
+            <ItemTier tier={item.tier} items={item.items} />
+          )}
+          keyExtractor={(index) => index}
+        />
       </View>
     </ScrollView>
-  );
+  ) : null;
 }
 
 const styles = StyleSheet.create({

@@ -1,104 +1,47 @@
-import React from "react";
-import { StyleSheet, Text, View, Dimensions, ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  ScrollView,
+  FlatList,
+} from "react-native";
 
-import ChampTier from "../components/champtier";
+import OriginTier from "../components/origintier";
 
-const ChampTierList = {
-  S: [
-    {
-      name: "TwistedFate",
+const getOrigin = async (setIsFetched, setOriginList) => {
+  fetch("http://192.168.1.5:3000/api/origintier/", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
     },
-    {
-      name: "Zoe",
-    },
-    {
-      name: "Ahri",
-    },
-    {
-      name: "Annie",
-    },
-    {
-      name: "Syndra",
-    },
-    {
-      name: "Riven",
-    },
-    {
-      name: "Viktor",
-    },
-    {
-      name: "Janna",
-    },
-  ],
-  A: [
-    {
-      name: "TwistedFate",
-    },
-    {
-      name: "Zoe",
-    },
-    {
-      name: "Ahri",
-    },
-    {
-      name: "Annie",
-    },
-  ],
-  B: [
-    {
-      name: "TwistedFate",
-    },
-    {
-      name: "Zoe",
-    },
-    {
-      name: "Ahri",
-    },
-    {
-      name: "Annie",
-    },
-  ],
-  C: [
-    {
-      name: "TwistedFate",
-    },
-    {
-      name: "Zoe",
-    },
-    {
-      name: "Ahri",
-    },
-    {
-      name: "Annie",
-    },
-  ],
-  D: [
-    {
-      name: "TwistedFate",
-    },
-    {
-      name: "Zoe",
-    },
-    {
-      name: "Ahri",
-    },
-    {
-      name: "Annie",
-    },
-  ],
+  })
+    .then((res) => res.json())
+    .then((resJson) => {
+      setOriginList(resJson);
+    })
+    .catch((error) => console.error(error));
+  setIsFetched(true);
 };
 
-export default function OriginTier() {
+export default function OriginTiers() {
+  const [isFetched, setIsFetched] = useState(false);
+  const [originList, setOriginList] = useState(0);
+  useEffect(() => {
+    if (!isFetched) getOrigin(setIsFetched, setOriginList);
+  });
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.page}>
         <Text style={styles.title}>Origin Tier List</Text>
-
-        <ChampTier tier="S" data={ChampTierList.S} />
-        <ChampTier tier="A" data={ChampTierList.A} />
-        <ChampTier tier="B" data={ChampTierList.B} />
-        <ChampTier tier="C" data={ChampTierList.C} />
-        <ChampTier tier="D" data={ChampTierList.D} />
+        <FlatList
+          data={originList}
+          renderItem={({ item }) => (
+            <OriginTier tier={item.tier} origins={item.origins} />
+          )}
+          keyExtractor={(index) => index}
+        />
       </View>
     </ScrollView>
   );

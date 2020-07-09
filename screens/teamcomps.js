@@ -1,30 +1,54 @@
-import React from "react";
-import { StyleSheet, Text, View, Dimensions, ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  ScrollView,
+  FlatList,
+} from "react-native";
 import TeamComp from "../components/teamcomp";
 
+const getComps = async (setIsFetched, setComps) => {
+  fetch("http://192.168.1.5:3000/api/teamcomps/", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+    },
+  })
+    .then((res) => res.json())
+    .then((resJson) => {
+      setComps(resJson);
+    })
+    .catch((error) => console.error(error));
+  setIsFetched(true);
+};
+
 export default function TeamComps() {
-  return (
+  const [isFetched, setIsFetched] = useState(false);
+  const [comps, setComps] = useState(0);
+  useEffect(() => {
+    if (!isFetched) getComps(setIsFetched, setComps);
+  });
+  return { isFetched } ? (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.page}>
         <Text style={styles.title}>TFT Team Comps Tier List</Text>
-        <View>
-          <TeamComp tier="S" name="Sorcerers" />
-          <TeamComp tier="S" name="Sorcerers" />
-          <TeamComp tier="S" name="Sorcerers" />
-        </View>
-        <View>
-          <TeamComp tier="A" name="Sorcerers" />
-          <TeamComp tier="A" name="Sorcerers" />
-        </View>
-        <View>
-          <TeamComp tier="B" name="Sorcerers" />
-          <TeamComp tier="B" name="Sorcerers" />
-          <TeamComp tier="B" name="Sorcerers" />
-          <TeamComp tier="B" name="Sorcerers" />
-        </View>
+        <FlatList
+          data={comps}
+          renderItem={({ item }) => (
+            <TeamComp
+              tier={item.tier}
+              name={item.name}
+              champs={item.champs}
+              traits={item.traits}
+            />
+          )}
+          keyExtractor={(index) => index}
+        />
       </View>
     </ScrollView>
-  );
+  ) : null;
 }
 
 const styles = StyleSheet.create({

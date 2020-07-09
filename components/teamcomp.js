@@ -2,84 +2,39 @@ import React from "react";
 import { StyleSheet, Text, View, Dimensions, FlatList } from "react-native";
 import ChampionAvatar from "./championAvatar";
 import CompTrait from "./compTrait";
-const Comp = {
-  name: "Sorcerers",
-  champs: [
-    {
-      name: "TwistedFate",
-    },
-    {
-      name: "Zoe",
-    },
-    {
-      name: "Ahri",
-    },
-    {
-      name: "Annie",
-    },
-    {
-      name: "Syndra",
-    },
-    {
-      name: "Riven",
-    },
-    {
-      name: "Viktor",
-    },
-    {
-      name: "Janna",
-    },
-  ],
-  traits: [
-    {
-      name: "battlecast",
-      count: 8,
-    },
-    {
-      name: "vanguard",
-      count: 4,
-    },
-    {
-      name: "starguardian",
-      count: 2,
-    },
-  ],
-};
 
-export default function TeamComp({ tier, name, champions }) {
+export default function TeamComp({ tier, name, champs, traits }) {
   return (
-    <View
-      style={[
-        styles.container,
-        tier === "S"
-          ? { backgroundColor: "#e74c3c" }
-          : tier === "A"
-          ? { backgroundColor: "#f1c40f" }
-          : { backgroundColor: "#2ecc71" },
-      ]}
-    >
+    <View style={styles.container}>
       <Text
         style={[
           styles.name,
           tier === "S"
-            ? { backgroundColor: "#e74c3c" }
+            ? { color: "#e74c3c" }
             : tier === "A"
-            ? { backgroundColor: "#f1c40f" }
-            : { backgroundColor: "#2ecc71" },
+            ? { color: "#f1c40f" }
+            : { color: "#2ecc71" },
+          tier === "S"
+            ? { borderBottomColor: "#e74c3c" }
+            : tier === "A"
+            ? { borderBottomColor: "#f1c40f" }
+            : { borderBottomColor: "#2ecc71" },
         ]}
       >
-        {Comp.name}
+        {name}
       </Text>
-      <View>
+      <View style={styles.compWrapper}>
         <FlatList
-          data={Comp.champs}
+          data={champs}
           numColumns={5}
-          renderItem={({ item }) => <ChampionAvatar name={item.name} />}
+          renderItem={({ item }) => (
+            <ChampionAvatar name={item.name} gold={item.gold} />
+          )}
           keyExtractor={(index) => index}
         />
 
         <FlatList
-          data={Comp.traits}
+          data={traits}
           horizontal={true}
           renderItem={({ item }) => (
             <CompTrait trait={item.name} count={item.count} />
@@ -99,16 +54,25 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginVertical: 10,
     elevation: 5,
+    backgroundColor: "#34495e",
   },
   name: {
     width: 200,
-    fontSize: 18,
-    fontFamily: "RobotoBold",
-    color: "#fff",
+    fontSize: 16,
+    fontFamily: "RobotoBlack",
+    textShadowColor: "rgba(255, 255, 255, 0.75)",
+    textShadowOffset: { width: -0.1, height: 0 },
+    borderBottomWidth: 0.3,
+    textShadowRadius: 1,
     textAlign: "center",
     marginTop: "-8%",
     marginLeft: (Dimensions.get("window").width * 0.75 - 200) / 2,
     borderTopLeftRadius: 55,
     borderBottomRightRadius: 55,
+    backgroundColor: "#34495e",
+  },
+  compWrapper: {
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

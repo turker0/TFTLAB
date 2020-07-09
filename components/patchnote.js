@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     fontSize: 22,
     marginBottom: 10,
     textAlign: "left",
-    fontWeight: "900",
     fontFamily: "RobotoBold",
     color: "#02233C",
     borderBottomWidth: 0.5,
