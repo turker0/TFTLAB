@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
     width: (Dimensions.get("window").width * 0.75 - 60) / 5,
   },
   logo: {
-    width: (Dimensions.get("window").width * 0.75 - 60) / 7,
-    height: (Dimensions.get("window").width * 0.75 - 60) / 7,
+    width: (Dimensions.get("window").width * 0.75 - 60) / 6,
+    height: (Dimensions.get("window").width * 0.75 - 60) / 6,
   },
   title: {
     fontSize: 8,

@@ -3,7 +3,6 @@ import { StyleSheet, Image, View, Dimensions } from "react-native";
 import items from "../assets/items/items";
 
 export default function ItemAvatar({ name }) {
-  console.log(name);
   return (
     <View style={styles.container}>
       <Image style={styles.logo} source={items[name]} />

@@ -5,42 +5,59 @@ import CompTrait from "./compTrait";
 
 export default function TeamComp({ tier, name, champs, traits }) {
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        tier === "S"
+          ? { backgroundColor: "#e74c3c" }
+          : tier === "A"
+          ? { backgroundColor: "#f1c40f" }
+          : tier === "B"
+          ? { backgroundColor: "#3498db" }
+          : tier === "C"
+          ? { backgroundColor: "#2ecc71" }
+          : { backgroundColor: "#ecf0f1" },
+      ]}
+    >
       <Text
         style={[
-          styles.name,
+          styles.title,
           tier === "S"
             ? { color: "#e74c3c" }
             : tier === "A"
             ? { color: "#f1c40f" }
-            : { color: "#2ecc71" },
-          tier === "S"
-            ? { borderBottomColor: "#e74c3c" }
-            : tier === "A"
-            ? { borderBottomColor: "#f1c40f" }
-            : { borderBottomColor: "#2ecc71" },
+            : tier === "B"
+            ? { color: "#3498db" }
+            : tier === "C"
+            ? { color: "#2ecc71" }
+            : { color: "#ecf0f1" },
         ]}
       >
         {name}
       </Text>
-      <View style={styles.compWrapper}>
-        <FlatList
-          data={champs}
-          numColumns={5}
-          renderItem={({ item }) => (
-            <ChampionAvatar name={item.name} gold={item.gold} />
-          )}
-          keyExtractor={(index) => index}
-        />
+      <View style={styles.fdWrapper}>
+        <View style={styles.tierWrapper}>
+          <Text style={styles.tier}>{tier}</Text>
+        </View>
+        <View style={styles.listWrapper}>
+          <FlatList
+            data={champs}
+            numColumns={5}
+            renderItem={({ item }) => (
+              <ChampionAvatar name={item.name} gold={item.gold} />
+            )}
+            keyExtractor={(index) => index}
+          />
 
-        <FlatList
-          data={traits}
-          horizontal={true}
-          renderItem={({ item }) => (
-            <CompTrait trait={item.name} count={item.count} />
-          )}
-          keyExtractor={(index) => index}
-        />
+          <FlatList
+            data={traits}
+            horizontal={true}
+            renderItem={({ item }) => (
+              <CompTrait trait={item.name} count={item.count} />
+            )}
+            keyExtractor={(index) => index}
+          />
+        </View>
       </View>
     </View>
   );
@@ -49,30 +66,47 @@ export default function TeamComp({ tier, name, champs, traits }) {
 const styles = StyleSheet.create({
   container: {
     width: Dimensions.get("window").width * 0.75,
-    paddingVertical: 10,
-    paddingHorizontal: 5,
     borderRadius: 4,
     marginVertical: 10,
     elevation: 5,
-    backgroundColor: "#34495e",
+    position: "relative",
   },
-  name: {
-    width: 200,
-    fontSize: 16,
-    fontFamily: "RobotoBlack",
-    textShadowColor: "rgba(255, 255, 255, 0.75)",
-    textShadowOffset: { width: -0.1, height: 0 },
-    borderBottomWidth: 0.3,
-    textShadowRadius: 1,
+  title: {
+    alignSelf: "center",
+    top: "-5%",
+    paddingHorizontal: "5%",
+    fontSize: 18,
+    fontFamily: "RobotoBold",
     textAlign: "center",
-    marginTop: "-8%",
-    marginLeft: (Dimensions.get("window").width * 0.75 - 200) / 2,
-    borderTopLeftRadius: 55,
-    borderBottomRightRadius: 55,
     backgroundColor: "#34495e",
+    position: "absolute",
+    borderRadius: 8,
+    elevation: 1,
+    zIndex: 1,
   },
-  compWrapper: {
-    justifyContent: "center",
+  fdWrapper: {
+    flexDirection: "row",
+    width: "100%",
+  },
+  tierWrapper: {
+    flex: 1,
     alignItems: "center",
+    justifyContent: "center",
+  },
+  tier: {
+    fontSize: 32,
+    color: "white",
+    fontFamily: "RobotoBlack",
+  },
+  listWrapper: {
+    flex: 8,
+    backgroundColor: "#34495e",
+    paddingLeft: 5,
+    paddingBottom: 5,
+    paddingTop: "6%",
+    alignItems: "flex-start",
+    justifyContent: "center",
+    borderTopRightRadius: 4,
+    borderBottomEndRadius: 4,
   },
 });

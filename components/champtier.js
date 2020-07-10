@@ -25,7 +25,7 @@ export default function ChampTier({ tier, champs }) {
         <View style={styles.listWrapper}>
           <FlatList
             data={champs}
-            numColumns={4}
+            numColumns={5}
             renderItem={({ item }) => (
               <ChampionAvatar name={item.name} gold={item.gold} />
             )}

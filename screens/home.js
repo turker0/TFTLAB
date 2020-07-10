@@ -21,7 +21,7 @@ export default function Welcome() {
       <StatusBar style="light" />
       <View style={styles.titleWrapper}>
         <Image style={styles.logo} source={require("../assets/logo.png")} />
-        <Text style={styles.title}>TFT LAB</Text>
+        <Text style={styles.title}>TFTLAB</Text>
       </View>
 
       <ScrollView

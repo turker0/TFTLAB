@@ -1,9 +1,18 @@
-import React from "react";
-import { StyleSheet, Image, View, Dimensions } from "react-native";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Image,
+  View,
+  Dimensions,
+  Text,
+  TouchableHighlight,
+} from "react-native";
 import avatars from "../assets/avatars/avatars";
+import Tooltip from "react-native-walkthrough-tooltip";
+import ChampDetails from "./champdetails";
 
 export default function ChampionAvatar({ name, gold }) {
-  console.log(name);
+  const [isVisible, setIsVisible] = useState(false);
   return (
     <View
       style={[
@@ -19,24 +28,38 @@ export default function ChampionAvatar({ name, gold }) {
           : { backgroundColor: "#b89d27" },
       ]}
     >
-      <Image style={styles.logo} source={avatars[name]} />
+      <Tooltip
+        isVisible={isVisible}
+        content={<ChampDetails name={name} gold={gold} />}
+        placement="top"
+        onClose={() => setIsVisible(false)}
+        contentStyle={styles.tooltip}
+      >
+        <TouchableHighlight onPress={() => setIsVisible(true)}>
+          <Image style={styles.logo} source={avatars[name]} />
+        </TouchableHighlight>
+      </Tooltip>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  tooltip: {
+    width: Dimensions.get("window").width * 0.8,
+    height: Dimensions.get("window").height * 0.4,
+    backgroundColor: "#34495e",
+  },
   container: {
     marginLeft: 5,
     marginTop: 5,
     elevation: 5,
-    width: (Dimensions.get("window").width * 0.75 - 60) / 4.8,
-    height: (Dimensions.get("window").width * 0.75 - 60) / 4.8,
+    width: (Dimensions.get("window").width * 0.75 - 60) / 5.8,
+    height: (Dimensions.get("window").width * 0.75 - 60) / 5.8,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "blue",
   },
   logo: {
-    width: (Dimensions.get("window").width * 0.75 - 60) / 5,
-    height: (Dimensions.get("window").width * 0.75 - 60) / 5,
+    width: (Dimensions.get("window").width * 0.75 - 60) / 6,
+    height: (Dimensions.get("window").width * 0.75 - 60) / 6,
   },
 });
