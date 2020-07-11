@@ -11,7 +11,14 @@ import avatars from "../assets/avatars/avatars";
 import Tooltip from "react-native-walkthrough-tooltip";
 import ChampDetails from "./champdetails";
 
-export default function ChampionAvatar({ name, gold }) {
+export default function ChampionAvatar({
+  name,
+  gold,
+  origin,
+  type,
+  skill,
+  details,
+}) {
   const [isVisible, setIsVisible] = useState(false);
   return (
     <View
@@ -30,10 +37,20 @@ export default function ChampionAvatar({ name, gold }) {
     >
       <Tooltip
         isVisible={isVisible}
-        content={<ChampDetails name={name} gold={gold} />}
+        content={
+          <ChampDetails
+            name={name}
+            gold={gold}
+            origin={origin}
+            type={type}
+            skill={skill}
+            details={details}
+          />
+        }
         placement="top"
         onClose={() => setIsVisible(false)}
         contentStyle={styles.tooltip}
+        showChildInTooltip={false}
       >
         <TouchableHighlight onPress={() => setIsVisible(true)}>
           <Image style={styles.logo} source={avatars[name]} />
@@ -46,7 +63,7 @@ export default function ChampionAvatar({ name, gold }) {
 const styles = StyleSheet.create({
   tooltip: {
     width: Dimensions.get("window").width * 0.8,
-    height: Dimensions.get("window").height * 0.4,
+    height: "auto",
     backgroundColor: "#34495e",
   },
   container: {

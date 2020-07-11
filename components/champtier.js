@@ -27,7 +27,14 @@ export default function ChampTier({ tier, champs }) {
             data={champs}
             numColumns={5}
             renderItem={({ item }) => (
-              <ChampionAvatar name={item.name} gold={item.gold} />
+              <ChampionAvatar
+                name={item.name}
+                gold={item.gold}
+                origin={item.origin}
+                type={item.type}
+                skill={item.skill}
+                details={item.details}
+              />
             )}
             keyExtractor={(index) => index}
           />

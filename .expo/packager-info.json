@@ -1,9 +1,9 @@
 {
   "packagerPort": 19001,
-  "packagerPid": 14556,
+  "packagerPid": 14784,
   "expoServerNgrokUrl": "https://up-sdg.anonymous.tftlab.exp.direct",
   "packagerNgrokUrl": "https://packager.up-sdg.anonymous.tftlab.exp.direct",
-  "ngrokPid": 5832,
+  "ngrokPid": 712,
   "expoServerPort": 19000,
   "webpackServerPort": null,
   "devToolsPort": 19002
