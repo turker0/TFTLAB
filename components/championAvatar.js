@@ -4,7 +4,6 @@ import {
   Image,
   View,
   Dimensions,
-  Text,
   TouchableHighlight,
 } from "react-native";
 import avatars from "../assets/avatars/avatars";
@@ -47,7 +46,7 @@ export default function ChampionAvatar({
             details={details}
           />
         }
-        placement="top"
+        placement="center"
         onClose={() => setIsVisible(false)}
         contentStyle={styles.tooltip}
         showChildInTooltip={false}

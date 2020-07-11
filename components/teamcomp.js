@@ -60,7 +60,12 @@ export default function TeamComp({ tier, name, champs, traits }) {
             data={traits}
             horizontal={true}
             renderItem={({ item }) => (
-              <CompTrait trait={item.name} count={item.count} />
+              <CompTrait
+                trait={item.name}
+                count={item.count}
+                desc={item.desc}
+                combo={item.combo}
+              />
             )}
             keyExtractor={(index) => index}
           />

@@ -1,29 +1,56 @@
-import React from "react";
-import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Dimensions,
+  TouchableHighlight,
+} from "react-native";
 import classes from "../assets/classes/classes";
 import origins from "../assets/origins/origins";
-
+import Tooltip from "react-native-walkthrough-tooltip";
 import checkIsClass from "../helpers/checkIsClass";
 import getBorderColor from "../helpers/getBorderColor";
+import TraitDetails from "./traitdetails";
 
-export default function CompTrait({ trait, count }) {
+export default function CompTrait({ trait, count, desc, combo }) {
+  const [isVisible, setIsVisible] = useState(false);
   return (
-    <View
-      style={[
-        styles.container,
-        { backgroundColor: getBorderColor(trait, count) },
-      ]}
+    <Tooltip
+      isVisible={isVisible}
+      content={
+        <TraitDetails name={trait} count={count} desc={desc} combo={combo} />
+      }
+      placement="center"
+      onClose={() => setIsVisible(false)}
+      contentStyle={styles.tooltip}
+      showChildInTooltip={false}
     >
-      <Image
-        style={styles.logo}
-        source={checkIsClass(trait) ? classes[trait] : origins[trait]}
-      />
-      <Text style={styles.trait}>{count}</Text>
-    </View>
+      <TouchableHighlight onPress={() => setIsVisible(true)}>
+        <View
+          style={[
+            styles.container,
+            { backgroundColor: getBorderColor(trait, count) },
+          ]}
+        >
+          <Image
+            style={styles.logo}
+            source={checkIsClass(trait) ? classes[trait] : origins[trait]}
+          />
+          <Text style={styles.trait}>{count}</Text>
+        </View>
+      </TouchableHighlight>
+    </Tooltip>
   );
 }
 
 const styles = StyleSheet.create({
+  tooltip: {
+    width: Dimensions.get("window").width * 0.65,
+    height: "auto",
+    backgroundColor: "#34495e",
+  },
   container: {
     width: (Dimensions.get("window").width * 0.75 - 60) / 8,
     flexDirection: "row",
