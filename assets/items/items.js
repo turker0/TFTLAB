@@ -45,5 +45,13 @@ const items = {
   ZekesHerald: require("./ZekesHerald.png"),
   Zephyr: require("./Zephyr.png"),
   ZzRotPortal: require("./ZzRotPortal.png"),
+  BladeoftheRuinedKing: require("./BladeoftheRuinedKing.png"),
+  RebelMedal: require("./RebelMedal.png"),
+  ProtectorsChestguard: require("./ProtectorsChestguard.png"),
+  BattlecastPlating: require("./BattlecastPlating.png"),
+  CelestialOrb: require("./CelestialOrb.png"),
+  InfiltratorsTalons: require("./InfiltratorsTalons.png"),
+  DarkStarsHeart: require("./DarkStarsHeart.png"),
+  StarGuardiansCharm: require("./StarGuardiansCharm.png"),
 };
 export default items;

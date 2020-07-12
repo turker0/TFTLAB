@@ -19,22 +19,7 @@ export default function TeamComp({ tier, name, champs, traits }) {
           : { backgroundColor: "#ecf0f1" },
       ]}
     >
-      <Text
-        style={[
-          styles.title,
-          tier === "S"
-            ? { color: "#e74c3c" }
-            : tier === "A"
-            ? { color: "#f1c40f" }
-            : tier === "B"
-            ? { color: "#3498db" }
-            : tier === "C"
-            ? { color: "#2ecc71" }
-            : { color: "#ecf0f1" },
-        ]}
-      >
-        {name}
-      </Text>
+      <Text style={styles.title}>{name}</Text>
       <View style={styles.fdWrapper}>
         <View style={styles.tierWrapper}>
           <Text style={styles.tier}>{tier}</Text>
@@ -90,7 +75,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: "RobotoBold",
     textAlign: "center",
-    backgroundColor: "#34495e",
+    backgroundColor: "#1F5470",
+    color: "#fff",
     position: "absolute",
     borderRadius: 8,
     elevation: 1,
@@ -112,7 +98,7 @@ const styles = StyleSheet.create({
   },
   listWrapper: {
     flex: 8,
-    backgroundColor: "#34495e",
+    backgroundColor: "#1F5470",
     paddingLeft: 5,
     paddingBottom: 5,
     paddingTop: "6%",

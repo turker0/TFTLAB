@@ -50,7 +50,7 @@ export default function ItemsTier() {
 const styles = StyleSheet.create({
   page: {
     width: Dimensions.get("window").width * 0.9,
-    backgroundColor: "white",
+    backgroundColor: "#34495E",
     alignItems: "center",
     borderRadius: 8,
     margin: Dimensions.get("window").width * 0.03,
@@ -61,10 +61,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 18,
     fontFamily: "RobotoBold",
-    color: "#02233C",
     marginTop: "-7%",
     marginBottom: "10%",
-    backgroundColor: "#fff",
+    backgroundColor: "#34495E",
+    color: "#fff",
     paddingHorizontal: "5%",
     paddingVertical: "1%",
     borderRadius: 4,

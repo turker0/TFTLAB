@@ -32,10 +32,8 @@ export default function TraitDetails({ name, count, desc, combo }) {
               style={[
                 styles.num,
                 {
-                  backgroundColor:
-                    count >= item.num
-                      ? getBorderColor(name, item.num)
-                      : "#bdc3c7",
+                  backgroundColor: getBorderColor(name, item.num),
+                  opacity: count >= item.num ? 1 : 0.5,
                 },
               ]}
             >
@@ -90,7 +88,8 @@ const styles = StyleSheet.create({
   },
   comboWrapper: {
     marginVertical: 3,
-    width: "80%",
+    width: "40%",
+    marginLeft: "10%",
     alignSelf: "center",
     flexDirection: "row",
     alignItems: "center",

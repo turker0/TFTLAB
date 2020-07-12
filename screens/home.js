@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 25,
-    backgroundColor: "#39ADFA",
+    backgroundColor: "#123040",
   },
   titleWrapper: {
     paddingVertical: 20,
@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
   },
   page: {
     width: Dimensions.get("window").width * 0.9,
-    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 8,

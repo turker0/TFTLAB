@@ -26,7 +26,7 @@ export default function ItemTier({ tier, items }) {
           <FlatList
             data={items}
             numColumns={5}
-            renderItem={({ item }) => <ItemAvatar name={item.name} />}
+            renderItem={({ item }) => <ItemAvatar item={item} />}
             keyExtractor={(index) => index}
           />
         </View>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   listWrapper: {
     flex: 8,
-    backgroundColor: "#34495e",
+    backgroundColor: "#1F5470",
     paddingLeft: 5,
     paddingBottom: 5,
     alignItems: "flex-start",

@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   listWrapper: {
     flex: 8,
-    backgroundColor: "#34495e",
+    backgroundColor: "#1F5470",
     paddingLeft: 5,
     paddingBottom: 5,
     alignItems: "flex-start",
