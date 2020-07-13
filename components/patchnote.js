@@ -21,7 +21,7 @@ export default function PatchHeader({ note, index }) {
               <Text style={styles.context}>{item}</Text>
             </View>
           )}
-          keyExtractor={(index) => index}
+          keyExtractor={(item, index) => String(index)}
         />
       </View>
     </View>

@@ -36,7 +36,7 @@ export default function ChampTier({ tier, champs }) {
                 details={item.details}
               />
             )}
-            keyExtractor={(index) => index}
+            keyExtractor={(item, index) => String(index)}
           />
         </View>
       </View>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   },
   listWrapper: {
     flex: 8,
-    backgroundColor: "#1F5470",
+    backgroundColor: "#34495E",
     paddingLeft: 5,
     paddingBottom: 5,
     alignItems: "flex-start",

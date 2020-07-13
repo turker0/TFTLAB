@@ -40,7 +40,7 @@ export default function ChampDetails({
                   <Text style={styles.stats}>{item}</Text>
                 )
               }
-              keyExtractor={(index) => index}
+              keyExtractor={(item, index) => String(index)}
             />
           </View>
           <Text style={styles.stats}>
@@ -60,7 +60,7 @@ export default function ChampDetails({
                   <Text style={styles.stats}>{item}</Text>
                 )
               }
-              keyExtractor={(index) => index}
+              keyExtractor={(item, index) => String(index)}
             />
           </View>
           <View style={styles.healthWrapper}>
@@ -75,7 +75,7 @@ export default function ChampDetails({
                   <Text style={styles.stats}>{item}</Text>
                 )
               }
-              keyExtractor={(index) => index}
+              keyExtractor={(item, index) => String(index)}
             />
           </View>
           <Text style={styles.stats}>Atk Speed: 0.{details.critrate}</Text>
@@ -109,7 +109,7 @@ export default function ChampDetails({
             renderItem={({ item }) => (
               <Text style={styles.ability}>{item}</Text>
             )}
-            keyExtractor={(index) => index}
+            keyExtractor={(item, index) => String(index)}
           />
         </View>
         <View style={styles.traitsWrapper}>

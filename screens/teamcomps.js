@@ -31,11 +31,11 @@ export default function TeamComps() {
     if (!isFetched) getComps(setIsFetched, setComps);
   });
   return { isFetched } ? (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <View>
       <View style={styles.page}>
-        <Text style={styles.title}>TFT Team Comps Tier List</Text>
         <FlatList
           data={comps}
+          showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <TeamComp
               tier={item.tier}
@@ -44,34 +44,22 @@ export default function TeamComps() {
               traits={item.traits}
             />
           )}
-          keyExtractor={(index) => index}
+          keyExtractor={(item, index) => String(index)}
         />
       </View>
-    </ScrollView>
+    </View>
   ) : null;
 }
 
 const styles = StyleSheet.create({
   page: {
     width: Dimensions.get("window").width * 0.9,
-    backgroundColor: "#34495E",
+    height: Dimensions.get("window").height * 0.8,
+    backgroundColor: "#123040",
     alignItems: "center",
     borderRadius: 8,
     margin: Dimensions.get("window").width * 0.03,
     padding: Dimensions.get("window").width * 0.03,
     elevation: 5,
-  },
-  title: {
-    textAlign: "center",
-    fontSize: 18,
-    fontFamily: "RobotoBold",
-    color: "#fff",
-    marginTop: "-7%",
-    marginBottom: "10%",
-    backgroundColor: "#34495E",
-    paddingHorizontal: "5%",
-    paddingVertical: "1%",
-    borderRadius: 4,
-    elevation: 2,
   },
 });

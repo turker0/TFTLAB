@@ -210,14 +210,13 @@ export default function CompBuilder() {
         <Text>Team</Text>
       </View>
       <View style={styles.champWrapper}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <FlatList
-            data={ChampTierList}
-            numColumns={6}
-            renderItem={({ item }) => <ChampionAvatar name={item.name} />}
-            keyExtractor={(index) => index}
-          />
-        </ScrollView>
+        <FlatList
+          data={ChampTierList}
+          showsVerticalScrollIndicator={false}
+          numColumns={6}
+          renderItem={({ item }) => <ChampionAvatar name={item.name} />}
+          keyExtractor={(item, index) => String(index)}
+        />
       </View>
     </View>
   );

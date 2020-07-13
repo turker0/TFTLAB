@@ -32,42 +32,30 @@ export default function OriginTiers() {
     if (!isFetched) getOrigin(setIsFetched, setOriginList);
   });
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <View>
       <View style={styles.page}>
-        <Text style={styles.title}>Origin Tier List</Text>
         <FlatList
           data={originList}
+          showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <OriginTier tier={item.tier} origins={item.origins} />
           )}
-          keyExtractor={(index) => index}
+          keyExtractor={(item, index) => String(index)}
         />
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   page: {
     width: Dimensions.get("window").width * 0.9,
-    backgroundColor: "#34495E",
+    height: Dimensions.get("window").height * 0.8,
+    backgroundColor: "#123040",
     alignItems: "center",
     borderRadius: 8,
     margin: Dimensions.get("window").width * 0.03,
     padding: Dimensions.get("window").width * 0.03,
     elevation: 5,
-  },
-  title: {
-    textAlign: "center",
-    fontSize: 18,
-    fontFamily: "RobotoBold",
-    color: "#fff",
-    marginTop: "-7%",
-    marginBottom: "10%",
-    backgroundColor: "#34495E",
-    paddingHorizontal: "5%",
-    paddingVertical: "1%",
-    borderRadius: 4,
-    elevation: 2,
   },
 });

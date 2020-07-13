@@ -38,7 +38,7 @@ export default function TeamComp({ tier, name, champs, traits }) {
                 details={item.details}
               />
             )}
-            keyExtractor={(index) => index}
+            keyExtractor={(item, index) => String(index)}
           />
 
           <FlatList
@@ -52,7 +52,7 @@ export default function TeamComp({ tier, name, champs, traits }) {
                 combo={item.combo}
               />
             )}
-            keyExtractor={(index) => index}
+            keyExtractor={(item, index) => String(index)}
           />
         </View>
       </View>
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: "RobotoBold",
     textAlign: "center",
-    backgroundColor: "#1F5470",
+    backgroundColor: "#34495E",
     color: "#fff",
     position: "absolute",
     borderRadius: 8,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   listWrapper: {
     flex: 8,
-    backgroundColor: "#1F5470",
+    backgroundColor: "#34495E",
     paddingLeft: 5,
     paddingBottom: 5,
     paddingTop: "6%",

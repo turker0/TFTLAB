@@ -146,28 +146,26 @@ export default function PatchNotes() {
         backgroundColor: "#39ADFA",
       }}
     >
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.container}>
-          <View style={styles.titleWrapper}>
-            <Text style={styles.patchTitle}>Patch {note.version}</Text>
-            <Text style={styles.date}>{note.date}</Text>
-          </View>
-          <View style={styles.noteWrapper}>
-            <FlatList
-              data={note.notes}
-              contentContainerStyle={{
-                borderTopLeftRadius: 12,
-                borderTopRightRadius: 12,
-                overflow: "hidden",
-              }}
-              renderItem={({ item, index }) => (
-                <PatchNote note={item} index={index} />
-              )}
-              keyExtractor={(index) => index}
-            />
-          </View>
+      <View style={styles.container}>
+        <View style={styles.titleWrapper}>
+          <Text style={styles.patchTitle}>Patch {note.version}</Text>
+          <Text style={styles.date}>{note.date}</Text>
         </View>
-      </ScrollView>
+        <View style={styles.noteWrapper}>
+          <FlatList
+            data={note.notes}
+            contentContainerStyle={{
+              borderTopLeftRadius: 12,
+              borderTopRightRadius: 12,
+              overflow: "hidden",
+            }}
+            renderItem={({ item, index }) => (
+              <PatchNote note={item} index={index} />
+            )}
+            keyExtractor={(item, index) => String(index)}
+          />
+        </View>
+      </View>
     </View>
   );
 }

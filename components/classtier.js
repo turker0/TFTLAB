@@ -26,8 +26,8 @@ export default function ClassTier({ tier, classes }) {
           <FlatList
             data={classes}
             numColumns={4}
-            renderItem={({ item }) => <ClassAvatar name={item.name} />}
-            keyExtractor={(index) => index}
+            renderItem={({ item }) => <ClassAvatar Class={item} />}
+            keyExtractor={(item, index) => String(index)}
           />
         </View>
       </View>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   listWrapper: {
     flex: 8,
-    backgroundColor: "#1F5470",
+    backgroundColor: "#34495E",
     paddingLeft: 5,
     paddingBottom: 5,
     alignItems: "flex-start",

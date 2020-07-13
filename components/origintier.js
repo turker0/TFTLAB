@@ -27,7 +27,7 @@ export default function OriginTier({ tier, origins }) {
             data={origins}
             numColumns={4}
             renderItem={({ item }) => <OriginAvatar name={item.name} />}
-            keyExtractor={(index) => index}
+            keyExtractor={(item, index) => String(index)}
           />
         </View>
       </View>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   listWrapper: {
     flex: 8,
-    backgroundColor: "#1F5470",
+    backgroundColor: "#34495E",
     paddingLeft: 5,
     paddingBottom: 5,
     alignItems: "flex-start",

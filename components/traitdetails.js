@@ -49,7 +49,7 @@ export default function TraitDetails({ name, count, desc, combo }) {
             </Text>
           </View>
         )}
-        keyExtractor={(index) => index}
+        keyExtractor={(item, index) => String(index)}
       />
     </View>
   );

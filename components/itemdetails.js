@@ -17,107 +17,41 @@ export default function ItemDetails({ Item }) {
       <View style={styles.titleWrapper}>
         <Image style={styles.logo} source={items[Item.name]} />
         <Text style={styles.title}>{Item.name}</Text>
-        <View style={styles.contributionWrapper}>
-          <FlatList
-            data={Item.contribution}
-            renderItem={({ item }) => (
-              <Text style={styles.contribution}>{item}</Text>
-            )}
-            keyExtractor={(index) => index}
-          />
-        </View>
+        <FlatList
+          data={Item.contribution}
+          contentContainerStyle={{
+            alignSelf: "flex-end",
+          }}
+          renderItem={({ item }) => (
+            <Text style={styles.contribution}>{item}</Text>
+          )}
+          keyExtractor={(item, index) => String(index)}
+        />
       </View>
       <Text style={styles.desc}>{Item.desc}</Text>
-      <ScrollView>
-        <View style={styles.reciperWrapper}>
-          <View style={styles.col}>
-            <FlatList
-              data={Item.first}
-              renderItem={({ item, index }) => (
-                <View
-                  style={[
-                    styles.fdWrapper,
-                    {
-                      height: GetTextHeight(
-                        Item.detail[index],
-                        Dimensions.get("window").width
-                      ),
-                    },
-                  ]}
-                >
-                  <Image style={styles.image} source={items[item]} />
-                  <Text style={styles.icon}>+</Text>
-                </View>
-              )}
-              keyExtractor={(index) => index}
-            />
+      <View style={styles.reciperWrapper}>
+        {Item.first.map((item, index) => (
+          <View
+            key={index}
+            style={[
+              styles.col,
+              {
+                height: GetTextHeight(
+                  Item.detail[index],
+                  Dimensions.get("window").width
+                ),
+              },
+            ]}
+          >
+            <Image style={styles.image} source={items[item]} />
+            <Text style={styles.icon}>+</Text>
+            <Image style={styles.image} source={items[Item.second[index]]} />
+            <Text style={styles.icon}>=</Text>
+            <Image style={styles.image} source={items[Item.third[index]]} />
+            <Text style={styles.detail}>{Item.detail[index]}</Text>
           </View>
-          <View style={styles.col}>
-            <FlatList
-              data={Item.second}
-              renderItem={({ item, index }) => (
-                <View
-                  style={[
-                    styles.fdWrapper,
-                    {
-                      height: GetTextHeight(
-                        Item.detail[index],
-                        Dimensions.get("window").width
-                      ),
-                    },
-                  ]}
-                >
-                  <Image style={styles.image} source={items[item]} />
-                  <Text style={styles.icon}>=</Text>
-                </View>
-              )}
-              keyExtractor={(index) => index}
-            />
-          </View>
-          <View style={styles.col}>
-            <FlatList
-              data={Item.third}
-              renderItem={({ item, index }) => (
-                <View
-                  style={[
-                    styles.fdWrapper,
-                    {
-                      height: GetTextHeight(
-                        Item.detail[index],
-                        Dimensions.get("window").width
-                      ),
-                    },
-                  ]}
-                >
-                  <Image style={styles.image} source={items[item]} />
-                </View>
-              )}
-              keyExtractor={(index) => index}
-            />
-          </View>
-          <View style={[styles.col, { flex: 1 }]}>
-            <FlatList
-              data={Item.detail}
-              renderItem={({ item, index }) => (
-                <View
-                  style={[
-                    styles.fdWrapper,
-                    {
-                      height: GetTextHeight(
-                        Item.detail[index],
-                        Dimensions.get("window").width
-                      ),
-                    },
-                  ]}
-                >
-                  <Text style={styles.detail}>{item}</Text>
-                </View>
-              )}
-              keyExtractor={(index) => index}
-            />
-          </View>
-        </View>
-      </ScrollView>
+        ))}
+      </View>
     </View>
   );
 }
@@ -127,8 +61,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   titleWrapper: {
-    width: "100%",
+    width: "95%",
     flexDirection: "row",
+    justifyContent: "center",
     alignItems: "center",
   },
   logo: {
@@ -143,29 +78,23 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     letterSpacing: 1,
   },
-  contributionWrapper: {
-    flex: 1,
-    alignItems: "flex-end",
-    justifyContent: "center",
-    paddingRight: "5%",
-  },
   contribution: {
     fontSize: 10,
     color: "#fff",
     fontFamily: "RobotoBold",
   },
   desc: {
-    marginTop: 10,
+    marginVertical: 10,
     fontSize: 12,
     color: "#fff",
     fontFamily: "RobotoMedium",
   },
   reciperWrapper: {
     width: "100%",
-    flexDirection: "row",
   },
   col: {
-    marginTop: 5,
+    flexDirection: "row",
+    alignItems: "center",
   },
   fdWrapper: {
     flexDirection: "row",
@@ -185,5 +114,6 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: "#fff",
     marginLeft: 10,
+    paddingRight: "28%",
   },
 });
