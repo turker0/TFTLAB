@@ -10,7 +10,7 @@ import {
 import TeamComp from "../components/teamcomp";
 
 const getComps = async (setIsFetched, setComps) => {
-  fetch("http://192.168.1.5:3000/api/teamcomps/", {
+  fetch("http://192.168.1.5:3000/api/teamcomp/", {
     method: "GET",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",

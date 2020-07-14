@@ -48,10 +48,4 @@ const styles = StyleSheet.create({
     width: (Dimensions.get("window").width * 0.75 - 60) / 6,
     height: (Dimensions.get("window").width * 0.75 - 60) / 6,
   },
-  title: {
-    fontSize: 8,
-    color: "#fff",
-    fontFamily: "RobotoRegular",
-    textAlign: "center",
-  },
 });

@@ -22,7 +22,6 @@ export default function TraitDetails({ name, count, desc, combo }) {
         />
         <Text style={styles.title}>{name}</Text>
       </View>
-      <Text style={styles.border}>-</Text>
       <Text style={styles.desc}>{desc}</Text>
       <FlatList
         data={combo}
@@ -108,12 +107,5 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#fff",
     fontFamily: "RobotoRegular",
-  },
-  border: {
-    width: "55%",
-    height: 0.3,
-    backgroundColor: "black",
-    alignSelf: "center",
-    marginBottom: 10,
   },
 });

@@ -26,7 +26,7 @@ export default function OriginTier({ tier, origins }) {
           <FlatList
             data={origins}
             numColumns={4}
-            renderItem={({ item }) => <OriginAvatar name={item.name} />}
+            renderItem={({ item }) => <OriginAvatar origin={item} />}
             keyExtractor={(item, index) => String(index)}
           />
         </View>

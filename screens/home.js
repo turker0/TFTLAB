@@ -28,6 +28,7 @@ export default function Welcome() {
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         style={{ flex: 1 }}
+        pagingEnabled={true}
       >
         <TeamComps />
         <ChampTier />
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 25,
+    paddingTop: 25,
     backgroundColor: "#123040",
   },
   titleWrapper: {
