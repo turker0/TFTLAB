@@ -18,12 +18,14 @@ export default function HomeRoute() {
     <Tab.Navigator
       initialRouteName="Home"
       tabBarOptions={{
-        inactiveTintColor: "#fff",
         activeTintColor: "#fff",
-        activeBackgroundColor: "#123040",
+        inactiveTintColor: "#88a0a7",
+        activeBackgroundColor: "#34495E",
         inactiveBackgroundColor: "#34495E",
-        style: {
-          height: 50,
+        labelStyle: {
+          fontSize: 12,
+          fontFamily: "RobotoBold",
+          letterSpacing: 1,
         },
       }}
     >
@@ -32,7 +34,13 @@ export default function HomeRoute() {
         component={Home}
         options={{
           tabBarLabel: "Home",
-          tabBarIcon: ({}) => <Feather name="home" size={18} color="#fff" />,
+          tabBarIcon: ({ focused }) => (
+            <Feather
+              name="home"
+              size={20}
+              color={focused ? "#fff" : "#88a0a7"}
+            />
+          ),
         }}
       />
       <Tab.Screen
@@ -40,8 +48,12 @@ export default function HomeRoute() {
         component={PatchNotes}
         options={{
           tabBarLabel: "Patch Notes",
-          tabBarIcon: ({}) => (
-            <FontAwesome5 name="scroll" size={18} color="#fff" />
+          tabBarIcon: ({ focused }) => (
+            <FontAwesome5
+              name="scroll"
+              size={20}
+              color={focused ? "#fff" : "#88a0a7"}
+            />
           ),
         }}
       />
@@ -50,8 +62,12 @@ export default function HomeRoute() {
         component={CompBuilder}
         options={{
           tabBarLabel: "Team Builder",
-          tabBarIcon: ({}) => (
-            <Fontisto name="persons" size={18} color="#fff" />
+          tabBarIcon: ({ focused }) => (
+            <Fontisto
+              name="persons"
+              size={20}
+              color={focused ? "#fff" : "#88a0a7"}
+            />
           ),
         }}
       />
@@ -60,8 +76,12 @@ export default function HomeRoute() {
         component={ItemBuilder}
         options={{
           tabBarLabel: "Item Builder",
-          tabBarIcon: ({}) => (
-            <MaterialCommunityIcons name="sword" size={18} color="#fff" />
+          tabBarIcon: ({ focused }) => (
+            <MaterialCommunityIcons
+              name="sword"
+              size={20}
+              color={focused ? "#fff" : "#88a0a7"}
+            />
           ),
         }}
       />

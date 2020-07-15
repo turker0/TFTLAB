@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,6 +6,7 @@ import {
   Dimensions,
   Image,
   ScrollView,
+  FlatList,
 } from "react-native";
 
 import { StatusBar } from "expo-status-bar";
@@ -14,6 +15,7 @@ import ChampTier from "./champtier";
 import ItemTier from "./itemtier";
 import ClassTier from "./classtier";
 import OriginTier from "./origintier";
+import { TouchableHighlight } from "react-native-gesture-handler";
 
 export default function Welcome() {
   return (
@@ -23,7 +25,6 @@ export default function Welcome() {
         <Image style={styles.logo} source={require("../assets/logo.png")} />
         <Text style={styles.title}>TFTLAB</Text>
       </View>
-
       <ScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingTop: 25,
-    backgroundColor: "#123040",
+    backgroundColor: "#102531",
   },
   titleWrapper: {
     paddingVertical: 20,
@@ -56,16 +57,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   logo: {
-    width: 40,
-    height: 40,
+    width: 32,
+    height: 32,
   },
   title: {
-    fontSize: 32,
+    fontSize: 24,
     fontFamily: "RobotoBlack",
     color: "#fff",
     textShadowColor: "rgba(0, 0, 0, 0.75)",
     textShadowOffset: { width: -0.75, height: 0 },
     textShadowRadius: 5,
+    letterSpacing: 3,
+  },
+  pageTitle: {
+    fontSize: 24,
+    fontFamily: "RobotoBold",
+    color: "#fff",
   },
   page: {
     width: Dimensions.get("window").width * 0.9,

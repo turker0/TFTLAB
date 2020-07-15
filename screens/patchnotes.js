@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, FlatList, Dimensions } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import NoteAvatar from "../components/noteavatar";
-
+import Loading from "../components/loading";
 const getNotes = async (setIsFetched, setNotes, setCurrent) => {
   fetch("http://192.168.1.5:3000/api/patchnote/", {
     method: "GET",
@@ -26,66 +26,68 @@ export default function PatchNotes() {
   useEffect(() => {
     if (!isFetched) getNotes(setIsFetched, setNotes, setCurrent);
   });
-  if (isFetched && current == 0) {
-    return (
-      <View style={styles.container}>
-        <View style={styles.notes}>
-          <Text style={styles.patchnotes}>PATCH NOTES</Text>
-          <FlatList
-            data={notes}
-            horizontal={true}
-            pagingEnabled={true}
-            showsHorizontalScrollIndicator={false}
-            renderItem={({ item, index }) => (
-              <NoteAvatar
-                version={item.version}
-                index={index}
-                setCurrent={setCurrent}
-              />
-            )}
-            keyExtractor={(item, index) => String(index)}
-          />
-        </View>
-        <View style={styles.patchWrapper}>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <View style={styles.titleWrapper}>
-              <Text style={styles.title}>Patch {notes[current].version}</Text>
-              <Text style={styles.date}>{notes[current].date}</Text>
-            </View>
-            {notes[current].notes.map((item) => (
-              <View style={styles.note}>
-                <Text style={styles.patchTitle}>{item.title}</Text>
-                {item.descs.map((item) => (
-                  <View>
-                    {item.title != "" ? (
-                      <Text style={styles.title2}>{item.title}</Text>
-                    ) : null}
-
-                    {item.detail != "" ? (
-                      <Text style={styles.detail}>{item.detail}</Text>
-                    ) : null}
-
-                    {item.changes.map((item) => (
-                      <View>
-                        {item != "" ? (
-                          <View style={styles.changesWrapper}>
-                            <Text style={styles.icon}>⦿</Text>
-                            <Text style={styles.changes}>{item}</Text>
-                          </View>
-                        ) : null}
-                      </View>
-                    ))}
-                  </View>
-                ))}
+  return (
+    <View style={styles.container}>
+      {notes != 0 && current != -1 ? (
+        <View>
+          <View style={styles.notes}>
+            <Text style={styles.patchnotes}>PATCH NOTES</Text>
+            <FlatList
+              data={notes}
+              horizontal={true}
+              pagingEnabled={true}
+              showsHorizontalScrollIndicator={false}
+              renderItem={({ item, index }) => (
+                <NoteAvatar
+                  version={item.version}
+                  index={index}
+                  setCurrent={setCurrent}
+                />
+              )}
+              keyExtractor={(item, index) => String(index)}
+            />
+          </View>
+          <View style={styles.patchWrapper}>
+            <ScrollView showsVerticalScrollIndicator={false}>
+              <View style={styles.titleWrapper}>
+                <Text style={styles.title}>Patch {notes[current].version}</Text>
+                <Text style={styles.date}>{notes[current].date}</Text>
               </View>
-            ))}
-          </ScrollView>
+              {notes[current].notes.map((item, index) => (
+                <View style={styles.note} key={index}>
+                  <Text style={styles.patchTitle}>{item.title}</Text>
+                  {item.descs.map((item, index) => (
+                    <View key={index}>
+                      {item.title != "" ? (
+                        <Text style={styles.title2}>{item.title}</Text>
+                      ) : null}
+
+                      {item.detail != "" ? (
+                        <Text style={styles.detail}>{item.detail}</Text>
+                      ) : null}
+
+                      {item.changes.map((item, index) => (
+                        <View key={index}>
+                          {item != "" ? (
+                            <View style={styles.changesWrapper}>
+                              <Text style={styles.icon}>⦿</Text>
+                              <Text style={styles.changes}>{item}</Text>
+                            </View>
+                          ) : null}
+                        </View>
+                      ))}
+                    </View>
+                  ))}
+                </View>
+              ))}
+            </ScrollView>
+          </View>
         </View>
-      </View>
-    );
-  } else {
-    return null;
-  }
+      ) : (
+        <Loading />
+      )}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -94,7 +96,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     paddingTop: 25,
-    backgroundColor: "#123040",
+    backgroundColor: "#102531",
   },
   notes: {
     width: "90%",
@@ -103,12 +105,13 @@ const styles = StyleSheet.create({
   patchnotes: {
     fontSize: 20,
     color: "#fff",
-    textAlign: "center",
     fontFamily: "RobotoBlack",
     letterSpacing: 5,
+    width: 160,
+    marginLeft: (Dimensions.get("window").width * 0.9 - 160) / 2,
   },
   patchWrapper: {
-    flex: 1,
+    width: "90%",
   },
   titleWrapper: {
     alignItems: "center",
@@ -127,11 +130,11 @@ const styles = StyleSheet.create({
     fontFamily: "RobotoRegular",
   },
   note: {
-    backgroundColor: "#34495E",
-    padding: Dimensions.get("window").width * 0.04,
+    paddingHorizontal: Dimensions.get("window").width * 0.05,
+    paddingVertical: Dimensions.get("window").width * 0.03,
+    backgroundColor: "#123040",
     elevation: 5,
     marginVertical: 5,
-    borderRadius: 4,
   },
   patchTitle: {
     fontSize: 20,

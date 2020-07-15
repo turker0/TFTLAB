@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  ScrollView,
-  FlatList,
-} from "react-native";
-
+import { StyleSheet, View, Dimensions, FlatList } from "react-native";
 import ItemTier from "../components/itemtier";
+import Loading from "../components/loading";
 
 const getItems = async (setIsFetched, setChampsList) => {
   fetch("http://192.168.1.5:3000/api/itemtier/", {
@@ -34,14 +27,18 @@ export default function ItemsTier() {
   return { itemList } ? (
     <View>
       <View style={styles.page}>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          data={itemList}
-          renderItem={({ item }) => (
-            <ItemTier tier={item.tier} items={item.items} />
-          )}
-          keyExtractor={(item, index) => String(index)}
-        />
+        {itemList != 0 ? (
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            data={itemList}
+            renderItem={({ item }) => (
+              <ItemTier tier={item.tier} items={item.items} />
+            )}
+            keyExtractor={(item, index) => String(index)}
+          />
+        ) : (
+          <Loading />
+        )}
       </View>
     </View>
   ) : null;
@@ -50,12 +47,9 @@ export default function ItemsTier() {
 const styles = StyleSheet.create({
   page: {
     width: Dimensions.get("window").width * 0.9,
-    height: Dimensions.get("window").height * 0.8,
+    marginHorizontal: Dimensions.get("window").width * 0.05,
     backgroundColor: "#123040",
     alignItems: "center",
-    borderRadius: 8,
-    margin: Dimensions.get("window").width * 0.03,
-    padding: Dimensions.get("window").width * 0.03,
     elevation: 5,
   },
 });

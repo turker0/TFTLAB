@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  ScrollView,
-  FlatList,
-} from "react-native";
-
+import { StyleSheet, View, Dimensions, FlatList } from "react-native";
+import Loading from "../components/loading";
 import OriginTier from "../components/origintier";
 
 const getOrigin = async (setIsFetched, setOriginList) => {
@@ -34,14 +27,18 @@ export default function OriginTiers() {
   return (
     <View>
       <View style={styles.page}>
-        <FlatList
-          data={originList}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => (
-            <OriginTier tier={item.tier} origins={item.origins} />
-          )}
-          keyExtractor={(item, index) => String(index)}
-        />
+        {originList != 0 ? (
+          <FlatList
+            data={originList}
+            showsVerticalScrollIndicator={false}
+            renderItem={({ item }) => (
+              <OriginTier tier={item.tier} origins={item.origins} />
+            )}
+            keyExtractor={(item, index) => String(index)}
+          />
+        ) : (
+          <Loading />
+        )}
       </View>
     </View>
   );
@@ -50,12 +47,9 @@ export default function OriginTiers() {
 const styles = StyleSheet.create({
   page: {
     width: Dimensions.get("window").width * 0.9,
-    height: Dimensions.get("window").height * 0.8,
+    marginHorizontal: Dimensions.get("window").width * 0.05,
     backgroundColor: "#123040",
     alignItems: "center",
-    borderRadius: 8,
-    margin: Dimensions.get("window").width * 0.03,
-    padding: Dimensions.get("window").width * 0.03,
     elevation: 5,
   },
 });

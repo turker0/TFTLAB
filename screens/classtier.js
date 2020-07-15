@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  ScrollView,
-  FlatList,
-} from "react-native";
-
+import { StyleSheet, View, Dimensions, FlatList } from "react-native";
+import Loading from "../components/loading";
 import ClassTier from "../components/classtier";
 
 const getClass = async (setIsFetched, setClassList) => {
@@ -34,14 +27,18 @@ export default function ClassesTier() {
   return { classList } ? (
     <View>
       <View style={styles.page}>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          data={classList}
-          renderItem={({ item }) => (
-            <ClassTier tier={item.tier} classes={item.classes} />
-          )}
-          keyExtractor={(item, index) => String(index)}
-        />
+        {classList != 0 ? (
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            data={classList}
+            renderItem={({ item }) => (
+              <ClassTier tier={item.tier} classes={item.classes} />
+            )}
+            keyExtractor={(item, index) => String(index)}
+          />
+        ) : (
+          <Loading />
+        )}
       </View>
     </View>
   ) : null;
@@ -50,12 +47,9 @@ export default function ClassesTier() {
 const styles = StyleSheet.create({
   page: {
     width: Dimensions.get("window").width * 0.9,
-    height: Dimensions.get("window").height * 0.8,
+    marginHorizontal: Dimensions.get("window").width * 0.05,
     backgroundColor: "#123040",
     alignItems: "center",
-    borderRadius: 8,
-    margin: Dimensions.get("window").width * 0.03,
-    padding: Dimensions.get("window").width * 0.03,
     elevation: 5,
   },
 });

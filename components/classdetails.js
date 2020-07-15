@@ -1,8 +1,16 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Dimensions,
+  FlatList,
+} from "react-native";
 import classes from "../assets/classes/classes";
 import GetTextHeight from "../helpers/getTextHeight";
 import GetBorderColor from "../helpers/getBorderColor";
+import avatars from "../assets/avatars/avatars";
 
 export default function ClassDetails({ Class }) {
   return (
@@ -43,6 +51,11 @@ export default function ClassDetails({ Class }) {
           </View>
         ))}
       </View>
+      <View style={styles.unitWrapper}>
+        {Class.units.map((item, index) => (
+          <Image style={styles.unit} source={avatars[item]} key={index} />
+        ))}
+      </View>
     </View>
   );
 }
@@ -56,6 +69,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+  },
+  logo: {
+    width: 25,
+    height: 25,
   },
   title: {
     fontSize: 18,
@@ -82,7 +99,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontFamily: "RobotoRegular",
   },
-
   num: {
     fontSize: 10,
     color: "#fff",
@@ -94,5 +110,18 @@ const styles = StyleSheet.create({
   reciperWrapper: {
     paddingVertical: 10,
     paddingHorizontal: 50,
+  },
+  unitWrapper: {
+    width: "100%",
+    height: "auto",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  unit: {
+    width: (Dimensions.get("window").width * 0.75 - 60) / 6,
+    height: (Dimensions.get("window").width * 0.75 - 60) / 6,
+    margin: "1%",
   },
 });
