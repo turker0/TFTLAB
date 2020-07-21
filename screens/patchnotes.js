@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { StyleSheet, Text, View, FlatList, Dimensions } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import NoteAvatar from "../components/noteavatar";
@@ -23,6 +23,7 @@ export default function PatchNotes() {
   const [isFetched, setIsFetched] = useState(false);
   const [notes, setNotes] = useState(0);
   const [current, setCurrent] = useState(-1);
+  const refScrollView = useRef(null);
   useEffect(() => {
     if (!isFetched) getNotes(setIsFetched, setNotes, setCurrent);
   });
@@ -42,13 +43,17 @@ export default function PatchNotes() {
                   version={item.version}
                   index={index}
                   setCurrent={setCurrent}
+                  scrollview={refScrollView}
                 />
               )}
               keyExtractor={(item, index) => String(index)}
             />
           </View>
           <View style={styles.patchWrapper}>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              ref={refScrollView}
+            >
               <View style={styles.titleWrapper}>
                 <Text style={styles.title}>Patch {notes[current].version}</Text>
                 <Text style={styles.date}>{notes[current].date}</Text>
@@ -99,19 +104,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#102531",
   },
   notes: {
-    width: "90%",
     height: 70,
+    justifyContent: "center",
+    alignItems: "center",
   },
   patchnotes: {
     fontSize: 20,
     color: "#fff",
     fontFamily: "RobotoBlack",
     letterSpacing: 5,
-    width: 160,
-    marginLeft: (Dimensions.get("window").width * 0.9 - 160) / 2,
   },
   patchWrapper: {
     width: "90%",
+    height: Dimensions.get("window").height - 145,
   },
   titleWrapper: {
     alignItems: "center",

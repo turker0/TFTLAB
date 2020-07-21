@@ -226,7 +226,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "flex-end",
+    justifyContent: "flex-start",
+    paddingTop: 25,
+    backgroundColor: "#102531",
   },
   boardWrapper: {
     width: "90%",
