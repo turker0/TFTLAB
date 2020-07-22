@@ -22,14 +22,13 @@ export default function NoteAvatar({ version, index, setCurrent, scrollview }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#34495E",
+    backgroundColor: "#123040",
     width: 40,
     height: 40,
     borderRadius: 50,
     alignItems: "center",
     marginHorizontal: 3,
     justifyContent: "center",
-    elevation: 5,
   },
   version: {
     color: "#fff",

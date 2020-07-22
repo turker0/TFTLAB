@@ -6,7 +6,7 @@ import {
   Dimensions,
   TouchableHighlight,
 } from "react-native";
-import items from "../assets/items/items";
+import items from "../../assets/items/items";
 import Tooltip from "react-native-walkthrough-tooltip";
 import ItemDetails from "./itemdetails";
 

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Dimensions, FlatList } from "react-native";
-import ChampTier from "../components/champtier";
-import Loading from "../components/loading";
+import Loading from "../../components/shared/loading";
+import OriginTier from "../../components/OriginTier/origintier";
 
-const getComps = async (setIsFetched, setChampsList) => {
-  fetch("http://192.168.1.5:3000/api/champtier/", {
+const getOrigin = async (setIsFetched, setOriginList) => {
+  fetch("http://192.168.1.5:3000/api/origintier/", {
     method: "GET",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
@@ -12,28 +12,27 @@ const getComps = async (setIsFetched, setChampsList) => {
   })
     .then((res) => res.json())
     .then((resJson) => {
-      setChampsList(resJson);
+      setOriginList(resJson);
     })
     .catch((error) => console.error(error));
   setIsFetched(true);
 };
 
-export default function ChampsTier() {
+export default function OriginTiers() {
   const [isFetched, setIsFetched] = useState(false);
-  const [champsList, setChampsList] = useState(0);
+  const [originList, setOriginList] = useState(0);
   useEffect(() => {
-    if (!isFetched) getComps(setIsFetched, setChampsList);
+    if (!isFetched) getOrigin(setIsFetched, setOriginList);
   });
-
-  return { champsList } ? (
+  return (
     <View>
       <View style={styles.page}>
-        {champsList != 0 ? (
+        {originList != 0 ? (
           <FlatList
+            data={originList}
             showsVerticalScrollIndicator={false}
-            data={champsList}
             renderItem={({ item }) => (
-              <ChampTier tier={item.tier} champs={item.champs} />
+              <OriginTier tier={item.tier} origins={item.origins} />
             )}
             keyExtractor={(item, index) => String(index)}
           />
@@ -42,15 +41,14 @@ export default function ChampsTier() {
         )}
       </View>
     </View>
-  ) : null;
+  );
 }
 
 const styles = StyleSheet.create({
   page: {
-    width: Dimensions.get("window").width * 0.9,
-    marginHorizontal: Dimensions.get("window").width * 0.05,
+    width: Dimensions.get("window").width,
+    height: "100%",
     backgroundColor: "#123040",
     alignItems: "center",
-    elevation: 5,
   },
 });

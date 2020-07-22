@@ -7,10 +7,10 @@ import {
   Dimensions,
   FlatList,
 } from "react-native";
-import classes from "../assets/classes/classes";
-import origins from "../assets/origins/origins";
-import checkIsClass from "../helpers/checkIsClass";
-import getBorderColor from "../helpers/getBorderColor";
+import classes from "../../assets/classes/classes";
+import origins from "../../assets/origins/origins";
+import checkIsClass from "../../helpers/checkIsClass";
+import getBorderColor from "../../helpers/getBorderColor";
 
 export default function TraitDetails({ name, count, desc, combo }) {
   return (

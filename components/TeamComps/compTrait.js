@@ -7,11 +7,11 @@ import {
   Dimensions,
   TouchableHighlight,
 } from "react-native";
-import classes from "../assets/classes/classes";
-import origins from "../assets/origins/origins";
+import classes from "../../assets/classes/classes";
+import origins from "../../assets/origins/origins";
 import Tooltip from "react-native-walkthrough-tooltip";
-import checkIsClass from "../helpers/checkIsClass";
-import getBorderColor from "../helpers/getBorderColor";
+import checkIsClass from "../../helpers/checkIsClass";
+import getBorderColor from "../../helpers/getBorderColor";
 import TraitDetails from "./traitdetails";
 
 export default function CompTrait({ trait, count, desc, combo }) {

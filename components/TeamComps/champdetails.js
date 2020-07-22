@@ -8,10 +8,10 @@ import {
   FlatList,
 } from "react-native";
 
-import avatars from "../assets/avatars/avatars";
-import classes from "../assets/classes/classes";
-import origins from "../assets/origins/origins";
-import skills from "../assets/skills/skills";
+import avatars from "../../assets/avatars/avatars";
+import classes from "../../assets/classes/classes";
+import origins from "../../assets/origins/origins";
+import skills from "../../assets/skills/skills";
 
 export default function ChampDetails({
   name,

@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, FlatList } from "react-native";
 
-import ChampionAvatar from "../components/championAvatar";
+import ChampionAvatar from "../../components/shared/championAvatar";
 import { ScrollView } from "react-native-gesture-handler";
 
 const ChampTierList = [

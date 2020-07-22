@@ -7,9 +7,9 @@ import {
   Dimensions,
   FlatList,
 } from "react-native";
-import items from "../assets/items/items";
+import items from "../../assets/items/items";
 import { ScrollView } from "react-native-gesture-handler";
-import GetTextHeight from "../helpers/getTextHeight";
+import GetTextHeight from "../../helpers/getTextHeight";
 
 export default function ItemDetails({ Item }) {
   return (

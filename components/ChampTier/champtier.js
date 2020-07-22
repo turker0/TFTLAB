@@ -1,9 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View, Dimensions, FlatList } from "react-native";
-import ChampionAvatar from "./championAvatar";
-import CompTrait from "./compTrait";
+import ChampionAvatar from "../shared/championAvatar";
 
-export default function TeamComp({ tier, name, champs, traits }) {
+export default function ChampTier({ tier, champs }) {
   return (
     <View
       style={[
@@ -19,7 +18,6 @@ export default function TeamComp({ tier, name, champs, traits }) {
           : { backgroundColor: "#ecf0f1" },
       ]}
     >
-      <Text style={styles.title}>{name}</Text>
       <View style={styles.fdWrapper}>
         <View style={styles.tierWrapper}>
           <Text style={styles.tier}>{tier}</Text>
@@ -40,20 +38,6 @@ export default function TeamComp({ tier, name, champs, traits }) {
             )}
             keyExtractor={(item, index) => String(index)}
           />
-
-          <FlatList
-            data={traits}
-            horizontal={true}
-            renderItem={({ item }) => (
-              <CompTrait
-                trait={item.name}
-                count={item.count}
-                desc={item.desc}
-                combo={item.combo}
-              />
-            )}
-            keyExtractor={(item, index) => String(index)}
-          />
         </View>
       </View>
     </View>
@@ -66,21 +50,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginVertical: 10,
     elevation: 5,
-    position: "relative",
-  },
-  title: {
-    alignSelf: "center",
-    top: "-5%",
-    paddingHorizontal: "5%",
-    fontSize: 16,
-    fontFamily: "RobotoMedium",
-    textAlign: "center",
-    backgroundColor: "#34495E",
-    color: "#F2F6F7",
-    position: "absolute",
-    borderRadius: 8,
-    elevation: 1,
-    zIndex: 1,
   },
   fdWrapper: {
     flexDirection: "row",
@@ -101,7 +70,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#34495E",
     paddingLeft: 5,
     paddingBottom: 5,
-    paddingTop: "6%",
     alignItems: "flex-start",
     justifyContent: "center",
     borderTopRightRadius: 4,

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Dimensions, FlatList } from "react-native";
-import Loading from "../components/loading";
-import ClassTier from "../components/classtier";
+import ChampTier from "../../components/ChampTier/champtier";
+import Loading from "../../components/shared/loading";
 
-const getClass = async (setIsFetched, setClassList) => {
-  fetch("http://192.168.1.5:3000/api/classtier/", {
+const getComps = async (setIsFetched, setChampsList) => {
+  fetch("http://192.168.1.5:3000/api/champtier/", {
     method: "GET",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
@@ -12,27 +12,28 @@ const getClass = async (setIsFetched, setClassList) => {
   })
     .then((res) => res.json())
     .then((resJson) => {
-      setClassList(resJson);
+      setChampsList(resJson);
     })
     .catch((error) => console.error(error));
   setIsFetched(true);
 };
 
-export default function ClassesTier() {
+export default function ChampsTier() {
   const [isFetched, setIsFetched] = useState(false);
-  const [classList, setClassList] = useState(0);
+  const [champsList, setChampsList] = useState(0);
   useEffect(() => {
-    if (!isFetched) getClass(setIsFetched, setClassList);
+    if (!isFetched) getComps(setIsFetched, setChampsList);
   });
-  return { classList } ? (
+
+  return { champsList } ? (
     <View>
       <View style={styles.page}>
-        {classList != 0 ? (
+        {champsList != 0 ? (
           <FlatList
             showsVerticalScrollIndicator={false}
-            data={classList}
+            data={champsList}
             renderItem={({ item }) => (
-              <ClassTier tier={item.tier} classes={item.classes} />
+              <ChampTier tier={item.tier} champs={item.champs} />
             )}
             keyExtractor={(item, index) => String(index)}
           />
@@ -46,10 +47,9 @@ export default function ClassesTier() {
 
 const styles = StyleSheet.create({
   page: {
-    width: Dimensions.get("window").width * 0.9,
-    marginHorizontal: Dimensions.get("window").width * 0.05,
+    width: Dimensions.get("window").width,
+    height: "100%",
     backgroundColor: "#123040",
     alignItems: "center",
-    elevation: 5,
   },
 });

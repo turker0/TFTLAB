@@ -2,9 +2,9 @@ import React from "react";
 import { StyleSheet, Dimensions } from "react-native";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
-import HomeRoute from "./routes/homeroute";
 import { useFonts } from "expo-font";
 import { AppLoading } from "expo";
+import HomeBottomRoute from "./routes/Home/homebottomroute";
 
 export default function App() {
   const [loaded, error] = useFonts({
@@ -21,7 +21,7 @@ export default function App() {
   } else {
     return (
       <NavigationContainer>
-        <HomeRoute />
+        <HomeBottomRoute />
       </NavigationContainer>
     );
   }

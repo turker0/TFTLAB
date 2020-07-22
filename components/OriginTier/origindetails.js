@@ -1,34 +1,29 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Dimensions,
-  FlatList,
-} from "react-native";
-import classes from "../assets/classes/classes";
-import GetTextHeight from "../helpers/getTextHeight";
-import GetBorderColor from "../helpers/getBorderColor";
-import avatars from "../assets/avatars/avatars";
+import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
+import origins from "../../assets/origins/origins";
+import GetTextHeight from "../../helpers/getTextHeight";
+import GetBorderColor from "../../helpers/getBorderColor";
+import avatars from "../../assets/avatars/avatars";
 
-export default function ClassDetails({ Class }) {
+export default function OriginDetail({ origin }) {
   return (
     <View style={styles.container}>
       <View style={styles.titleWrapper}>
-        <Image style={styles.logo} source={classes[Class.name]} />
-        <Text style={styles.title}>{Class.name}</Text>
+        <Image style={styles.logo} source={origins[origin.name]} />
+        <Text style={styles.title}>{origin.name}</Text>
       </View>
-      {Class.desc != "" ? <Text style={styles.desc}>{Class.desc}</Text> : null}
+      {origin.desc != "" ? (
+        <Text style={styles.desc}>{origin.desc}</Text>
+      ) : null}
       <View style={styles.reciperWrapper}>
-        {Class.detail.map((item, index) => (
+        {origin.detail.map((item, index) => (
           <View
             key={index}
             style={[
               styles.col,
               {
                 height: GetTextHeight(
-                  Class.detail[index],
+                  origin.detail[index],
                   Dimensions.get("window").width
                 ),
               },
@@ -39,20 +34,20 @@ export default function ClassDetails({ Class }) {
                 styles.num,
                 {
                   backgroundColor: GetBorderColor(
-                    Class.name,
-                    Class.count[index]
+                    origin.name,
+                    origin.count[index]
                   ),
                 },
               ]}
             >
-              {Class.count[index]}
+              {origin.count[index]}
             </Text>
-            <Text style={styles.detail}>{Class.detail[index]}</Text>
+            <Text style={styles.detail}>{origin.detail[index]}</Text>
           </View>
         ))}
       </View>
       <View style={styles.unitWrapper}>
-        {Class.units.map((item, index) => (
+        {origin.units.map((item, index) => (
           <Image style={styles.unit} source={avatars[item]} key={index} />
         ))}
       </View>
@@ -99,6 +94,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontFamily: "RobotoRegular",
   },
+
   num: {
     fontSize: 10,
     color: "#fff",
@@ -111,6 +107,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 50,
   },
+
   unitWrapper: {
     width: "100%",
     height: "auto",

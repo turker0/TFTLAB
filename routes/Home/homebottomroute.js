@@ -6,10 +6,10 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import PatchNotes from "../screens/patchnotes";
-import ItemBuilder from "../screens/itembuilder";
-import CompBuilder from "../screens/compbuilder";
-import Home from "../screens/home";
+import PatchNotes from "../../screens/PatchNotes/patchnotes";
+import ItemBuilder from "../../screens/Builder/itembuilder";
+import CompBuilder from "../../screens/Builder/compbuilder";
+import Home from "../../screens/home";
 
 const Tab = createBottomTabNavigator();
 
@@ -20,8 +20,8 @@ export default function HomeRoute() {
       tabBarOptions={{
         activeTintColor: "#fff",
         inactiveTintColor: "#88a0a7",
-        activeBackgroundColor: "#34495E",
-        inactiveBackgroundColor: "#34495E",
+        activeBackgroundColor: "#102531",
+        inactiveBackgroundColor: "#102531",
         labelStyle: {
           fontSize: 12,
           fontFamily: "RobotoBold",

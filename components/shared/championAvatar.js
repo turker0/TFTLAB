@@ -6,9 +6,9 @@ import {
   Dimensions,
   TouchableHighlight,
 } from "react-native";
-import avatars from "../assets/avatars/avatars";
+import avatars from "../../assets/avatars/avatars";
 import Tooltip from "react-native-walkthrough-tooltip";
-import ChampDetails from "./champdetails";
+import ChampDetails from "../TeamComps/champdetails";
 
 export default function ChampionAvatar({
   name,
