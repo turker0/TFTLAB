@@ -26,8 +26,8 @@ const getNotes = async (setIsFetched, setNotes, setCurrent) => {
   setIsFetched(true);
 };
 
-HEADER_MAX_HEIGHT = 70;
-HEADER_MIN_HEIGHT = 0;
+HEADER_MAX_HEIGHT = 90;
+HEADER_MIN_HEIGHT = 20;
 
 export default function PatchNotes() {
   const [isFetched, setIsFetched] = useState(false);
@@ -40,8 +40,8 @@ export default function PatchNotes() {
   });
 
   const headerHeight = scrollY.interpolate({
-    inputRange: [0, HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT],
-    outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
+    inputRange: [0, 200],
+    outputRange: [75, 0],
     extrapolate: "clamp",
     useNativeDriver: true,
   });
@@ -50,7 +50,9 @@ export default function PatchNotes() {
     <View style={styles.container}>
       {notes != 0 && current != -1 ? (
         <View>
-          <Animated.View style={[styles.notes, { height: headerHeight }]}>
+          <Animated.View
+            style={[styles.notes, { height: headerHeight, marginBottom: 100 }]}
+          >
             <FlatList
               data={notes}
               horizontal={true}
@@ -62,55 +64,63 @@ export default function PatchNotes() {
                   index={index}
                   setCurrent={setCurrent}
                   scrollview={refScrollView}
+                  current={current}
                 />
               )}
               keyExtractor={(item, index) => String(index)}
             />
           </Animated.View>
-          <Animated.ScrollView
-            showsVerticalScrollIndicator={false}
-            ref={refScrollView}
-            style={{ flex: 1, marginTop: 70 }}
-            onScroll={Animated.event([
-              {
-                nativeEvent: {
-                  contentOffset: { y: scrollY },
-                },
-              },
-            ])}
+          <Animated.View
+            style={{
+              transform: [{ translateY: headerHeight }],
+            }}
           >
-            <View style={styles.titleWrapper}>
+            <View style={[styles.titleWrapper]}>
               <Text style={styles.title}>Patch {notes[current].version}</Text>
               <Text style={styles.date}>{notes[current].date}</Text>
             </View>
-            {notes[current].notes.map((item, index) => (
-              <View style={styles.note} key={index}>
-                <Text style={styles.patchTitle}>{item.title}</Text>
-                {item.descs.map((item, index) => (
-                  <View key={index}>
-                    {item.title != "" ? (
-                      <Text style={styles.title2}>{item.title}</Text>
-                    ) : null}
-
-                    {item.detail != "" ? (
-                      <Text style={styles.detail}>{item.detail}</Text>
-                    ) : null}
-
-                    {item.changes.map((item, index) => (
+            <Animated.ScrollView
+              showsVerticalScrollIndicator={false}
+              ref={refScrollView}
+              scrollEventThrottle={1}
+              alwaysBounceVertical={false}
+              bounces={false}
+              onScroll={Animated.event(
+                [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+                { useNativeDriver: false }
+              )}
+            >
+              <View style={{ overflow: "hidden" }}>
+                {notes[current].notes.map((item, index) => (
+                  <View style={styles.note} key={index}>
+                    <Text style={styles.patchTitle}>{item.title}</Text>
+                    {item.descs.map((item, index) => (
                       <View key={index}>
-                        {item != "" ? (
-                          <View style={styles.changesWrapper}>
-                            <Text style={styles.icon}>⦿</Text>
-                            <Text style={styles.changes}>{item}</Text>
-                          </View>
+                        {item.title != "" ? (
+                          <Text style={styles.title2}>{item.title}</Text>
                         ) : null}
+
+                        {item.detail != "" ? (
+                          <Text style={styles.detail}>{item.detail}</Text>
+                        ) : null}
+
+                        {item.changes.map((item, index) => (
+                          <View key={index}>
+                            {item != "" ? (
+                              <View style={styles.changesWrapper}>
+                                <Text style={styles.icon}>⦿</Text>
+                                <Text style={styles.changes}>{item}</Text>
+                              </View>
+                            ) : null}
+                          </View>
+                        ))}
                       </View>
                     ))}
                   </View>
                 ))}
               </View>
-            ))}
-          </Animated.ScrollView>
+            </Animated.ScrollView>
+          </Animated.View>
         </View>
       ) : (
         <Loading />
@@ -128,21 +138,21 @@ const styles = StyleSheet.create({
   },
   notes: {
     position: "absolute",
-    top: 0,
+    top: 20,
     left: 0,
     right: 0,
-    backgroundColor: "#03A9F4",
     overflow: "hidden",
     paddingTop: 15,
+    paddingHorizontal: Dimensions.get("window").width * 0.05,
   },
   patchWrapper: {
     width: "100%",
     height: Dimensions.get("window").height - 140,
-    marginTop: 70,
   },
   titleWrapper: {
     justifyContent: "center",
     marginLeft: Dimensions.get("window").width * 0.05,
+    paddingVertical: 10,
   },
   title: {
     fontSize: 24,
@@ -156,8 +166,8 @@ const styles = StyleSheet.create({
     fontFamily: "RobotoRegular",
   },
   note: {
-    borderTopColor: "#123040",
-    borderTopWidth: 5,
+    borderBottomColor: "#123040",
+    borderBottomWidth: 5,
     marginVertical: 5,
     paddingHorizontal: Dimensions.get("window").width * 0.05,
     paddingVertical: Dimensions.get("window").width * 0.03,

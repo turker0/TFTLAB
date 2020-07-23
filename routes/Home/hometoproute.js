@@ -6,6 +6,8 @@ import ItemTier from "../../screens/Home/itemtier";
 import ClassTier from "../../screens/Home/classtier";
 import OriginTier from "../../screens/Home/origintier";
 import { Dimensions } from "react-native";
+import { useTheme } from "@react-navigation/native";
+import { TabBarItem } from "react-native-tab-view";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -23,7 +25,7 @@ export default function HomeTopRoute() {
           width: Dimensions.get("window").width / 5,
           marginTop: -5,
           justifyContent: "center",
-          height: 45,
+          height: 50,
           elevation: 5,
         },
         labelStyle: {

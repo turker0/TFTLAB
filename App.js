@@ -1,10 +1,19 @@
 import React from "react";
 import { StyleSheet, Dimensions } from "react-native";
 import "react-native-gesture-handler";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { AppLoading } from "expo";
 import HomeBottomRoute from "./routes/Home/homebottomroute";
+
+const MyTheme = {
+  ...DefaultTheme,
+  dark: false,
+  colors: {
+    ...DefaultTheme.colors,
+    background: "#123040",
+  },
+};
 
 export default function App() {
   const [loaded, error] = useFonts({
@@ -20,7 +29,7 @@ export default function App() {
     return <AppLoading />;
   } else {
     return (
-      <NavigationContainer>
+      <NavigationContainer theme={MyTheme}>
         <HomeBottomRoute />
       </NavigationContainer>
     );

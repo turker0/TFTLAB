@@ -18,14 +18,13 @@ export default function HomeRoute() {
     <Tab.Navigator
       initialRouteName="Home"
       tabBarOptions={{
-        activeTintColor: "#fff",
-        inactiveTintColor: "#88a0a7",
+        showLabel: false,
         activeBackgroundColor: "#102531",
         inactiveBackgroundColor: "#102531",
-        labelStyle: {
-          fontSize: 12,
-          fontFamily: "RobotoBold",
-          letterSpacing: 1,
+        style: {
+          height: 50,
+          elevation: 5,
+          borderTopWidth: 0,
         },
       }}
     >
@@ -61,7 +60,7 @@ export default function HomeRoute() {
         name="CompBuilder"
         component={CompBuilder}
         options={{
-          tabBarLabel: "Team Builder",
+          tabBarLabel: "Comp Builder",
           tabBarIcon: ({ focused }) => (
             <Fontisto
               name="persons"

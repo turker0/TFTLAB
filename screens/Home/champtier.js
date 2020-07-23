@@ -26,29 +26,26 @@ export default function ChampsTier() {
   });
 
   return { champsList } ? (
-    <View>
-      <View style={styles.page}>
-        {champsList != 0 ? (
-          <FlatList
-            showsVerticalScrollIndicator={false}
-            data={champsList}
-            renderItem={({ item }) => (
-              <ChampTier tier={item.tier} champs={item.champs} />
-            )}
-            keyExtractor={(item, index) => String(index)}
-          />
-        ) : (
-          <Loading />
-        )}
-      </View>
+    <View style={styles.page}>
+      {champsList != 0 ? (
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={champsList}
+          renderItem={({ item }) => (
+            <ChampTier tier={item.tier} champs={item.champs} />
+          )}
+          keyExtractor={(item, index) => String(index)}
+        />
+      ) : (
+        <Loading />
+      )}
     </View>
   ) : null;
 }
 
 const styles = StyleSheet.create({
   page: {
-    width: Dimensions.get("window").width,
-    height: "100%",
+    width: "101%",
     backgroundColor: "#123040",
     alignItems: "center",
   },

@@ -28,21 +28,19 @@ export default function TeamComps() {
   return (
     <View style={styles.page}>
       {comps != 0 ? (
-        <View>
-          <FlatList
-            data={comps}
-            showsVerticalScrollIndicator={false}
-            renderItem={({ item }) => (
-              <TeamComp
-                tier={item.tier}
-                name={item.name}
-                champs={item.champs}
-                traits={item.traits}
-              />
-            )}
-            keyExtractor={(item, index) => String(index)}
-          />
-        </View>
+        <FlatList
+          data={comps}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => (
+            <TeamComp
+              tier={item.tier}
+              name={item.name}
+              champs={item.champs}
+              traits={item.traits}
+            />
+          )}
+          keyExtractor={(item, index) => String(index)}
+        />
       ) : (
         <Loading />
       )}
@@ -52,9 +50,8 @@ export default function TeamComps() {
 
 const styles = StyleSheet.create({
   page: {
-    width: Dimensions.get("window").width,
-    height: "100%",
-    backgroundColor: "#123040",
+    width: "100%",
+    backgroundColor: "transparent",
     alignItems: "center",
   },
 });

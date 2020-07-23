@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import HomeTopRoute from "../routes/Home/hometoproute";
 
 export default function Welcome() {
