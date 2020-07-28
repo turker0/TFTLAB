@@ -7,7 +7,6 @@ import {
   Dimensions,
   Animated,
 } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
 import NoteAvatar from "../../components/PatchNotes/noteavatar";
 import Loading from "../../components/shared/loading";
 const getNotes = async (setIsFetched, setNotes, setCurrent) => {
@@ -25,9 +24,6 @@ const getNotes = async (setIsFetched, setNotes, setCurrent) => {
     .catch((error) => console.error(error));
   setIsFetched(true);
 };
-
-HEADER_MAX_HEIGHT = 90;
-HEADER_MIN_HEIGHT = 20;
 
 export default function PatchNotes() {
   const [isFetched, setIsFetched] = useState(false);
@@ -50,9 +46,7 @@ export default function PatchNotes() {
     <View style={styles.container}>
       {notes != 0 && current != -1 ? (
         <View>
-          <Animated.View
-            style={[styles.notes, { height: headerHeight, marginBottom: 100 }]}
-          >
+          <Animated.View style={[styles.notes, { height: headerHeight }]}>
             <FlatList
               data={notes}
               horizontal={true}
@@ -134,7 +128,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     marginTop: 25,
-    backgroundColor: "#102531",
+    backgroundColor: "transparent",
   },
   notes: {
     position: "absolute",

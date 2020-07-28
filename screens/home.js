@@ -2,8 +2,8 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import HomeTopRoute from "../routes/Home/hometoproute";
 
-export default function Welcome() {
-  return <HomeTopRoute />;
+export default function Welcome({ navigation }) {
+  return <HomeTopRoute navigation={navigation} />;
 }
 
 const styles = StyleSheet.create({

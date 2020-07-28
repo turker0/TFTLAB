@@ -7,7 +7,6 @@ import {
   TouchableHighlight,
 } from "react-native";
 import avatars from "../../assets/avatars/avatars";
-import Tooltip from "react-native-walkthrough-tooltip";
 import ChampDetails from "../TeamComps/champdetails";
 
 export default function ChampionAvatar({
@@ -17,8 +16,8 @@ export default function ChampionAvatar({
   type,
   skill,
   details,
+  navigation,
 }) {
-  const [isVisible, setIsVisible] = useState(false);
   return (
     <View
       style={[
@@ -34,37 +33,25 @@ export default function ChampionAvatar({
           : { backgroundColor: "#b89d27" },
       ]}
     >
-      <Tooltip
-        isVisible={isVisible}
-        content={
-          <ChampDetails
-            name={name}
-            gold={gold}
-            origin={origin}
-            type={type}
-            skill={skill}
-            details={details}
-          />
+      <TouchableHighlight
+        onPress={() =>
+          navigation.navigate("ChampPage", {
+            name: name,
+            gold: gold,
+            origin: origin,
+            type: type,
+            skill: skill,
+            details: details,
+          })
         }
-        placement="center"
-        onClose={() => setIsVisible(false)}
-        contentStyle={styles.tooltip}
-        showChildInTooltip={false}
       >
-        <TouchableHighlight onPress={() => setIsVisible(true)}>
-          <Image style={styles.logo} source={avatars[name]} />
-        </TouchableHighlight>
-      </Tooltip>
+        <Image style={styles.logo} source={avatars[name]} />
+      </TouchableHighlight>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  tooltip: {
-    width: Dimensions.get("window").width * 0.8,
-    height: "auto",
-    backgroundColor: "#34495e",
-  },
   container: {
     marginLeft: 5,
     marginTop: 5,

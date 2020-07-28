@@ -9,7 +9,8 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import PatchNotes from "../../screens/PatchNotes/patchnotes";
 import ItemBuilder from "../../screens/Builder/itembuilder";
 import CompBuilder from "../../screens/Builder/compbuilder";
-import Home from "../../screens/home";
+//import Home from "../../screens/home";
+import Home from "./champroute";
 
 const Tab = createBottomTabNavigator();
 

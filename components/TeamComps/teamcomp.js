@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Dimensions, FlatList } from "react-native";
 import ChampionAvatar from "../shared/championAvatar";
 import CompTrait from "./compTrait";
 
-export default function TeamComp({ tier, name, champs, traits }) {
+export default function TeamComp({ tier, name, champs, traits, navigation }) {
   return (
     <View
       style={[
@@ -19,12 +19,12 @@ export default function TeamComp({ tier, name, champs, traits }) {
           : { backgroundColor: "#ecf0f1" },
       ]}
     >
-      <Text style={styles.title}>{name}</Text>
       <View style={styles.fdWrapper}>
         <View style={styles.tierWrapper}>
           <Text style={styles.tier}>{tier}</Text>
         </View>
         <View style={styles.listWrapper}>
+          <Text style={styles.title}>{name}</Text>
           <FlatList
             data={champs}
             numColumns={5}
@@ -36,6 +36,7 @@ export default function TeamComp({ tier, name, champs, traits }) {
                 type={item.type}
                 skill={item.skill}
                 details={item.details}
+                navigation={navigation}
               />
             )}
             keyExtractor={(item, index) => String(index)}
@@ -69,19 +70,12 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   title: {
-    alignSelf: "center",
-    top: "-5%",
-    paddingHorizontal: "5%",
-    fontSize: 16,
-    fontFamily: "RobotoMedium",
-    textAlign: "center",
-    backgroundColor: "#34495E",
-
+    fontSize: 20,
+    fontFamily: "RobotoBold",
+    letterSpacing: 1,
     color: "#F2F6F7",
-    position: "absolute",
-    borderRadius: 8,
-    elevation: 1,
-    zIndex: 1,
+    paddingHorizontal: 5,
+    textTransform: "capitalize",
   },
   fdWrapper: {
     flexDirection: "row",
@@ -102,7 +96,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#34495E",
     paddingLeft: 5,
     paddingBottom: 5,
-    paddingTop: "6%",
     alignItems: "flex-start",
     justifyContent: "center",
     borderTopRightRadius: 4,
