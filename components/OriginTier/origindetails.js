@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
 import origins from "../../assets/origins/origins";
 import GetTextHeight from "../../helpers/getTextHeight";
-import GetBorderColor from "../../helpers/getBorderColor";
+import getTraitBorderColor from "../../helpers/getTraitBorderColor";
 import avatars from "../../assets/avatars/avatars";
 
 export default function OriginDetail({ origin }) {
@@ -33,7 +33,7 @@ export default function OriginDetail({ origin }) {
               style={[
                 styles.num,
                 {
-                  backgroundColor: GetBorderColor(
+                  backgroundColor: getTraitBorderColor(
                     origin.name,
                     origin.count[index]
                   ),

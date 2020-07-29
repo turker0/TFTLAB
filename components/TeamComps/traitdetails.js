@@ -10,7 +10,7 @@ import {
 import classes from "../../assets/classes/classes";
 import origins from "../../assets/origins/origins";
 import checkIsClass from "../../helpers/checkIsClass";
-import getBorderColor from "../../helpers/getBorderColor";
+import getTraitBorderColor from "../../helpers/getTraitBorderColor";
 
 export default function TraitDetails({ name, count, desc, combo }) {
   return (
@@ -31,7 +31,7 @@ export default function TraitDetails({ name, count, desc, combo }) {
               style={[
                 styles.num,
                 {
-                  backgroundColor: getBorderColor(name, item.num),
+                  backgroundColor: getTraitBorderColor(name, item.num),
                   opacity: count >= item.num ? 1 : 0.5,
                 },
               ]}

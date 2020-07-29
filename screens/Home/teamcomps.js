@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Animated } from "react-native";
-import TeamComp from "../../components/TeamComps/teamcomp";
+import { StyleSheet, View, Text } from "react-native";
+import Comps from "../../components/Comps/comps";
+import TeamComp from "../../components/Comps/teamcomp";
 import Loading from "../../components/shared/loading";
+import { ScrollView } from "react-native-gesture-handler";
 
 const getComps = async (setIsFetched, setComps) => {
-  fetch("http://192.168.1.5:3000/api/teamcomp/", {
+  fetch("http://192.168.1.5:3000/api/comps/", {
     method: "GET",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
@@ -26,26 +28,19 @@ export default function TeamComps({ route }) {
   });
   const { navigation } = route.params;
   return (
-    <View style={styles.page}>
-      {comps != 0 ? (
-        <Animated.FlatList
-          data={comps}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => (
-            <TeamComp
-              tier={item.tier}
-              name={item.name}
-              champs={item.champs}
-              traits={item.traits}
-              navigation={navigation}
-            />
-          )}
-          keyExtractor={(item, index) => String(index)}
-        />
-      ) : (
-        <Loading />
-      )}
-    </View>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={styles.page}>
+        {comps != 0 ? (
+          comps.map((item, index) => (
+            <View key={index}>
+              <TeamComp comp={item} navigation={navigation} />
+            </View>
+          ))
+        ) : (
+          <Loading />
+        )}
+      </View>
+    </ScrollView>
   );
 }
 
@@ -53,6 +48,6 @@ const styles = StyleSheet.create({
   page: {
     width: "100%",
     backgroundColor: "transparent",
-    alignItems: "center",
+    padding: 10,
   },
 });

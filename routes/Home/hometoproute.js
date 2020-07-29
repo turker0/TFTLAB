@@ -13,6 +13,7 @@ export default function HomeTopRoute({ navigation }) {
     <Tab.Navigator
       backBehavior="none"
       initialRouteName="Comps"
+      swipeEnabled={false}
       tabBarOptions={{
         activeTintColor: "#fff",
         inactiveTintColor: "#88a0a7",

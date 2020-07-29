@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../../screens/home";
 import ChampPage from "../../screens/Home/champage";
-import HeaderBG from "../../components/shared/headerbg";
+import CompPage from "../../screens/Home/comppage";
 
 const Stack = createStackNavigator();
 
@@ -22,16 +22,26 @@ const ChampRoute = () => {
         name="ChampPage"
         component={ChampPage}
         options={({ route }) => ({
-          title: route.params.name,
+          title: null,
           headerTitleStyle: {
             fontFamily: "RobotoBold",
             fontSize: 24,
             color: "#fff",
             marginLeft: -20,
           },
-          headerBackground: () => (
-            <HeaderBG tint="light" name={route.params.name} />
-          ),
+        })}
+      />
+      <Stack.Screen
+        name="CompPage"
+        component={CompPage}
+        options={({ route }) => ({
+          title: null,
+          headerTitleStyle: {
+            fontFamily: "RobotoBold",
+            fontSize: 24,
+            color: "#fff",
+            marginLeft: -20,
+          },
         })}
       />
     </Stack.Navigator>

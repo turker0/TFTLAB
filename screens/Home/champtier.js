@@ -18,7 +18,7 @@ const getComps = async (setIsFetched, setChampsList) => {
   setIsFetched(true);
 };
 
-export default function ChampsTier() {
+export default function ChampsTier({ navigation }) {
   const [isFetched, setIsFetched] = useState(false);
   const [champsList, setChampsList] = useState(0);
   useEffect(() => {
@@ -32,7 +32,11 @@ export default function ChampsTier() {
           showsVerticalScrollIndicator={false}
           data={champsList}
           renderItem={({ item }) => (
-            <ChampTier tier={item.tier} champs={item.champs} />
+            <ChampTier
+              tier={item.tier}
+              champs={item.champs}
+              navigation={navigation}
+            />
           )}
           keyExtractor={(item, index) => String(index)}
         />

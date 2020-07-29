@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import classes from "../../assets/classes/classes";
 import GetTextHeight from "../../helpers/getTextHeight";
-import GetBorderColor from "../../helpers/getBorderColor";
+import getTraitBorderColor from "../../helpers/getTraitBorderColor";
 import avatars from "../../assets/avatars/avatars";
 
 export default function ClassDetails({ Class }) {
@@ -38,7 +38,7 @@ export default function ClassDetails({ Class }) {
               style={[
                 styles.num,
                 {
-                  backgroundColor: GetBorderColor(
+                  backgroundColor: getTraitBorderColor(
                     Class.name,
                     Class.count[index]
                   ),

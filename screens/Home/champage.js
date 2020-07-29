@@ -161,6 +161,40 @@ const ChampPage = ({ route, navigation }) => {
                 source={items["ChaliceofPower"]}
               />
             </View>
+            <View>
+              <Text style={styles.header}>Abilities</Text>
+              <View style={styles.abilityWrapper}>
+                <Image
+                  style={styles.skill}
+                  resizeMode="contain"
+                  source={skills[name]}
+                />
+                <View
+                  style={{
+                    marginLeft: 5,
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Text style={styles.skillName}>{skill.name}</Text>
+                  <Text style={styles.skillType}>
+                    {skill.type == "passive"
+                      ? skill.type
+                      : skill.type +
+                        " " +
+                        skill.mana[0] +
+                        " / " +
+                        skill.mana[1]}
+                  </Text>
+                </View>
+              </View>
+              <FlatList
+                data={skill.desc}
+                renderItem={({ item }) => (
+                  <Text style={styles.skillDesc}>{item}</Text>
+                )}
+                keyExtractor={(item, index) => String(index)}
+              />
+            </View>
             <Text style={styles.header}>Stats</Text>
             <View style={styles.bioDetail}>
               <Image
@@ -237,30 +271,6 @@ const ChampPage = ({ route, navigation }) => {
                 source={require("../../assets/range.png")}
               />
               <Text style={styles.detail}>{details.range}</Text>
-            </View>
-            <View>
-              <Text style={styles.header}>Abilities</Text>
-              <View style={styles.abilityWrapper}>
-                <Image
-                  style={styles.avatar}
-                  resizeMode="contain"
-                  source={skills[name]}
-                />
-                <View>
-                  <Text style={styles.skillName}>{skill.name}</Text>
-                  <Text style={styles.skillType}>{skill.type}</Text>
-                </View>
-              </View>
-              <FlatList
-                data={skill.desc}
-                renderItem={({ item }) => (
-                  <Text style={styles.skillDesc}>{item}</Text>
-                )}
-                keyExtractor={(item, index) => String(index)}
-              />
-              <Text>
-                {skill.mana[0]} / {skill.mana[1]}
-              </Text>
             </View>
           </View>
         </Animated.ScrollView>
@@ -349,16 +359,13 @@ const styles = StyleSheet.create({
     color: "#ffffffe6",
     textTransform: "capitalize",
     letterSpacing: 1,
-    borderBottomWidth: 2,
-    borderBottomColor: "#f48024",
+    textTransform: "capitalize",
   },
   header: {
     fontSize: 24,
     fontFamily: "RobotoBold",
     color: "#ffffffe6",
     textTransform: "capitalize",
-    borderBottomWidth: 2,
-    borderBottomColor: "#f48024",
     marginVertical: 10,
   },
   abilityWrapper: {
@@ -367,18 +374,23 @@ const styles = StyleSheet.create({
   skillName: {
     fontSize: 18,
     color: "#ffffffe6",
-    fontFamily: "RobotoRegular",
+    fontFamily: "RobotoBold",
     letterSpacing: 1,
   },
   skillType: {
-    fontSize: 12,
+    fontSize: 14,
     color: "#88a0a7",
-    fontFamily: "RobotoRegular",
+    fontFamily: "RobotoMedium",
   },
   skillDesc: {
     fontSize: 14,
     color: "#88a0a7",
     fontFamily: "RobotoRegular",
-    marginVertical: 2,
+    marginTop: 5,
+  },
+  skill: {
+    height: 44,
+    width: 44,
+    borderRadius: 2,
   },
 });

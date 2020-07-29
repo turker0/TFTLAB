@@ -11,7 +11,7 @@ import classes from "../../assets/classes/classes";
 import origins from "../../assets/origins/origins";
 import Tooltip from "react-native-walkthrough-tooltip";
 import checkIsClass from "../../helpers/checkIsClass";
-import getBorderColor from "../../helpers/getBorderColor";
+import getTraitBorderColor from "../../helpers/getTraitBorderColor";
 import TraitDetails from "./traitdetails";
 
 export default function CompTrait({ trait, count, desc, combo }) {
@@ -31,7 +31,7 @@ export default function CompTrait({ trait, count, desc, combo }) {
         <View
           style={[
             styles.container,
-            { backgroundColor: getBorderColor(trait, count) },
+            { backgroundColor: getTraitBorderColor(trait, count) },
           ]}
         >
           <Image

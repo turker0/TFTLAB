@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Dimensions, FlatList } from "react-native";
 import ChampionAvatar from "../shared/championAvatar";
 
-export default function ChampTier({ tier, champs }) {
+export default function ChampTier({ tier, champs, navigation }) {
   return (
     <View
       style={[
@@ -34,6 +34,7 @@ export default function ChampTier({ tier, champs }) {
                 type={item.type}
                 skill={item.skill}
                 details={item.details}
+                navigation={navigation}
               />
             )}
             keyExtractor={(item, index) => String(index)}

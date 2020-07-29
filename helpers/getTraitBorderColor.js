@@ -1,4 +1,4 @@
-const getBorderColor = (name, count) => {
+const getTraitBorderColor = (name, count) => {
   let traits = {
     blademaster: [9, 6, 3],
     blaster: [4, 2],
@@ -41,4 +41,4 @@ const getBorderColor = (name, count) => {
   } else return "#e67e22";
 };
 
-export default getBorderColor;
+export default getTraitBorderColor;
