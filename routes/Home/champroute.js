@@ -1,7 +1,10 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  createStackNavigator,
+  CardStyleInterpolators,
+} from "@react-navigation/stack";
 import Home from "../../screens/home";
 import ChampPage from "../../screens/Home/champage";
 import CompPage from "../../screens/Home/comppage";
@@ -10,7 +13,21 @@ const Stack = createStackNavigator();
 
 const ChampRoute = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        headerTintColor: "#fff",
+        headerStyle: {
+          backgroundColor: "#102531",
+        },
+        headerTitleStyle: {
+          fontFamily: "RobotoBold",
+          fontSize: 24,
+          color: "#fff",
+          marginLeft: -20,
+        },
+      }}
+    >
       <Stack.Screen
         name="Home"
         component={Home}
@@ -22,26 +39,14 @@ const ChampRoute = () => {
         name="ChampPage"
         component={ChampPage}
         options={({ route }) => ({
-          title: null,
-          headerTitleStyle: {
-            fontFamily: "RobotoBold",
-            fontSize: 24,
-            color: "#fff",
-            marginLeft: -20,
-          },
+          title: "Champ Details",
         })}
       />
       <Stack.Screen
         name="CompPage"
         component={CompPage}
         options={({ route }) => ({
-          title: null,
-          headerTitleStyle: {
-            fontFamily: "RobotoBold",
-            fontSize: 24,
-            color: "#fff",
-            marginLeft: -20,
-          },
+          title: "Comp Details",
         })}
       />
     </Stack.Navigator>

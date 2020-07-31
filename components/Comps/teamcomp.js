@@ -3,21 +3,16 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import avatars from "../../assets/avatars/avatars";
 import getChampBorderColor from "../../helpers/getChampBorderColor";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import getRelatedChampions from "../../helpers/getRelatedChampions";
+import { Octicons } from "@expo/vector-icons";
 
-const TeamComp = ({ comp, navigation }) => {
+const TeamComp = ({ comp, navigation, champions }) => {
   return (
-    <View>
+    <View style={{ marginVertical: 25 }}>
       <Text style={styles.tierTitle}>{comp.tier} tier</Text>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {comp.comps.map((item, index) => (
-          <TouchableOpacity
-            key={index}
-            onPress={() => {
-              navigation.navigate("CompPage", {
-                name: item.name,
-              });
-            }}
-          >
+          <View key={index}>
             <View
               style={[
                 styles.comp,
@@ -28,22 +23,23 @@ const TeamComp = ({ comp, navigation }) => {
                 {item.champs.map((item, index) => (
                   <TouchableOpacity
                     onPress={() => {
+                      let champ = getRelatedChampions(champions, item);
                       navigation.navigate("ChampPage", {
-                        name: "Ahri",
-                        gold: 1,
-                        origin: "origin",
-                        type: "type",
-                        skill: "skill",
-                        details: "details",
+                        name: champ[0].name,
+                        item: champ[0].items,
+                        origin: champ[0].origin,
+                        type: champ[0].class,
+                        skill: champ[0].skill,
+                        stats: champ[0].stats,
                       });
                     }}
+                    key={index}
                   >
                     <View
                       style={[
                         styles.avatarBorder,
                         { backgroundColor: getChampBorderColor(item) },
                       ]}
-                      key={index}
                     >
                       <Image style={styles.avatar} source={avatars[item]} />
                     </View>
@@ -51,8 +47,31 @@ const TeamComp = ({ comp, navigation }) => {
                 ))}
               </View>
             </View>
-            <Text style={styles.compTitle}>{item.name}</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("CompPage", {
+                  name: item.name,
+                });
+              }}
+            >
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginRight: 25,
+                }}
+              >
+                <Text style={styles.compTitle}>{item.name}</Text>
+
+                <Octicons
+                  name="arrow-small-right"
+                  size={24}
+                  color="#ffffffe6"
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
         ))}
       </ScrollView>
     </View>
@@ -66,7 +85,6 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontFamily: "RobotoBold",
     color: "#ffffffe6",
-    marginTop: 30,
   },
   comp: {
     marginVertical: 5,

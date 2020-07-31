@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import TeamComp from "../../screens/Home/teamcomps";
 import ChampTier from "../../screens/Home/champtier";
@@ -8,6 +8,7 @@ import OriginTier from "../../screens/Home/origintier";
 import { Dimensions } from "react-native";
 
 const Tab = createMaterialTopTabNavigator();
+
 export default function HomeTopRoute({ navigation }) {
   return (
     <Tab.Navigator
@@ -17,25 +18,26 @@ export default function HomeTopRoute({ navigation }) {
       tabBarOptions={{
         activeTintColor: "#fff",
         inactiveTintColor: "#88a0a7",
+        scrollEnabled: true,
         pressColor: "#88a0a7",
         pressOpacity: 0.5,
         tabStyle: {
-          width: Dimensions.get("window").width / 5,
+          width: 100,
           marginTop: -5,
           justifyContent: "center",
 
           elevation: 5,
         },
         labelStyle: {
-          fontSize: 12,
+          fontSize: 18,
           textTransform: "capitalize",
-          fontFamily: "RobotoBlack",
-          letterSpacing: 0.5,
+          fontFamily: "RobotoBold",
         },
         style: {
-          marginTop: 25,
           backgroundColor: "#102531",
           height: 50,
+          alignItems: "center",
+          justifyContent: "center",
         },
         indicatorStyle: {
           height: 1.6,
