@@ -51,6 +51,7 @@ const TeamComp = ({ comp, navigation, champions }) => {
               onPress={() => {
                 navigation.navigate("CompPage", {
                   name: item.name,
+                  champions: item.champs,
                 });
               }}
             >
@@ -95,10 +96,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#1B475F",
   },
   compTitle: {
-    fontSize: 20,
+    fontSize: 16,
     marginLeft: 2.5,
-    fontFamily: "RobotoMedium",
+    fontFamily: "RobotoRegular",
     color: "#ffffffe6",
+    letterSpacing: 0.3,
   },
   avatarWrapper: {
     flexDirection: "row",
