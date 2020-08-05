@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet, Dimensions } from "react-native";
 import "react-native-gesture-handler";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { useFonts } from "expo-font";
@@ -35,13 +34,3 @@ export default function App() {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
-    backgroundColor: "#34495e",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

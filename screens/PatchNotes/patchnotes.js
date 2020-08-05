@@ -1,16 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  Dimensions,
-  Animated,
-} from "react-native";
+import { StyleSheet, Text, View, Dimensions, Animated } from "react-native";
 import NoteAvatar from "../../components/PatchNotes/noteavatar";
 import Loading from "../../components/shared/loading";
+import { ScrollView } from "react-native-gesture-handler";
 const getNotes = async (setIsFetched, setNotes, setCurrent) => {
-  fetch("http://192.168.1.5:3000/api/patchnote/", {
+  fetch("http://192.168.1.5:3000/api/dynamic/patchnotes/", {
     method: "GET",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
@@ -18,7 +12,7 @@ const getNotes = async (setIsFetched, setNotes, setCurrent) => {
   })
     .then((res) => res.json())
     .then((resJson) => {
-      setNotes(resJson);
+      setNotes(resJson.reverse());
       setCurrent(0);
     })
     .catch((error) => console.error(error));
@@ -36,8 +30,8 @@ export default function PatchNotes() {
   });
 
   const headerHeight = scrollY.interpolate({
-    inputRange: [0, 200],
-    outputRange: [75, 0],
+    inputRange: [0, 500],
+    outputRange: [80, 0],
     extrapolate: "clamp",
     useNativeDriver: true,
   });
@@ -47,25 +41,25 @@ export default function PatchNotes() {
       {notes != 0 && current != -1 ? (
         <View>
           <Animated.View style={[styles.notes, { height: headerHeight }]}>
-            <FlatList
-              data={notes}
+            <ScrollView
               horizontal={true}
-              pagingEnabled={true}
               showsHorizontalScrollIndicator={false}
-              renderItem={({ item, index }) => (
+            >
+              {notes.map((item, index) => (
                 <NoteAvatar
                   version={item.version}
                   index={index}
                   setCurrent={setCurrent}
-                  scrollview={refScrollView}
+                  ScrollView={refScrollView}
                   current={current}
+                  key={index}
                 />
-              )}
-              keyExtractor={(item, index) => String(index)}
-            />
+              ))}
+            </ScrollView>
           </Animated.View>
           <Animated.View
             style={{
+              marginTop: 10,
               transform: [{ translateY: headerHeight }],
             }}
           >
@@ -127,8 +121,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    marginTop: 25,
-    backgroundColor: "transparent",
   },
   notes: {
     position: "absolute",
@@ -138,6 +130,8 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     paddingTop: 15,
     paddingHorizontal: Dimensions.get("window").width * 0.05,
+    justifyContent: "flex-start",
+    flexDirection: "row",
   },
   patchWrapper: {
     width: "100%",
@@ -149,13 +143,14 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   title: {
-    fontSize: 24,
-    color: "#fff",
+    fontSize: 30,
     fontFamily: "RobotoBlack",
-    letterSpacing: 3,
+    color: "#ffffffe6",
+    textTransform: "capitalize",
+    letterSpacing: 2,
   },
   date: {
-    fontSize: 12,
+    fontSize: 14,
     color: "#88a0a7",
     fontFamily: "RobotoRegular",
   },
@@ -168,40 +163,45 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   patchTitle: {
-    fontSize: 20,
-    color: "#fff",
+    fontSize: 28,
+    color: "#E8ECEE",
+    textTransform: "capitalize",
+
     fontFamily: "RobotoBold",
     borderBottomWidth: 2,
     borderBottomColor: "#f48024",
     borderRadius: 4,
+    marginTop: 20,
+    marginBottom: 10,
   },
   title2: {
-    fontSize: 16,
-    color: "#fff",
-    opacity: 0.75,
+    fontSize: 24,
     fontFamily: "RobotoMedium",
+    color: "#DCE3E5",
+    marginVertical: 5,
     marginTop: 15,
+    marginBottom: 5,
   },
   detail: {
-    fontSize: 14,
-    color: "#88a0a7",
+    fontSize: 18,
     fontFamily: "RobotoRegular",
-    marginBottom: 5,
+    color: "#B9C6CB",
+    marginVertical: 5,
   },
   changesWrapper: {
     flexDirection: "row",
+    alignItems: "center",
+    marginVertical: 3,
   },
   icon: {
     marginRight: 5,
     fontSize: 10,
     fontFamily: "RobotoRegular",
-    paddingTop: 7,
     color: "#f48024",
   },
   changes: {
-    fontSize: 14,
-    color: "#88a0a7",
+    fontSize: 18,
     fontFamily: "RobotoRegular",
-    marginTop: 5,
+    color: "#88a0a7",
   },
 });

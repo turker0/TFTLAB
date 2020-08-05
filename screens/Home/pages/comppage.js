@@ -1,48 +1,25 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Animated,
-  Dimensions,
-} from "react-native";
-import avatars from "../../assets/avatars/avatars";
-import classes from "../../assets/classes/classes";
-import origins from "../../assets/origins/origins";
-import getChampionBorderColor from "../../helpers/getChampBorderColor";
-import getChampOrigin from "../../helpers/getChampOrigin";
-import getChampionClass from "../../helpers/getChampionClass";
-import getCompTraits from "../../helpers/getCompTraits";
+import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
+import avatars from "../../../assets/avatars/avatars";
+import classes from "../../../assets/classes/classes";
+import origins from "../../../assets/origins/origins";
+import getChampionBorderColor from "../../../helpers/getChampBorderColor";
+import getChampOrigin from "../../../helpers/getChampOrigin";
+import getChampionClass from "../../../helpers/getChampionClass";
+import getCompTraits from "../../../helpers/getCompTraits";
 import { ScrollView } from "react-native-gesture-handler";
-import { color } from "react-native-reanimated";
 
 const CompPage = ({ route, navigation }) => {
   const { name } = route.params;
   const { champions } = route.params;
 
-  const scrollY = new Animated.Value(0);
-  const headerHeight = scrollY.interpolate({
-    inputRange: [0, 300],
-    outputRange: [40, 40],
-    extrapolate: "clamp",
-    useNativeDriver: true,
-  });
-
   return (
     <View style={styles.container}>
-      <Animated.View style={{ height: headerHeight }}>
-        <Text style={styles.title}>{name}</Text>
-      </Animated.View>
       <ScrollView
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={1}
         alwaysBounceVertical={false}
         bounces={false}
-        onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-          { useNativeDriver: false }
-        )}
       >
         <View style={styles.section}>
           <Text style={styles.header}>Champions</Text>
@@ -104,9 +81,9 @@ const CompPage = ({ route, navigation }) => {
         <View style={styles.section}>
           <Text style={styles.header}>Traits</Text>
           {getCompTraits(champions).traits.map((item, index) => (
-            <View>
+            <View key={index}>
               {getCompTraits(champions).details[index] != 0 ? (
-                <View style={styles.traitWrapper} key={index}>
+                <View style={styles.traitWrapper}>
                   <Image
                     style={styles.trait}
                     source={

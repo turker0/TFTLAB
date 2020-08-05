@@ -1,13 +1,13 @@
 import React from "react";
-import { StyleSheet } from "react-native";
-
 import {
   createStackNavigator,
   CardStyleInterpolators,
 } from "@react-navigation/stack";
 import Home from "../../screens/home";
-import ChampPage from "../../screens/Home/champage";
-import CompPage from "../../screens/Home/comppage";
+import ChampPage from "../../screens/Home/pages/champage";
+import CompPage from "../../screens/Home/pages/comppage";
+import ItemPage from "../../screens/Home/pages/itempage";
+import TraitPage from "../../screens/Home/pages/traitpage";
 
 const Stack = createStackNavigator();
 
@@ -35,24 +35,12 @@ const ChampRoute = () => {
           headerShown: false,
         }}
       />
-      <Stack.Screen
-        name="ChampPage"
-        component={ChampPage}
-        options={({ route }) => ({
-          title: "Champ Details",
-        })}
-      />
-      <Stack.Screen
-        name="CompPage"
-        component={CompPage}
-        options={({ route }) => ({
-          title: "Comp Details",
-        })}
-      />
+      <Stack.Screen name="ChampPage" component={ChampPage} />
+      <Stack.Screen name="CompPage" component={CompPage} />
+      <Stack.Screen name="ItemPage" component={ItemPage} />
+      <Stack.Screen name="TraitPage" component={TraitPage} />
     </Stack.Navigator>
   );
 };
 
 export default ChampRoute;
-
-const styles = StyleSheet.create({});

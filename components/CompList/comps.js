@@ -1,17 +1,17 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import { Octicons } from "@expo/vector-icons";
 import avatars from "../../assets/avatars/avatars";
 import getChampBorderColor from "../../helpers/getChampBorderColor";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-import getRelatedChampions from "../../helpers/getRelatedChampions";
-import { Octicons } from "@expo/vector-icons";
+import getRelatedElement from "../../helpers/getRelatedElement";
 
-const TeamComp = ({ comp, navigation, champions }) => {
+const TeamComp = ({ list, navigation, champions }) => {
   return (
     <View style={{ marginVertical: 25 }}>
-      <Text style={styles.tierTitle}>{comp.tier} tier</Text>
+      <Text style={styles.tierTitle}>{list.tier} tier</Text>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {comp.comps.map((item, index) => (
+        {list.comps.map((item, index) => (
           <View key={index}>
             <View
               style={[
@@ -23,7 +23,7 @@ const TeamComp = ({ comp, navigation, champions }) => {
                 {item.champs.map((item, index) => (
                   <TouchableOpacity
                     onPress={() => {
-                      let champ = getRelatedChampions(champions, item);
+                      let champ = getRelatedElement(item, champions);
                       navigation.navigate("ChampPage", {
                         name: champ[0].name,
                         item: champ[0].items,
@@ -113,10 +113,11 @@ const styles = StyleSheet.create({
     margin: 2.5,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 2,
+    borderRadius: 4,
   },
   avatar: {
     width: 46,
     height: 46,
+    borderRadius: 4,
   },
 });

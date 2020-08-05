@@ -1,13 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, Animated } from "react-native";
-import avatars from "../../assets/avatars/avatars";
-import origins from "../../assets/origins/origins";
-import classes from "../../assets/classes/classes";
-import items from "../../assets/items/items";
-import skills from "../../assets/skills/skills";
+import avatars from "../../../assets/avatars/avatars";
+import origins from "../../../assets/origins/origins";
+import classes from "../../../assets/classes/classes";
+import items from "../../../assets/items/items";
+import skills from "../../../assets/skills/skills";
 import { ScrollView } from "react-native-gesture-handler";
-import getSyndergyChampions from "../../helpers/getSynergyChampions";
-import getChampBorderColor from "../../helpers/getChampBorderColor";
+import getSyndergyChampions from "../../../helpers/getSynergyChampions";
+import getChampBorderColor from "../../../helpers/getChampBorderColor";
 
 const ChampPage = ({ route, navigation }) => {
   const { name } = route.params;
@@ -195,19 +195,43 @@ const ChampPage = ({ route, navigation }) => {
             </View>
             <View style={styles.section}>
               <Text style={styles.header}>Stats</Text>
-              <Text style={styles.skillDesc}>cost : {stats.cost}</Text>
-              <Text style={styles.skillDesc}>health : {stats.health}</Text>
-              <Text style={styles.skillDesc}>damage : {stats.damage}</Text>
-              <Text style={styles.skillDesc}>armor : {stats.armor}</Text>
-              <Text style={styles.skillDesc}>magic resist : {stats.mr}</Text>
-              <Text style={styles.skillDesc}>attack speed : {stats.as}</Text>
-              <Text style={styles.skillDesc}>crit rate : {stats.crit}</Text>
-              <Text style={styles.skillDesc}>
-                range :{" "}
-                {stats.range != 1
-                  ? stats.range + " hexes"
-                  : stats.range + " hex"}
-              </Text>
+              <View style={styles.statDescWrapper}>
+                <Text style={styles.icon}>⦿</Text>
+                <Text style={styles.skillDesc}>cost : {stats.cost}</Text>
+              </View>
+              <View style={styles.statDescWrapper}>
+                <Text style={styles.icon}>⦿</Text>
+                <Text style={styles.skillDesc}>health : {stats.health}</Text>
+              </View>
+              <View style={styles.statDescWrapper}>
+                <Text style={styles.icon}>⦿</Text>
+                <Text style={styles.skillDesc}>damage : {stats.damage}</Text>
+              </View>
+              <View style={styles.statDescWrapper}>
+                <Text style={styles.icon}>⦿</Text>
+                <Text style={styles.skillDesc}>armor : {stats.armor}</Text>
+              </View>
+              <View style={styles.statDescWrapper}>
+                <Text style={styles.icon}>⦿</Text>
+                <Text style={styles.skillDesc}>magic resist : {stats.mr}</Text>
+              </View>
+              <View style={styles.statDescWrapper}>
+                <Text style={styles.icon}>⦿</Text>
+                <Text style={styles.skillDesc}>attack speed : {stats.as}</Text>
+              </View>
+              <View style={styles.statDescWrapper}>
+                <Text style={styles.icon}>⦿</Text>
+                <Text style={styles.skillDesc}>crit rate : {stats.crit}</Text>
+              </View>
+              <View style={styles.statDescWrapper}>
+                <Text style={styles.icon}>⦿</Text>
+                <Text style={styles.skillDesc}>
+                  range :{" "}
+                  {stats.range != 1
+                    ? stats.range + " hexes"
+                    : stats.range + " hex"}
+                </Text>
+              </View>
             </View>
             <View style={styles.section}>
               <Text style={styles.header}>Synergies</Text>
@@ -396,6 +420,18 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "#88a0a7",
     fontFamily: "RobotoMedium",
+  },
+  statDescWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  icon: {
+    marginRight: 5,
+    fontSize: 10,
+    fontFamily: "RobotoRegular",
+    paddingTop: 7,
+    color: "#f48024",
+    marginRight: 10,
   },
   skillDesc: {
     fontSize: 20,
