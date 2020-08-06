@@ -3,11 +3,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 import PatchNotes from "../../screens/PatchNotes/patchnotes";
-import ItemBuilder from "../../screens/Builder/itembuilder";
 import CompBuilder from "../../screens/Builder/compbuilder";
 import Home from "./homedbroute";
+import Database from "../Database/databasetoproute";
 
 const Tab = createBottomTabNavigator();
 
@@ -69,13 +69,13 @@ export default function HomeRoute() {
         }}
       />
       <Tab.Screen
-        name="ItemBuilder"
-        component={ItemBuilder}
+        name="Database"
+        component={Database}
         options={{
-          tabBarLabel: "Item Builder",
+          tabBarLabel: "Database",
           tabBarIcon: ({ focused }) => (
-            <MaterialCommunityIcons
-              name="sword"
+            <Entypo
+              name="database"
               size={20}
               color={focused ? "#fff" : "#88a0a7"}
             />

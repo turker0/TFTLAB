@@ -34,12 +34,12 @@ const getChampions = async (setChampions, setIsFetched) => {
 };
 
 const CompBuilder = () => {
-  const [champions, setChampions] = useState(0);
   const [isFetched, setIsFetched] = useState(false);
   const [comp, setComp] = useState([]);
   const [traits, setTraits] = useState(0);
   const [isShrunk, setIsShrunk] = useState(true);
   const scrollRef = useRef(null);
+  const [champions, setChampions] = useState(0);
 
   useEffect(() => {
     if (!isFetched) {
@@ -47,24 +47,24 @@ const CompBuilder = () => {
     }
   });
 
-  const headerPadding = new Animated.Value(100);
+  const headerPadding = new Animated.Value(25);
 
   const height = new Animated.Value(90);
 
   const animateChamps = () => {
     Animated.timing(headerPadding, {
-      toValue: isShrunk ? 0 : 100,
+      toValue: isShrunk ? 0 : 25,
       duration: 1000,
       useNativeDriver: false,
     }).start();
     Animated.timing(height, {
-      toValue: isShrunk ? 325 : 90,
+      toValue: isShrunk
+        ? Dimensions.get("window").height -
+          (Dimensions.get("window").width / 5 - 10) * 4.4
+        : 90,
       duration: 1000,
       useNativeDriver: false,
     }).start(() => {
-      !isShrunk
-        ? scrollRef.current?.scrollTo({ x: 0, y: 0, animated: true })
-        : null;
       setIsShrunk(!isShrunk);
     });
   };
@@ -120,7 +120,6 @@ const CompBuilder = () => {
         <Animated.View style={{ paddingVertical: headerPadding }}>
           <Text style={styles.title}>Team Comp Builder</Text>
           <View style={styles.compWrapper}>{compComponent}</View>
-
           {comp.length >= 1 ? (
             <View style={styles.section}>
               <Text style={[styles.header, { textAlign: "center" }]}>
@@ -129,6 +128,7 @@ const CompBuilder = () => {
               <TouchableOpacity
                 onPress={() => {
                   setComp([]);
+                  setTraits(0);
                 }}
               >
                 <Text
@@ -180,6 +180,34 @@ const CompBuilder = () => {
                   </View>
                 ) : null
               )
+            ) : (
+              <Text style={styles.traitDetail}>No bonus earned yet.</Text>
+            )}
+          </View>
+          <View style={styles.section}>
+            <Text style={styles.header}>All Traits</Text>
+            {traits.traits != undefined ? (
+              traits.traits.map((item, index) => (
+                <View key={index} style={styles.traitsWrapper}>
+                  <Image
+                    style={styles.trait}
+                    source={
+                      origins[item] != undefined ? origins[item] : classes[item]
+                    }
+                  />
+                  <Text
+                    style={[styles.traitCount, { color: traits.colors[index] }]}
+                  >
+                    ({traits.counts[index]})
+                  </Text>
+
+                  <Text style={styles.traitAllCounts}>
+                    {traits.details[index] != 0
+                      ? traits.details[index]
+                      : "No bonus earned yet."}
+                  </Text>
+                </View>
+              ))
             ) : (
               <Text style={styles.traitDetail}>No bonus earned yet.</Text>
             )}
@@ -297,6 +325,12 @@ const styles = StyleSheet.create({
     color: "#B9C7CB",
     width: Dimensions.get("window").width * 0.75,
   },
+  traitAllCounts: {
+    fontSize: 20,
+    fontFamily: "RobotoRegular",
+    color: "#B9C7CB",
+    marginHorizontal: 5,
+  },
   section: {
     marginVertical: 20,
     padding: 10,
@@ -314,6 +348,18 @@ const styles = StyleSheet.create({
     top: 0,
     width: 25,
     height: 25,
+  },
+  filterWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 25,
+  },
+  filterText: {
+    fontSize: 18,
+    fontFamily: "RobotoMedium",
+    color: "red",
+    marginHorizontal: 5,
   },
   compBuilderWrapper: {
     alignSelf: "flex-end",
