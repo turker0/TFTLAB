@@ -15,53 +15,58 @@ export default function ChampionDB({ route }) {
         <View style={{ paddingTop: 100 }}>
           <Text style={styles.title}>Champion Database</Text>
           {champions.map((item, index) => (
-            <View key={index} style={styles.champWrapper}>
-              <View style={{ width: 80, overflow: "hidden" }}>
-                <Image style={styles.champAvatar} source={avatars[item.name]} />
-                <Text style={styles.champName}>{item.name}</Text>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                  <MaterialIcons
-                    name="attach-money"
-                    size={18}
-                    color="#b89d27"
+            <View key={index} style={{ marginVertical: 25 }}>
+              <Text style={styles.champName}>{item.name}</Text>
+              <View style={styles.champWrapper}>
+                <View>
+                  <Image
+                    style={styles.champAvatar}
+                    source={avatars[item.name]}
                   />
-                  <Text style={styles.statDetail}>{item.stats.cost}</Text>
+                  <View style={{ flexDirection: "row", alignItems: "center" }}>
+                    <MaterialIcons
+                      name="attach-money"
+                      size={18}
+                      color="#b89d27"
+                    />
+                    <Text style={styles.statDetail}>{item.stats.cost}</Text>
+                  </View>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      flexWrap: "wrap",
+                    }}
+                  >
+                    {item.class.map((item, index) => (
+                      <Image
+                        style={[styles.trait, { marginRight: 2.5 }]}
+                        source={classes[item]}
+                        key={index}
+                      />
+                    ))}
+                    <Image style={styles.trait} source={origins[item.origin]} />
+                  </View>
                 </View>
                 <View
                   style={{
-                    flexDirection: "row",
-                    flexWrap: "wrap",
+                    marginLeft: 10,
+                    justifyContent: "flex-start",
+                    alignItems: "flex-start",
                   }}
                 >
-                  {item.class.map((item, index) => (
+                  <View style={styles.champSkillWrapper}>
                     <Image
-                      style={[styles.trait, { marginRight: 2.5 }]}
-                      source={classes[item]}
-                      key={index}
+                      style={styles.skillAvatar}
+                      source={skills[item.name]}
                     />
+                    <Text style={styles.skillName}>{item.skill.name}</Text>
+                  </View>
+                  {item.skill.desc.map((item2, index2) => (
+                    <Text style={styles.skillDesc} key={index2}>
+                      {item2}
+                    </Text>
                   ))}
-                  <Image style={styles.trait} source={origins[item.origin]} />
                 </View>
-              </View>
-              <View
-                style={{
-                  marginLeft: 10,
-                  justifyContent: "flex-start",
-                  alignItems: "flex-start",
-                }}
-              >
-                <View style={styles.champSkillWrapper}>
-                  <Image
-                    style={styles.skillAvatar}
-                    source={skills[item.name]}
-                  />
-                  <Text style={styles.skillName}>{item.skill.name}</Text>
-                </View>
-                {item.skill.desc.map((item2, index2) => (
-                  <Text style={styles.skillDesc} key={index2}>
-                    {item2}
-                  </Text>
-                ))}
               </View>
             </View>
           ))}
@@ -74,20 +79,18 @@ export default function ChampionDB({ route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 10,
   },
   title: {
     fontSize: 28,
     fontFamily: "RobotoBold",
     color: "#E8ECEE",
     textTransform: "capitalize",
-    margin: 10,
   },
   section: {
     paddingVertical: 25,
   },
   champWrapper: {
-    padding: 10,
-    marginVertical: 15,
     flexDirection: "row",
     justifyContent: "flex-start",
   },
@@ -97,10 +100,11 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   champName: {
-    fontSize: 18,
+    fontSize: 24,
     color: "#E8ECEE",
     fontFamily: "RobotoMedium",
     textTransform: "capitalize",
+    marginVertical: 2.5,
   },
   champSkillWrapper: {
     flexDirection: "row",

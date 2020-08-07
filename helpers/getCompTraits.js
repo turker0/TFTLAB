@@ -263,7 +263,7 @@ const getCompTraits = (champions) => {
       }
       if (i + 1 == traitDetails[found.traits[index]].count.length) {
         found.details.push(0);
-        found.colors.push("#000");
+        found.colors.push("#88a0a7");
         break;
       }
     }

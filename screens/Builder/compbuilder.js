@@ -196,9 +196,15 @@ const CompBuilder = () => {
                     }
                   />
                   <Text
-                    style={[styles.traitCount, { color: traits.colors[index] }]}
+                    style={[
+                      styles.traitCount,
+                      {
+                        color: traits.colors[index],
+                        textTransform: "capitalize",
+                      },
+                    ]}
                   >
-                    ({traits.counts[index]})
+                    {traits.counts[index]} {item}:
                   </Text>
 
                   <Text style={styles.traitAllCounts}>
