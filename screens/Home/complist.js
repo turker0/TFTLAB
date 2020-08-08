@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, View, StatusBar } from "react-native";
+import { View } from "react-native";
 import Comp from "../../components/CompList/comps";
 import Loading from "../../components/shared/loading";
 import { ScrollView } from "react-native-gesture-handler";
+import { pageTheme } from "../../styles/page";
 
 export default function CompList({ route }) {
   const { navigation } = route.params;
@@ -10,8 +11,7 @@ export default function CompList({ route }) {
   const { champions } = route.params;
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <StatusBar backgroundColor="#000" barStyle="light-content" />
-      <View style={styles.page}>
+      <View style={pageTheme.page}>
         {list != 0 && champions != 0 ? (
           list.map((item, index) => (
             <Comp
@@ -28,11 +28,3 @@ export default function CompList({ route }) {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  page: {
-    width: "100%",
-    backgroundColor: "transparent",
-    padding: 10,
-  },
-});

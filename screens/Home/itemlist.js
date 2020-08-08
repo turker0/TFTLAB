@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, View, Dimensions, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import Item from "../../components/ItemList/items";
 import Loading from "../../components/shared/loading";
+import { pageTheme } from "../../styles/page";
 
 export default function ItemList({ route }) {
   const { navigation } = route.params;
@@ -9,7 +10,7 @@ export default function ItemList({ route }) {
   const { items } = route.params;
   return { list } ? (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.page}>
+      <View style={pageTheme.page}>
         {list != 0 ? (
           list.map((item, index) => (
             <Item
@@ -27,11 +28,3 @@ export default function ItemList({ route }) {
     </ScrollView>
   ) : null;
 }
-
-const styles = StyleSheet.create({
-  page: {
-    width: Dimensions.get("window").width,
-    height: "100%",
-    backgroundColor: "#123040",
-  },
-});

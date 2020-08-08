@@ -4,13 +4,14 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { AppLoading } from "expo";
 import HomeBottomRoute from "./routes/Home/homebottomroute";
+import { global } from "./styles/global";
 
 const MyTheme = {
   ...DefaultTheme,
   dark: false,
   colors: {
     ...DefaultTheme.colors,
-    background: "#123040",
+    background: global.theme.backgroundColor,
   },
 };
 

@@ -8,6 +8,7 @@ import PatchNotes from "../../screens/PatchNotes/patchnotes";
 import CompBuilder from "../../screens/Builder/compbuilder";
 import Home from "./homedbroute";
 import Database from "../Database/databasetoproute";
+import { routeTheme } from "../../styles/route";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,13 +18,9 @@ export default function HomeRoute() {
       initialRouteName="Home"
       tabBarOptions={{
         showLabel: false,
-        activeBackgroundColor: "#102531",
-        inactiveBackgroundColor: "#102531",
-        style: {
-          height: 50,
-          elevation: 5,
-          borderTopWidth: 0,
-        },
+        activeBackgroundColor: routeTheme.barBG.backgroundColor,
+        inactiveBackgroundColor: routeTheme.barBG.backgroundColor,
+        style: routeTheme.bar,
       }}
     >
       <Tab.Screen
@@ -35,7 +32,11 @@ export default function HomeRoute() {
             <Feather
               name="home"
               size={20}
-              color={focused ? "#fff" : "#88a0a7"}
+              color={
+                focused
+                  ? routeTheme.focusedButton.color
+                  : routeTheme.noFocusedButton.color
+              }
             />
           ),
         }}
@@ -49,7 +50,11 @@ export default function HomeRoute() {
             <FontAwesome5
               name="scroll"
               size={20}
-              color={focused ? "#fff" : "#88a0a7"}
+              color={
+                focused
+                  ? routeTheme.focusedButton.color
+                  : routeTheme.noFocusedButton.color
+              }
             />
           ),
         }}
@@ -63,7 +68,11 @@ export default function HomeRoute() {
             <Fontisto
               name="persons"
               size={20}
-              color={focused ? "#fff" : "#88a0a7"}
+              color={
+                focused
+                  ? routeTheme.focusedButton.color
+                  : routeTheme.noFocusedButton.color
+              }
             />
           ),
         }}
@@ -77,7 +86,11 @@ export default function HomeRoute() {
             <Entypo
               name="database"
               size={20}
-              color={focused ? "#fff" : "#88a0a7"}
+              color={
+                focused
+                  ? routeTheme.focusedButton.color
+                  : routeTheme.noFocusedButton.color
+              }
             />
           ),
         }}

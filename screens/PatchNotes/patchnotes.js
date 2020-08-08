@@ -23,7 +23,6 @@ export default function PatchNotes() {
   const [isFetched, setIsFetched] = useState(false);
   const [notes, setNotes] = useState(0);
   const [current, setCurrent] = useState(-1);
-  const refScrollView = useRef(null);
   const scrollY = new Animated.Value(0);
   useEffect(() => {
     if (!isFetched) getNotes(setIsFetched, setNotes, setCurrent);
@@ -50,7 +49,6 @@ export default function PatchNotes() {
                   version={item.version}
                   index={index}
                   setCurrent={setCurrent}
-                  ScrollView={refScrollView}
                   current={current}
                   key={index}
                 />
@@ -69,7 +67,6 @@ export default function PatchNotes() {
             </View>
             <Animated.ScrollView
               showsVerticalScrollIndicator={false}
-              ref={refScrollView}
               scrollEventThrottle={1}
               alwaysBounceVertical={false}
               bounces={false}

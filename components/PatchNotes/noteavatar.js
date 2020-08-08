@@ -2,13 +2,7 @@ import React from "react";
 import { StyleSheet, Text } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
 
-export default function NoteAvatar({
-  version,
-  index,
-  setCurrent,
-  scrollview,
-  current,
-}) {
+export default function NoteAvatar({ version, index, setCurrent, current }) {
   return (
     <TouchableHighlight
       style={[
@@ -19,11 +13,6 @@ export default function NoteAvatar({
       ]}
       onPress={() => {
         setCurrent(index);
-        scrollview.current?.scrollTo({
-          x: 0,
-          y: 0,
-          animated: true,
-        });
       }}
     >
       <Text style={styles.version}>{version}</Text>

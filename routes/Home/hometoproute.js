@@ -5,6 +5,8 @@ import ChampList from "../../screens/Home/champlist";
 import ItemList from "../../screens/Home/itemlist";
 import ClassList from "../../screens/Home/classlist";
 import OriginList from "../../screens/Home/originlist";
+import Loading from "../../components/shared/loading";
+import { routeTheme } from "../../styles/route";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -185,32 +187,15 @@ export default function HomeTopRoute({ navigation }) {
       initialRouteName="CompList"
       swipeEnabled={false}
       tabBarOptions={{
-        activeTintColor: "#fff",
-        inactiveTintColor: "#88a0a7",
+        activeTintColor: routeTheme.focusedButton.color,
+        inactiveTintColor: routeTheme.noFocusedButton.color,
         scrollEnabled: true,
-        pressColor: "#88a0a7",
-        pressOpacity: 0.5,
-        tabStyle: {
-          width: 100,
-          marginTop: -5,
-          justifyContent: "center",
-          elevation: 5,
-        },
-        labelStyle: {
-          fontSize: 18,
-          textTransform: "capitalize",
-          fontFamily: "RobotoBold",
-        },
-        style: {
-          backgroundColor: "#102531",
-          height: 50,
-          alignItems: "center",
-          justifyContent: "center",
-        },
-        indicatorStyle: {
-          height: 1.6,
-          backgroundColor: "#f48024",
-        },
+        pressColor: routeTheme.noFocusedButton.color,
+        pressOpacity: routeTheme.pressColor.opacity,
+        tabStyle: routeTheme.tabStyle,
+        labelStyle: routeTheme.labelStyle,
+        style: routeTheme.bar,
+        indicatorStyle: routeTheme.indicatorStyle,
       }}
     >
       <Tab.Screen
@@ -261,5 +246,7 @@ export default function HomeTopRoute({ navigation }) {
         }}
       />
     </Tab.Navigator>
-  ) : null;
+  ) : (
+    <Loading />
+  );
 }

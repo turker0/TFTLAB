@@ -8,6 +8,7 @@ import ChampPage from "../../screens/Home/pages/champage";
 import CompPage from "../../screens/Home/pages/comppage";
 import ItemPage from "../../screens/Home/pages/itempage";
 import TraitPage from "../../screens/Home/pages/traitpage";
+import { routeTheme } from "../../styles/route";
 
 const Stack = createStackNavigator();
 
@@ -16,16 +17,11 @@ const ChampRoute = () => {
     <Stack.Navigator
       screenOptions={{
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-        headerTintColor: "#fff",
+        headerTintColor: routeTheme.focusedButton.color,
         headerStyle: {
-          backgroundColor: "#102531",
+          backgroundColor: routeTheme.barBG,
         },
-        headerTitleStyle: {
-          fontFamily: "RobotoBold",
-          fontSize: 24,
-          color: "#fff",
-          marginLeft: -20,
-        },
+        headerTitleStyle: routeTheme.labelStyle,
       }}
     >
       <Stack.Screen
@@ -35,10 +31,34 @@ const ChampRoute = () => {
           headerShown: false,
         }}
       />
-      <Stack.Screen name="ChampPage" component={ChampPage} />
-      <Stack.Screen name="CompPage" component={CompPage} />
-      <Stack.Screen name="ItemPage" component={ItemPage} />
-      <Stack.Screen name="TraitPage" component={TraitPage} />
+      <Stack.Screen
+        name="ChampPage"
+        component={ChampPage}
+        options={{
+          title: "Champion Page",
+        }}
+      />
+      <Stack.Screen
+        name="CompPage"
+        component={CompPage}
+        options={{
+          title: "Team Comp Page",
+        }}
+      />
+      <Stack.Screen
+        name="ItemPage"
+        component={ItemPage}
+        options={{
+          title: "Item Page",
+        }}
+      />
+      <Stack.Screen
+        name="TraitPage"
+        component={TraitPage}
+        options={{
+          title: "Trait Page",
+        }}
+      />
     </Stack.Navigator>
   );
 };

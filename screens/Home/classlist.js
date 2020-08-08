@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, View, Dimensions, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import Loading from "../../components/shared/loading";
 import Classes from "../../components/ClassList/classes";
+import { pageTheme } from "../../styles/page";
 
 export default function ClassesTier({ route }) {
   const { navigation } = route.params;
@@ -11,7 +12,7 @@ export default function ClassesTier({ route }) {
 
   return { list } ? (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.page}>
+      <View style={pageTheme.page}>
         {list != 0 ? (
           list.map((item, index) => (
             <Classes
@@ -30,11 +31,3 @@ export default function ClassesTier({ route }) {
     </ScrollView>
   ) : null;
 }
-
-const styles = StyleSheet.create({
-  page: {
-    width: Dimensions.get("window").width,
-    height: "100%",
-    backgroundColor: "#123040",
-  },
-});

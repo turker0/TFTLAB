@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, View, Dimensions, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import Loading from "../../components/shared/loading";
 import Origin from "../../components/OriginList/origins";
+import { pageTheme } from "../../styles/page";
 
 export default function OriginTiers({ route }) {
   const { navigation } = route.params;
@@ -9,7 +10,7 @@ export default function OriginTiers({ route }) {
   const { origins } = route.params;
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.page}>
+      <View style={pageTheme.page}>
         {list != 0 ? (
           list.map((item, index) => (
             <Origin
@@ -27,11 +28,3 @@ export default function OriginTiers({ route }) {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  page: {
-    width: Dimensions.get("window").width,
-    height: "100%",
-    backgroundColor: "#123040",
-  },
-});

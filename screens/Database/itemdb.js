@@ -7,7 +7,7 @@ export default function ItemBuilder({ route }) {
   const { items } = route.params;
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ paddingTop: 100 }}>
           <Text style={styles.title}>Item Builder</Text>
           {items.map((item, index) => (

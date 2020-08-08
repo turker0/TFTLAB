@@ -8,64 +8,69 @@ import getChampOrigin from "../../../helpers/getChampOrigin";
 import getChampionClass from "../../../helpers/getChampionClass";
 import getCompTraits from "../../../helpers/getCompTraits";
 import { ScrollView } from "react-native-gesture-handler";
+import { pageTheme } from "../../../styles/page";
 
 const CompPage = ({ route, navigation }) => {
   const { name } = route.params;
   const { champions } = route.params;
 
   return (
-    <View style={styles.container}>
+    <View style={pageTheme.page}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         scrollEventThrottle={1}
         alwaysBounceVertical={false}
         bounces={false}
       >
-        <View style={styles.section}>
-          <Text style={styles.header}>Champions</Text>
-          <View style={styles.avatarWrapper}>
+        <View style={pageTheme.section}>
+          <Text style={pageTheme.header}>Champions</Text>
+          <View style={pageTheme.flexWrap}>
             {champions.map((item, index) => (
-              <View key={index}>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    marginTop: 10,
-                    marginRight: 10,
-                  }}
-                >
+              <View key={index} style={{ marginRight: 10, marginBottom: 10 }}>
+                <View style={{ width: 84 }}>
+                  <Text style={pageTheme.regularText} numberOfLines={1}>
+                    {item}
+                  </Text>
                   <View
                     style={[
-                      styles.avatarBorder,
+                      pageTheme.champAvatarWrapper,
                       { backgroundColor: getChampionBorderColor(item) },
                     ]}
                   >
-                    <Image style={styles.avatar} source={avatars[item]} />
+                    <Image style={pageTheme.avatarBig} source={avatars[item]} />
                   </View>
-                  <View style={styles.traitAvatarWrapper}>
-                    <View style={styles.traitBorder}>
+                  <View style={[pageTheme.fdWrapper, { marginTop: 5 }]}>
+                    <View style={pageTheme.darkBGSmall}>
                       <Image
-                        style={styles.traitAvatar}
+                        style={pageTheme.avatarVerySmall}
                         source={origins[getChampOrigin(item)]}
                       />
                     </View>
                     {item != "Gangplank" && item != "Irelia" ? (
-                      <View style={styles.traitBorder}>
+                      <View
+                        style={[pageTheme.darkBGSmall, { marginHorizontal: 2 }]}
+                      >
                         <Image
-                          style={styles.traitAvatar}
+                          style={pageTheme.avatarVerySmall}
                           source={classes[getChampionClass(item)]}
                         />
                       </View>
                     ) : (
-                      <View>
-                        <View style={styles.traitBorder}>
+                      <View style={pageTheme.fdWrapper}>
+                        <View
+                          style={[
+                            pageTheme.darkBGSmall,
+                            { marginHorizontal: 2 },
+                          ]}
+                        >
                           <Image
-                            style={styles.traitAvatar}
+                            style={pageTheme.avatarVerySmall}
                             source={classes[getChampionClass(item)[0]]}
                           />
                         </View>
-                        <View style={styles.traitBorder}>
+                        <View style={pageTheme.darkBGSmall}>
                           <Image
-                            style={styles.traitAvatar}
+                            style={pageTheme.avatarVerySmall}
                             source={classes[getChampionClass(item)[1]]}
                           />
                         </View>
@@ -73,7 +78,6 @@ const CompPage = ({ route, navigation }) => {
                     )}
                   </View>
                 </View>
-                <Text style={styles.avatarTitle}>{item}</Text>
               </View>
             ))}
           </View>

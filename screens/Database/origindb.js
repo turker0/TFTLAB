@@ -9,7 +9,7 @@ export default function ItemBuilder({ route }) {
   const { origins } = route.params;
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Text style={styles.title}>Origin Builder</Text>
         {origins.map((item, index) => (
           <View key={index} style={{ marginVertical: 25 }}>
@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
     marginVertical: 3,
     padding: 5,
     borderRadius: 4,
+    alignItems: "center",
   },
   bonusText: {
     fontSize: 16,

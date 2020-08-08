@@ -11,7 +11,7 @@ export default function ChampionDB({ route }) {
   const { champions } = route.params;
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ paddingTop: 100 }}>
           <Text style={styles.title}>Champion Database</Text>
           {champions.map((item, index) => (
