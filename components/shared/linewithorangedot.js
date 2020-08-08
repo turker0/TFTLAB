@@ -7,7 +7,7 @@ export default function LineWithOrangeDot({ label, text }) {
     <View style={pageTheme.fdWrapperAIC}>
       <Text style={pageTheme.pointer}>⦿</Text>
       <Text style={pageTheme.regularText}>
-        {label}: {text}
+        {label != undefined ? label + ":" : null} {text}
       </Text>
     </View>
   );

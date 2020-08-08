@@ -18,7 +18,7 @@ const getDB = async (
 ) => {
   //GET STATICS
   //GET CHAMPIONS
-  fetch("http://192.168.1.5:3000/api/static/champions", {
+  fetch("https://tftlab.herokuapp.com/api/static/champions", {
     method: "GET",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
@@ -31,7 +31,7 @@ const getDB = async (
     .catch((error) => console.error(error));
 
   //GET CLASSES
-  fetch("http://192.168.1.5:3000/api/static/classes", {
+  fetch("https://tftlab.herokuapp.com/api/static/classes", {
     method: "GET",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
@@ -44,7 +44,7 @@ const getDB = async (
     .catch((error) => console.error(error));
 
   //GET ITEMS
-  fetch("http://192.168.1.5:3000/api/static/items", {
+  fetch("https://tftlab.herokuapp.com/api/static/items", {
     method: "GET",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
@@ -57,7 +57,7 @@ const getDB = async (
     .catch((error) => console.error(error));
 
   //GET ITEMS
-  fetch("http://192.168.1.5:3000/api/static/origins", {
+  fetch("https://tftlab.herokuapp.com/api/static/origins", {
     method: "GET",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",

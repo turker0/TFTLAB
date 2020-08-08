@@ -1,15 +1,10 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  Animated,
-} from "react-native";
+import { Text, View, Image, ScrollView, Animated } from "react-native";
 import items from "../../../assets/items/items";
 import { Feather } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { pageTheme } from "../../../styles/page";
+import LineWithOrangeDot from "../../../components/shared/linewithorangedot";
 
 const ItemPage = ({ route, navigation }) => {
   const { name } = route.params;
@@ -23,22 +18,21 @@ const ItemPage = ({ route, navigation }) => {
   const scrollY = new Animated.Value(0);
   const headerHeight = scrollY.interpolate({
     inputRange: [0, 300],
-    outputRange: [150, 35],
+    outputRange: [175, 35],
     extrapolate: "clamp",
     useNativeDriver: true,
   });
 
   return (
-    <View style={styles.container}>
-      <Animated.View style={[styles.titleWrapper, { height: headerHeight }]}>
-        <View style={styles.itemIconWrapper}>
-          <Image
-            style={styles.itemIcon}
-            resizeMode="contain"
-            source={items[name]}
-          />
-        </View>
-        <Text style={styles.itemTitle}>{name}</Text>
+    <View style={pageTheme.page}>
+      <Animated.View style={[pageTheme.absoWrapper, { height: headerHeight }]}>
+        <Image
+          style={pageTheme.avatarBig}
+          resizeMode="contain"
+          source={items[name]}
+        />
+
+        <Text style={pageTheme.title}>{name}</Text>
       </Animated.View>
       <Animated.View
         style={{
@@ -57,41 +51,40 @@ const ItemPage = ({ route, navigation }) => {
             { useNativeDriver: false }
           )}
         >
-          <View style={styles.section}>
-            <Text style={styles.header}>Description</Text>
-            <Text style={styles.itemDesc}>{desc}</Text>
+          <View style={pageTheme.section}>
+            <Text style={pageTheme.header}>Description</Text>
+            <Text style={pageTheme.regularText}>{desc}</Text>
           </View>
-          <View style={styles.section}>
-            <Text style={styles.header}>Contribution</Text>
+          <View style={pageTheme.section}>
+            <Text style={pageTheme.header}>Contribution</Text>
             {contribution.map((item, index) =>
               item != 0 ? (
-                <View style={styles.contributionWrapper} key={index}>
-                  <Text style={styles.icon}>⦿</Text>
-                  <Text style={styles.itemDesc}>{item}</Text>
+                <View style={pageTheme.fdWrapperAIC} key={index}>
+                  <LineWithOrangeDot text={item} />
                 </View>
               ) : (
-                <Text style={styles.itemDesc} key={index}>
+                <Text style={pageTheme.regularText} key={index}>
                   No contribution.
                 </Text>
               )
             )}
           </View>
-          <View style={styles.section}>
-            <Text style={styles.header}>Recipe</Text>
+          <View style={pageTheme.section}>
+            <Text style={pageTheme.header}>Recipe</Text>
             {first.map((item, index) => (
               <View style={{ marginVertical: 15 }} key={index}>
-                <View style={styles.recipeWrapper}>
-                  <View style={styles.receipeIconWrapper}>
+                <View style={[pageTheme.fdWrapperAIC, { marginTop: 25 }]}>
+                  <View style={pageTheme.darkBGMedium}>
                     <Image
-                      style={styles.receipeIcon}
+                      style={pageTheme.avatarMed}
                       resizeMode="contain"
                       source={items[item]}
                     />
                   </View>
                   <Feather name="plus" size={24} color="#E8ECEE" />
-                  <View style={styles.receipeIconWrapper}>
+                  <View style={pageTheme.darkBGMedium}>
                     <Image
-                      style={styles.receipeIcon}
+                      style={pageTheme.avatarMed}
                       resizeMode="contain"
                       source={items[second[index]]}
                     />
@@ -101,16 +94,25 @@ const ItemPage = ({ route, navigation }) => {
                     size={24}
                     color="#E8ECEE"
                   />
-                  <View style={styles.receipeIconWrapper}>
+                  <View style={pageTheme.darkBGMedium}>
                     <Image
-                      style={styles.receipeIcon}
+                      style={pageTheme.avatarMed}
                       resizeMode="contain"
                       source={items[third[index]]}
                     />
                   </View>
                 </View>
-                <View style={styles.detailWrapper}>
-                  <Text style={styles.detailText}>{detail[index]}</Text>
+                <View
+                  style={[
+                    pageTheme.darkBGSmall,
+                    { alignSelf: "flex-start", marginTop: 12.5 },
+                  ]}
+                >
+                  <Text
+                    style={[pageTheme.regularText, { paddingHorizontal: 5 }]}
+                  >
+                    {detail[index]}
+                  </Text>
                 </View>
               </View>
             ))}
@@ -122,103 +124,3 @@ const ItemPage = ({ route, navigation }) => {
 };
 
 export default ItemPage;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-  },
-  titleWrapper: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    overflow: "hidden",
-    paddingHorizontal: 10,
-    justifyContent: "flex-end",
-  },
-  itemTitle: {
-    fontSize: 30,
-    marginTop: 5,
-    fontFamily: "RobotoBlack",
-    color: "#ffffffe6",
-    textTransform: "capitalize",
-    letterSpacing: 2,
-  },
-  itemIconWrapper: {
-    width: 85,
-    height: 85,
-    backgroundColor: "#1B475F",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 4,
-    overflow: "hidden",
-  },
-  itemIcon: {
-    height: 80,
-    width: 80,
-  },
-  section: {
-    marginVertical: 20,
-  },
-  header: {
-    fontSize: 28,
-    fontFamily: "RobotoBold",
-    color: "#E8ECEE",
-    textTransform: "capitalize",
-    marginVertical: 10,
-  },
-  itemDesc: {
-    fontSize: 20,
-    color: "#B9C6CB",
-    fontFamily: "RobotoRegular",
-    marginTop: 5,
-  },
-  contributionWrapper: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start",
-  },
-  icon: {
-    marginRight: 5,
-    fontSize: 10,
-    fontFamily: "RobotoRegular",
-    paddingTop: 7,
-    color: "#f48024",
-    marginRight: 10,
-  },
-  recipeWrapper: {
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    marginTop: 25,
-  },
-  receipeIcon: {
-    height: 52,
-    width: 52,
-  },
-  receipeIconWrapper: {
-    width: 56,
-    height: 56,
-    backgroundColor: "#1B475F",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 4,
-    overflow: "hidden",
-  },
-
-  detailWrapper: {
-    marginTop: 10,
-    alignItems: "flex-start",
-    borderRadius: 4,
-  },
-  detailText: {
-    fontSize: 16,
-    color: "#B9C6CB",
-    fontFamily: "RobotoRegular",
-    textAlign: "left",
-    backgroundColor: "#1B475F",
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-  },
-});

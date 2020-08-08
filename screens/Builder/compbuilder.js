@@ -16,9 +16,10 @@ import getCompTraits from "../../helpers/getCompTraits";
 import origins from "../../assets/origins/origins";
 import classes from "../../assets/classes/classes";
 import { AntDesign } from "@expo/vector-icons";
+import { pageTheme } from "../../styles/page";
 
 const getChampions = async (setChampions, setIsFetched) => {
-  fetch("http://192.168.1.5:3000/api/static/champions", {
+  fetch("https://tftlab.herokuapp.com/api/static/champions", {
     method: "GET",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
@@ -49,7 +50,7 @@ const CompBuilder = () => {
 
   const headerPadding = new Animated.Value(25);
 
-  const height = new Animated.Value(90);
+  const height = new Animated.Value(350);
 
   const animateChamps = () => {
     Animated.timing(headerPadding, {
@@ -115,47 +116,80 @@ const CompBuilder = () => {
   }
 
   return champions != 0 ? (
-    <View style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false} ref={scrollRef}>
-        <Animated.View style={{ paddingVertical: headerPadding }}>
-          <Text style={styles.title}>Team Comp Builder</Text>
-          <View style={styles.compWrapper}>{compComponent}</View>
-          {comp.length >= 1 ? (
-            <View style={styles.section}>
-              <Text style={[styles.header, { textAlign: "center" }]}>
-                {comp.length}/10
-              </Text>
-              <TouchableOpacity
-                onPress={() => {
-                  setComp([]);
-                  setTraits(0);
-                }}
-              >
-                <Text
-                  style={[
-                    styles.traitCount,
-                    {
-                      textAlign: "center",
-                      alignSelf: "center",
-                      color: "#fff",
-                      backgroundColor: "#1B475F",
-                      paddingHorizontal: 20,
-                      paddingVertical: 5,
-                      borderRadius: 4,
-                    },
-                  ]}
-                >
-                  reset
+    <View style={{ justifyContent: "center" }}>
+      <View style={{ height: Dimensions.get("window").height - 100 }}>
+        <ScrollView showsVerticalScrollIndicator={false} ref={scrollRef}>
+          <Animated.View style={{ paddingVertical: headerPadding, flex: 1 }}>
+            <Text style={pageTheme.title}>Team Comp Builder</Text>
+            <View style={[styles.compWrapper]}>{compComponent}</View>
+            {comp.length >= 1 ? (
+              <View style={pageTheme.section}>
+                <Text style={[pageTheme.header, { textAlign: "center" }]}>
+                  {comp.length}/10
                 </Text>
-              </TouchableOpacity>
-            </View>
-          ) : null}
+                <TouchableOpacity
+                  onPress={() => {
+                    setComp([]);
+                    setTraits(0);
+                  }}
+                >
+                  <Text
+                    style={[
+                      styles.traitCount,
+                      {
+                        textAlign: "center",
+                        alignSelf: "center",
+                        color: "#fff",
+                        backgroundColor: "#1B475F",
+                        paddingHorizontal: 20,
+                        paddingVertical: 5,
+                        borderRadius: 4,
+                      },
+                    ]}
+                  >
+                    reset
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            ) : null}
 
-          <View style={styles.section}>
-            <Text style={styles.header}>Bonus</Text>
-            {traits.traits != undefined ? (
-              traits.traits.map((item, index) =>
-                traits.details[index] != 0 ? (
+            <View style={pageTheme.section}>
+              <Text style={pageTheme.header}>Bonus</Text>
+              {traits.traits != undefined ? (
+                traits.traits.map((item, index) =>
+                  traits.details[index] != 0 ? (
+                    <View key={index} style={styles.traitsWrapper}>
+                      <Image
+                        style={styles.trait}
+                        source={
+                          origins[item] != undefined
+                            ? origins[item]
+                            : classes[item]
+                        }
+                      />
+                      <Text
+                        style={[
+                          styles.traitCount,
+                          { color: traits.colors[index] },
+                        ]}
+                      >
+                        ({traits.counts[index]})
+                      </Text>
+
+                      <Text style={styles.traitDetail}>
+                        {traits.details[index]}
+                      </Text>
+                    </View>
+                  ) : null
+                )
+              ) : (
+                <Text style={styles.traitDetail}>No bonus earned yet.</Text>
+              )}
+            </View>
+            <View style={styles.section}>
+              <Text style={styles.header}>All Traits</Text>
+              {traits.traits != undefined ? (
+                traits.traits.map((item, index) => (
                   <View key={index} style={styles.traitsWrapper}>
                     <Image
                       style={styles.trait}
@@ -168,60 +202,30 @@ const CompBuilder = () => {
                     <Text
                       style={[
                         styles.traitCount,
-                        { color: traits.colors[index] },
+                        {
+                          color: traits.colors[index],
+                          textTransform: "capitalize",
+                        },
                       ]}
                     >
-                      ({traits.counts[index]})
+                      {traits.counts[index]} {item}:
                     </Text>
 
-                    <Text style={styles.traitDetail}>
-                      {traits.details[index]}
+                    <Text style={styles.traitAllCounts}>
+                      {traits.details[index] != 0
+                        ? traits.details[index]
+                        : "No bonus earned yet."}
                     </Text>
                   </View>
-                ) : null
-              )
-            ) : (
-              <Text style={styles.traitDetail}>No bonus earned yet.</Text>
-            )}
-          </View>
-          <View style={styles.section}>
-            <Text style={styles.header}>All Traits</Text>
-            {traits.traits != undefined ? (
-              traits.traits.map((item, index) => (
-                <View key={index} style={styles.traitsWrapper}>
-                  <Image
-                    style={styles.trait}
-                    source={
-                      origins[item] != undefined ? origins[item] : classes[item]
-                    }
-                  />
-                  <Text
-                    style={[
-                      styles.traitCount,
-                      {
-                        color: traits.colors[index],
-                        textTransform: "capitalize",
-                      },
-                    ]}
-                  >
-                    {traits.counts[index]} {item}:
-                  </Text>
-
-                  <Text style={styles.traitAllCounts}>
-                    {traits.details[index] != 0
-                      ? traits.details[index]
-                      : "No bonus earned yet."}
-                  </Text>
-                </View>
-              ))
-            ) : (
-              <Text style={styles.traitDetail}>No bonus earned yet.</Text>
-            )}
-          </View>
-        </Animated.View>
-      </ScrollView>
-
-      <Animated.View style={{ height: height, position: "relative" }}>
+                ))
+              ) : (
+                <Text style={styles.traitDetail}>No bonus earned yet.</Text>
+              )}
+            </View>
+          </Animated.View>
+        </ScrollView>
+      </View>
+      <Animated.View style={{ height: 500 }}>
         <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
           <View style={styles.upDownButton}>
             <TouchableOpacity

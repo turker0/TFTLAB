@@ -29,9 +29,7 @@ const ChampPage = ({ route, navigation }) => {
 
   return (
     <View style={pageTheme.page}>
-      <Animated.View
-        style={[pageTheme.champBioWrapper, { height: headerHeight }]}
-      >
+      <Animated.View style={[pageTheme.absoWrapper, { height: headerHeight }]}>
         <View style={pageTheme.fdWrapper}>
           <View
             style={[

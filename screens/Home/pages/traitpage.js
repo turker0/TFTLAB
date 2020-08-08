@@ -11,6 +11,7 @@ import classes from "../../../assets/classes/classes";
 import origins from "../../../assets/origins/origins";
 import avatars from "../../../assets/avatars/avatars";
 import getChampBorderColor from "../../../helpers/getChampBorderColor";
+import { pageTheme } from "../../../styles/page";
 
 const TraitPage = ({ route, navigation }) => {
   const { name } = route.params;
@@ -24,22 +25,21 @@ const TraitPage = ({ route, navigation }) => {
   const scrollY = new Animated.Value(0);
   const headerHeight = scrollY.interpolate({
     inputRange: [0, 300],
-    outputRange: [150, 35],
+    outputRange: [175, 35],
     extrapolate: "clamp",
     useNativeDriver: true,
   });
 
   return (
-    <View style={styles.container}>
-      <Animated.View style={[styles.titleWrapper, { height: headerHeight }]}>
-        <View style={styles.traitIconWrapper}>
-          <Image
-            style={styles.traitIcon}
-            resizeMode="contain"
-            source={type == 0 ? classes[name] : origins[name]}
-          />
-        </View>
-        <Text style={styles.traitTitle}>{name}</Text>
+    <View style={pageTheme.page}>
+      <Animated.View style={[pageTheme.absoWrapper, { height: headerHeight }]}>
+        <Image
+          style={pageTheme.avatarBig}
+          resizeMode="contain"
+          source={type == 0 ? classes[name] : origins[name]}
+        />
+
+        <Text style={pageTheme.title}>{name}</Text>
       </Animated.View>
       <Animated.View
         style={{
@@ -58,37 +58,49 @@ const TraitPage = ({ route, navigation }) => {
             { useNativeDriver: false }
           )}
         >
-          <View style={styles.section}>
-            <Text style={styles.header}>Details</Text>
+          <View style={pageTheme.section}>
+            <Text style={pageTheme.header}>Details</Text>
             {desc != 0 ? (
-              <Text style={styles.traitDesc}>{desc}</Text>
+              <Text style={pageTheme.regularText}>{desc}</Text>
             ) : (
-              <Text style={styles.traitDesc}>No description</Text>
+              <Text style={pageTheme.regularText}>No description</Text>
             )}
           </View>
-          <View style={styles.section}>
-            <Text style={styles.header}>Bonus</Text>
+          <View style={pageTheme.section}>
+            <Text style={pageTheme.header}>Bonus</Text>
             {count.map((item, index) => (
-              <View style={styles.bonusWrapper} key={index}>
-                <Text style={styles.traitDesc}>x{item}</Text>
-                <Text style={[styles.traitDesc, { marginLeft: 15, flex: 1 }]}>
+              <View
+                style={[
+                  pageTheme.fdWrapper,
+                  pageTheme.darkBGMedium,
+                  { marginVertical: 5, padding: 10 },
+                ]}
+                key={index}
+              >
+                <Text style={pageTheme.regularText}>x{item}</Text>
+                <Text
+                  style={[pageTheme.regularText, { marginLeft: 15, flex: 1 }]}
+                >
                   {detail[index]}
                 </Text>
               </View>
             ))}
           </View>
-          <View style={styles.section}>
-            <Text style={styles.header}>Units</Text>
-            <View style={styles.unitsWrapper}>
+          <View style={pageTheme.section}>
+            <Text style={pageTheme.header}>Units</Text>
+            <View style={pageTheme.flexWrap}>
               {units.map((item, index) => (
                 <View
                   style={[
-                    styles.avatarWrapper,
-                    { backgroundColor: getChampBorderColor(item, champions) },
+                    pageTheme.champAvatarWrapper,
+                    {
+                      backgroundColor: getChampBorderColor(item, champions),
+                      marginVertical: 5,
+                    },
                   ]}
                   key={index}
                 >
-                  <Image style={styles.avatar} source={avatars[item]} />
+                  <Image style={pageTheme.avatarMed} source={avatars[item]} />
                 </View>
               ))}
             </View>

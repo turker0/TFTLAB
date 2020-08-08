@@ -1,12 +1,13 @@
 import React from "react";
 import { StyleSheet, Text } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
+import { pageTheme } from "../../styles/page";
 
 export default function NoteAvatar({ version, index, setCurrent, current }) {
   return (
     <TouchableHighlight
       style={[
-        styles.container,
+        pageTheme.noteAvatar,
         current == index
           ? { borderColor: "#f48024" }
           : { borderColor: "#123040" },
@@ -15,7 +16,14 @@ export default function NoteAvatar({ version, index, setCurrent, current }) {
         setCurrent(index);
       }}
     >
-      <Text style={styles.version}>{version}</Text>
+      <Text
+        style={[
+          pageTheme.textDetail,
+          current == index ? { color: "#f48024" } : { color: "#ffffffe6" },
+        ]}
+      >
+        {version}
+      </Text>
     </TouchableHighlight>
   );
 }

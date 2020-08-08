@@ -1,11 +1,12 @@
 import { StyleSheet } from "react-native";
+import { Dimensions } from "react-native";
 
 export const pageTheme = StyleSheet.create({
   page: {
     flex: 1,
     padding: 10,
   },
-  champBioWrapper: {
+  absoWrapper: {
     position: "absolute",
     top: 0,
     left: 0,
@@ -72,6 +73,13 @@ export const pageTheme = StyleSheet.create({
     letterSpacing: 1,
     textTransform: "capitalize",
   },
+  textMed: {
+    fontSize: 22,
+    color: "#E8ECEE",
+    fontFamily: "RobotoRegular",
+    letterSpacing: 1,
+    textTransform: "capitalize",
+  },
   smallText: {
     fontSize: 14,
     color: "#D0D9DC",
@@ -133,5 +141,24 @@ export const pageTheme = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
+  },
+  noteAvatar: {
+    width: 52,
+    height: 52,
+    backgroundColor: "#102531",
+    borderRadius: 50,
+    borderWidth: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    marginHorizontal: 3,
+  },
+  compComponent: {
+    width: Dimensions.get("window").width / 5 - 15,
+    height: Dimensions.get("window").width / 5 - 15,
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden",
+    margin: 5,
+    borderRadius: 4,
   },
 });
