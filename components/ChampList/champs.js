@@ -1,21 +1,24 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-  Dimensions,
-} from "react-native";
+import { Text, View, TouchableOpacity, Image, Dimensions } from "react-native";
 import getChampBorderColor from "../../helpers/getChampBorderColor";
 import getRelatedElement from "../../helpers/getRelatedElement";
 import avatars from "../../assets/avatars/avatars";
+import { pageTheme } from "../../styles/page";
 
 export default function ChampTier({ tier, list, navigation, champions }) {
   return (
-    <View style={{ marginVertical: 25, padding: 10 }}>
-      <Text style={styles.tierTitle}>{tier} tier</Text>
-      <View style={[styles.champ, { width: list.length * 55 + 20 }]}>
+    <View style={pageTheme.page}>
+      <Text style={pageTheme.title}>{tier} tier</Text>
+      <View
+        style={[
+          pageTheme.darkBGMedium,
+          pageTheme.flexWrap,
+          {
+            width: pageTheme.cardFillWidth.width,
+            justifyContent: "flex-start",
+          },
+        ]}
+      >
         {list.map((item, index) => (
           <TouchableOpacity
             onPress={() => {
@@ -33,11 +36,11 @@ export default function ChampTier({ tier, list, navigation, champions }) {
           >
             <View
               style={[
-                styles.avatarBorder,
-                { backgroundColor: getChampBorderColor(item) },
+                pageTheme.darkBGSmall,
+                { backgroundColor: getChampBorderColor(item), margin: 2.5 },
               ]}
             >
-              <Image style={styles.avatar} source={avatars[item]} />
+              <Image style={pageTheme.avatarMed} source={avatars[item]} />
             </View>
           </TouchableOpacity>
         ))}
@@ -45,35 +48,3 @@ export default function ChampTier({ tier, list, navigation, champions }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  tierTitle: {
-    fontSize: 32,
-    fontFamily: "RobotoBold",
-    color: "#ffffffe6",
-  },
-  champ: {
-    marginVertical: 5,
-    marginRight: 20,
-    borderRadius: 2,
-    padding: 10,
-    backgroundColor: "#1B475F",
-    flexDirection: "row",
-    maxWidth: Dimensions.get("window").width - 20,
-    flexWrap: "wrap",
-    justifyContent: "flex-start",
-  },
-  avatarBorder: {
-    width: 50,
-    height: 50,
-    margin: 2.5,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 4,
-  },
-  avatar: {
-    width: 46,
-    height: 46,
-    borderRadius: 4,
-  },
-});
