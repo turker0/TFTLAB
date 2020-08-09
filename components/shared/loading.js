@@ -1,19 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
+import { View, ActivityIndicator } from "react-native";
+import { pageTheme } from "../../styles/page";
 
 export default function Loadin() {
   return (
-    <View style={styles.container}>
+    <View style={[pageTheme.page, pageTheme.centeredFlex]}>
       <ActivityIndicator size="large" color="#88a0a7" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    height: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});

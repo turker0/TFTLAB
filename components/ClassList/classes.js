@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import { Text, View, TouchableOpacity, Image } from "react-native";
 import Classes from "../../assets/classes/classes";
 import getRelatedElement from "../../helpers/getRelatedElement";
+import { pageTheme } from "../../styles/page";
 
 export default function ClassTier({
   tier,
@@ -11,9 +12,18 @@ export default function ClassTier({
   navigation,
 }) {
   return (
-    <View style={{ marginVertical: 25, padding: 10 }}>
-      <Text style={styles.tierTitle}>{tier} tier</Text>
-      <View style={[styles.items, { width: list.length * 55 + 20 }]}>
+    <View style={pageTheme.page}>
+      <Text style={pageTheme.title}>{tier} tier</Text>
+      <View
+        style={[
+          pageTheme.darkBGMedium,
+          pageTheme.flexWrap,
+          {
+            width: pageTheme.cardFillWidth.width,
+            justifyContent: "flex-start",
+          },
+        ]}
+      >
         {list.map((item, index) => (
           <TouchableOpacity
             key={index}
@@ -30,34 +40,13 @@ export default function ClassTier({
               });
             }}
           >
-            <Image style={styles.avatar} source={Classes[item]} />
+            <Image
+              style={[pageTheme.avatarMed, { margin: 2.5 }]}
+              source={Classes[item]}
+            />
           </TouchableOpacity>
         ))}
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  tierTitle: {
-    fontSize: 32,
-    fontFamily: "RobotoBold",
-    color: "#ffffffe6",
-  },
-  items: {
-    marginVertical: 5,
-    marginRight: 20,
-    borderRadius: 2,
-    padding: 10,
-    backgroundColor: "#1B475F",
-    flexDirection: "row",
-    maxWidth: 350,
-    flexWrap: "wrap",
-    justifyContent: "flex-start",
-  },
-  avatar: {
-    width: 46,
-    height: 46,
-    margin: 4.5,
-  },
-});
