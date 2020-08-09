@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { pageTheme } from "../../styles/page";
 
 export default function LineWithOrangeDot({ label, text }) {
@@ -12,3 +12,5 @@ export default function LineWithOrangeDot({ label, text }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({});

@@ -80,17 +80,6 @@ export const pageTheme = StyleSheet.create({
     letterSpacing: 1,
     textTransform: "capitalize",
   },
-  regularText: {
-    fontSize: 20,
-    color: "#B9C6CB",
-    fontFamily: "RobotoRegular",
-    marginTop: 5,
-  },
-  textDetail: {
-    fontSize: 16,
-    color: "#88a0a7",
-    fontFamily: "RobotoMedium",
-  },
   smallText: {
     fontSize: 14,
     color: "#D0D9DC",
@@ -98,7 +87,17 @@ export const pageTheme = StyleSheet.create({
     textTransform: "capitalize",
     textAlign: "center",
   },
-
+  textDetail: {
+    fontSize: 16,
+    color: "#88a0a7",
+    fontFamily: "RobotoMedium",
+  },
+  regularText: {
+    fontSize: 20,
+    color: "#B9C6CB",
+    fontFamily: "RobotoRegular",
+    marginTop: 5,
+  },
   darkBGMedium: {
     backgroundColor: "#1B475F",
     padding: 4,
@@ -153,21 +152,13 @@ export const pageTheme = StyleSheet.create({
     justifyContent: "center",
     marginHorizontal: 3,
   },
-  builderChild: {
-    width: Dimensions.get("window").width / 5 - 10,
-    height: Dimensions.get("window").width / 5 - 10,
+  compComponent: {
+    width: Dimensions.get("window").width / 5 - 15,
+    height: Dimensions.get("window").width / 5 - 15,
     alignItems: "center",
     justifyContent: "center",
     overflow: "hidden",
-    margin: 2.5,
+    margin: 5,
     borderRadius: 4,
-  },
-  builderChildAvatar: {
-    width: Dimensions.get("window").width / 5 - 15,
-    height: Dimensions.get("window").width / 5 - 15,
-    borderRadius: 4,
-  },
-  cardFillWidth: {
-    width: Dimensions.get("window").width - 40,
   },
 });

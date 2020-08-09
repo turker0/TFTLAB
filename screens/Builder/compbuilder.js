@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
+  StyleSheet,
   Text,
   View,
   Image,
@@ -14,9 +15,8 @@ import getChampBorderColor from "../../helpers/getChampBorderColor";
 import getCompTraits from "../../helpers/getCompTraits";
 import origins from "../../assets/origins/origins";
 import classes from "../../assets/classes/classes";
+import { AntDesign } from "@expo/vector-icons";
 import { pageTheme } from "../../styles/page";
-import { Easing } from "react-native-reanimated";
-import { MaterialIcons } from "@expo/vector-icons";
 
 const getChampions = async (setChampions, setIsFetched) => {
   fetch("https://tftlab.herokuapp.com/api/static/champions", {
@@ -38,9 +38,9 @@ const CompBuilder = () => {
   const [isFetched, setIsFetched] = useState(false);
   const [comp, setComp] = useState([]);
   const [traits, setTraits] = useState(0);
-  const [champions, setChampions] = useState(0);
   const [isShrunk, setIsShrunk] = useState(true);
-  const topScrollRef = useRef(null);
+  const scrollRef = useRef(null);
+  const [champions, setChampions] = useState(0);
 
   useEffect(() => {
     if (!isFetched) {
@@ -48,7 +48,27 @@ const CompBuilder = () => {
     }
   });
 
-  const topHeight = new Animated.Value(Dimensions.get("window").height - 200);
+  const headerPadding = new Animated.Value(25);
+
+  const height = new Animated.Value(350);
+
+  const animateChamps = () => {
+    Animated.timing(headerPadding, {
+      toValue: isShrunk ? 0 : 25,
+      duration: 1000,
+      useNativeDriver: false,
+    }).start();
+    Animated.timing(height, {
+      toValue: isShrunk
+        ? Dimensions.get("window").height -
+          (Dimensions.get("window").width / 5 - 10) * 4.4
+        : 90,
+      duration: 1000,
+      useNativeDriver: false,
+    }).start(() => {
+      setIsShrunk(!isShrunk);
+    });
+  };
 
   let compComponent = [];
 
@@ -71,7 +91,7 @@ const CompBuilder = () => {
       >
         <View
           style={[
-            pageTheme.builderChild,
+            styles.compComponent,
             {
               backgroundColor:
                 comp[i] != undefined ? getChampBorderColor(comp[i]) : "#1B475F",
@@ -81,8 +101,8 @@ const CompBuilder = () => {
           <Image
             style={
               comp[i] != undefined
-                ? pageTheme.builderChildAvatar
-                : { width: 18, height: 18 }
+                ? styles.compAvatar
+                : { width: 16, height: 16 }
             }
             source={
               comp[i] != undefined
@@ -96,21 +116,17 @@ const CompBuilder = () => {
   }
 
   return champions != 0 ? (
-    <View style={pageTheme.centeredFlex}>
-      <Animated.View
-        style={{
-          height: topHeight,
-        }}
-      >
-        <ScrollView showsVerticalScrollIndicator={false} ref={topScrollRef}>
-          <View style={pageTheme.page}>
+    <View style={{ justifyContent: "center" }}>
+      <View style={{ height: Dimensions.get("window").height - 100 }}>
+        <ScrollView showsVerticalScrollIndicator={false} ref={scrollRef}>
+          <Animated.View style={{ paddingVertical: headerPadding, flex: 1 }}>
             <Text style={pageTheme.title}>Team Comp Builder</Text>
-            <View style={[pageTheme.flexWrap, pageTheme.centeredFlex]}>
-              {compComponent}
-            </View>
+            <View style={[styles.compWrapper]}>{compComponent}</View>
             {comp.length >= 1 ? (
               <View style={pageTheme.section}>
-                <Text style={[pageTheme.header]}>{comp.length}/10</Text>
+                <Text style={[pageTheme.header, { textAlign: "center" }]}>
+                  {comp.length}/10
+                </Text>
                 <TouchableOpacity
                   onPress={() => {
                     setComp([]);
@@ -119,12 +135,15 @@ const CompBuilder = () => {
                 >
                   <Text
                     style={[
-                      pageTheme.regularText,
-                      pageTheme.darkBGSmall,
+                      styles.traitCount,
                       {
-                        alignSelf: "flex-start",
-                        paddingVertical: 6,
-                        paddingHorizontal: 10,
+                        textAlign: "center",
+                        alignSelf: "center",
+                        color: "#fff",
+                        backgroundColor: "#1B475F",
+                        paddingHorizontal: 20,
+                        paddingVertical: 5,
+                        borderRadius: 4,
                       },
                     ]}
                   >
@@ -139,9 +158,9 @@ const CompBuilder = () => {
               {traits.traits != undefined ? (
                 traits.traits.map((item, index) =>
                   traits.details[index] != 0 ? (
-                    <View key={index} style={pageTheme.fdWrapperAIC}>
+                    <View key={index} style={styles.traitsWrapper}>
                       <Image
-                        style={pageTheme.avatarMed}
+                        style={styles.trait}
                         source={
                           origins[item] != undefined
                             ? origins[item]
@@ -150,33 +169,30 @@ const CompBuilder = () => {
                       />
                       <Text
                         style={[
-                          pageTheme.regularText,
-                          { color: traits.colors[index], marginHorizontal: 10 },
+                          styles.traitCount,
+                          { color: traits.colors[index] },
                         ]}
                       >
-                        x{traits.counts[index]}
+                        ({traits.counts[index]})
                       </Text>
 
-                      <Text style={pageTheme.regularText}>
+                      <Text style={styles.traitDetail}>
                         {traits.details[index]}
                       </Text>
                     </View>
                   ) : null
                 )
               ) : (
-                <Text style={pageTheme.regularText}>No bonus earned yet.</Text>
+                <Text style={styles.traitDetail}>No bonus earned yet.</Text>
               )}
             </View>
-            <View style={pageTheme.section}>
-              <Text style={pageTheme.header}>All Traits</Text>
+            <View style={styles.section}>
+              <Text style={styles.header}>All Traits</Text>
               {traits.traits != undefined ? (
                 traits.traits.map((item, index) => (
-                  <View
-                    key={index}
-                    style={[pageTheme.fdWrapperAIC, pageTheme.flexWrap]}
-                  >
+                  <View key={index} style={styles.traitsWrapper}>
                     <Image
-                      style={pageTheme.avatarSmall}
+                      style={styles.trait}
                       source={
                         origins[item] != undefined
                           ? origins[item]
@@ -185,28 +201,17 @@ const CompBuilder = () => {
                     />
                     <Text
                       style={[
-                        pageTheme.regularText,
-                        {
-                          color: traits.colors[index],
-                          marginHorizontal: 5,
-                        },
-                      ]}
-                    >
-                      x{traits.counts[index]}
-                    </Text>
-                    <Text
-                      style={[
-                        pageTheme.regularText,
+                        styles.traitCount,
                         {
                           color: traits.colors[index],
                           textTransform: "capitalize",
-                          marginHorizontal: 5,
                         },
                       ]}
                     >
-                      {item}:
+                      {traits.counts[index]} {item}:
                     </Text>
-                    <Text style={pageTheme.regularText}>
+
+                    <Text style={styles.traitAllCounts}>
                       {traits.details[index] != 0
                         ? traits.details[index]
                         : "No bonus earned yet."}
@@ -214,58 +219,28 @@ const CompBuilder = () => {
                   </View>
                 ))
               ) : (
-                <Text style={pageTheme.regularText}>
-                  Select champion to build a team comp.
-                </Text>
+                <Text style={styles.traitDetail}>No bonus earned yet.</Text>
               )}
             </View>
-          </View>
+          </Animated.View>
         </ScrollView>
-      </Animated.View>
-      <View style={{ flex: 1, elevation: 5 }}>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          scrollEventThrottle={1}
-          alwaysBounceVertical={false}
-          bounces={false}
-        >
-          <TouchableOpacity
-            onPress={() => {
-              topScrollRef.current?.scrollTo({
-                x: 0,
-                y: isShrunk ? 25 : 0,
-              });
-              Animated.timing(topHeight, {
-                toValue: isShrunk ? 200 : Dimensions.get("window").height - 200,
-                duration: 666,
-                easing: Easing.linear,
-                delay: 0,
-                useNativeDriver: false,
-              }).start(() => {
-                setIsShrunk(!isShrunk);
-              });
-            }}
-            style={{ alignSelf: "center" }}
-          >
-            <MaterialIcons
-              name={!isShrunk ? "expand-more" : "expand-less"}
-              size={54}
-              color="#fff"
-            />
-          </TouchableOpacity>
-          <View
-            style={[
-              pageTheme.flexWrap,
-              pageTheme.centeredFlex,
-              {
-                backgroundColor: pageTheme.darkBGMedium.backgroundColor,
-                borderTopLeftRadius: 18,
-                borderTopRightRadius: 18,
-                paddingVertical: 10,
-                width: Dimensions.get("window").width * 0.95,
-              },
-            ]}
-          >
+      </View>
+      <Animated.View style={{ height: 500 }}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
+          <View style={styles.upDownButton}>
+            <TouchableOpacity
+              onPress={() => {
+                animateChamps();
+              }}
+            >
+              <AntDesign
+                name={isShrunk ? "up" : "down"}
+                size={24}
+                color="#fff"
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.compBuilderWrapper}>
             {champions.map((item, index) => (
               <TouchableOpacity
                 key={index}
@@ -280,17 +255,16 @@ const CompBuilder = () => {
               >
                 <View
                   style={[
-                    pageTheme.darkBGSmall,
+                    styles.avatarWrapper,
                     {
                       backgroundColor: !comp.includes(item.name)
                         ? getChampBorderColor(item.name)
                         : "#123040",
-                      margin: 2.5,
                     },
                   ]}
                 >
                   <ImageBackground
-                    style={pageTheme.avatarMed}
+                    style={styles.avatar}
                     source={avatars[item.name]}
                     imageStyle={{ opacity: comp.includes(item.name) ? 0.5 : 1 }}
                   />
@@ -299,7 +273,7 @@ const CompBuilder = () => {
             ))}
           </View>
         </ScrollView>
-      </View>
+      </Animated.View>
     </View>
   ) : (
     <Loading />
@@ -307,3 +281,116 @@ const CompBuilder = () => {
 };
 
 export default CompBuilder;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "flex-end",
+  },
+  compWrapper: {
+    flex: 1,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  title: {
+    fontSize: 32,
+    fontFamily: "RobotoBold",
+    color: "#E8ECEE",
+    textTransform: "capitalize",
+    margin: 10,
+  },
+  compComponent: {
+    width: Dimensions.get("window").width / 5 - 10,
+    height: Dimensions.get("window").width / 5 - 10,
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden",
+    margin: 5,
+    borderRadius: 4,
+  },
+  compAvatar: {
+    width: Dimensions.get("window").width / 5 - 15,
+    height: Dimensions.get("window").width / 5 - 15,
+    borderRadius: 4,
+  },
+  traitsWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  trait: {
+    width: 32,
+    height: 32,
+  },
+  traitCount: {
+    fontSize: 16,
+    fontFamily: "RobotoBold",
+    textTransform: "capitalize",
+    marginHorizontal: 10,
+  },
+  traitDetail: {
+    fontSize: 14,
+    fontFamily: "RobotoRegular",
+    color: "#B9C7CB",
+    width: Dimensions.get("window").width * 0.75,
+  },
+  traitAllCounts: {
+    fontSize: 20,
+    fontFamily: "RobotoRegular",
+    color: "#B9C7CB",
+    marginHorizontal: 5,
+  },
+  section: {
+    marginVertical: 20,
+    padding: 10,
+  },
+  header: {
+    fontSize: 28,
+    fontFamily: "RobotoBold",
+    color: "#E8ECEE",
+    textTransform: "capitalize",
+    marginVertical: 10,
+  },
+  upDownButton: {
+    position: "absolute",
+    left: (Dimensions.get("window").width - 25) / 2,
+    top: 0,
+    width: 25,
+    height: 25,
+  },
+  filterWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 25,
+  },
+  filterText: {
+    fontSize: 18,
+    fontFamily: "RobotoMedium",
+    color: "red",
+    marginHorizontal: 5,
+  },
+  compBuilderWrapper: {
+    alignSelf: "flex-end",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 5,
+    paddingVertical: 25,
+  },
+  avatarWrapper: {
+    width: 56,
+    height: 56,
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 5,
+    borderRadius: 4,
+  },
+  avatar: {
+    width: 52,
+    height: 52,
+    borderRadius: 4,
+  },
+});
