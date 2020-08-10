@@ -16,13 +16,13 @@ const CompPage = ({ route, navigation }) => {
   const { champions } = route.params;
 
   return (
-    <View style={pageTheme.page}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        scrollEventThrottle={1}
-        alwaysBounceVertical={false}
-        bounces={false}
-      >
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      scrollEventThrottle={1}
+      alwaysBounceVertical={false}
+      bounces={false}
+    >
+      <View style={pageTheme.page}>
         <Text style={pageTheme.title}>{name}</Text>
         <View style={pageTheme.section}>
           <Text style={pageTheme.header}>Champions</Text>
@@ -135,8 +135,8 @@ const CompPage = ({ route, navigation }) => {
             </View>
           ))}
         </View>
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 };
 

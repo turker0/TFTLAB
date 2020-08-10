@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, Animated } from "react-native";
+import { Text, View, Animated, Dimensions } from "react-native";
 import NoteAvatar from "../../components/PatchNotes/noteavatar";
 import Loading from "../../components/shared/loading";
 import { ScrollView } from "react-native-gesture-handler";
@@ -31,13 +31,13 @@ export default function PatchNotes() {
 
   const headerHeight = scrollY.interpolate({
     inputRange: [0, 500],
-    outputRange: [70, 0],
+    outputRange: [80, 0],
     extrapolate: "clamp",
     useNativeDriver: true,
   });
 
   return (
-    <View style={pageTheme.page}>
+    <View>
       {notes != 0 && current != -1 ? (
         <View>
           <Animated.View
@@ -74,14 +74,18 @@ export default function PatchNotes() {
           </Animated.View>
           <Animated.View
             style={{
+              height: Dimensions.get("window").height - 70,
               transform: [{ translateY: headerHeight }],
             }}
           >
-            <Text style={pageTheme.title}>Patch {notes[current].version}</Text>
-            <Text style={[pageTheme.textDetail, { marginBottom: 5 }]}>
-              {notes[current].date}
-            </Text>
-
+            <View style={{ padding: 10 }}>
+              <Text style={pageTheme.title}>
+                Patch {notes[current].version}
+              </Text>
+              <Text style={[pageTheme.textDetail, { marginBottom: 5 }]}>
+                {notes[current].date}
+              </Text>
+            </View>
             <Animated.ScrollView
               showsVerticalScrollIndicator={false}
               scrollEventThrottle={1}
@@ -92,7 +96,7 @@ export default function PatchNotes() {
                 { useNativeDriver: false }
               )}
             >
-              <View>
+              <View style={{ padding: 10 }}>
                 {notes[current].notes.map((item, index) => (
                   <View key={index} style={pageTheme.section}>
                     <Text style={pageTheme.header}>{item.title}</Text>

@@ -8,10 +8,10 @@ import RefactorFileName from "../../helpers/refactorFileName";
 export default function ItemBuilder({ route }) {
   const { items } = route.params;
   return (
-    <View style={pageTheme.page}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={pageTheme.page}>
+        <Text style={pageTheme.title}>Item Builder</Text>
         <View style={pageTheme.section}>
-          <Text style={pageTheme.title}>Item Builder</Text>
           {items.map((item, index) => (
             <View style={pageTheme.section} key={index}>
               <View style={pageTheme.fdWrapper}>
@@ -69,7 +69,7 @@ export default function ItemBuilder({ route }) {
             </View>
           ))}
         </View>
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 }

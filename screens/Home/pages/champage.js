@@ -29,8 +29,10 @@ const ChampPage = ({ route, navigation }) => {
   });
 
   return (
-    <View style={pageTheme.page}>
-      <Animated.View style={[pageTheme.absoWrapper, { height: headerHeight }]}>
+    <View>
+      <Animated.View
+        style={[pageTheme.absoWrapper, { height: headerHeight, padding: 10 }]}
+      >
         <View style={pageTheme.fdWrapper}>
           <View
             style={[
@@ -110,7 +112,7 @@ const ChampPage = ({ route, navigation }) => {
             { useNativeDriver: false }
           )}
         >
-          <View>
+          <View style={{ padding: 10 }}>
             <View style={pageTheme.section}>
               <Text style={pageTheme.header}>Item Build</Text>
               <View style={pageTheme.fdWrapper}>

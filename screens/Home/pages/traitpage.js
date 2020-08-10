@@ -32,8 +32,10 @@ const TraitPage = ({ route, navigation }) => {
   });
 
   return (
-    <View style={pageTheme.page}>
-      <Animated.View style={[pageTheme.absoWrapper, { height: headerHeight }]}>
+    <View style={{ flex: 1 }}>
+      <Animated.View
+        style={[pageTheme.absoWrapper, { height: headerHeight, padding: 10 }]}
+      >
         <Image
           style={pageTheme.avatarBig}
           resizeMode="contain"
@@ -58,6 +60,7 @@ const TraitPage = ({ route, navigation }) => {
           scrollEventThrottle={1}
           alwaysBounceVertical={false}
           bounces={false}
+          style={{ padding: 10 }}
           onScroll={Animated.event(
             [{ nativeEvent: { contentOffset: { y: scrollY } } }],
             { useNativeDriver: false }

@@ -42,12 +42,19 @@ const CompBuilder = () => {
   const [champions, setChampions] = useState(0);
   const [isShrunk, setIsShrunk] = useState(true);
   const topScrollRef = useRef(null);
+  let bababa;
 
   useEffect(() => {
     if (!isFetched) {
       getChampions(setChampions, setIsFetched);
     }
-  });
+    setComp([...comp, bababa]);
+  }, [comp, bababa]);
+
+  const deneme = (item) => {
+    setComp([...comp, item]);
+    setTraits(getCompTraits(comp));
+  };
 
   const topHeight = new Animated.Value(Dimensions.get("window").height - 200);
 
@@ -272,10 +279,7 @@ const CompBuilder = () => {
                 key={index}
                 onPress={() => {
                   comp.length < 10 && !comp.includes(item.name)
-                    ? [
-                        setComp([...comp, item.name]),
-                        setTraits(getCompTraits(comp)),
-                      ]
+                    ? [(bababa = item.name)]
                     : null;
                 }}
               >

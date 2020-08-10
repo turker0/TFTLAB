@@ -106,7 +106,7 @@ export default function DatabaseTopRoute({ navigation }) {
         name="ChampionDB"
         component={ChampionDB}
         options={{
-          tabBarLabel: "Champions",
+          tabBarLabel: "Champs",
         }}
         initialParams={{
           navigation: navigation,

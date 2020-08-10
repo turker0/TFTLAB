@@ -55,7 +55,6 @@ export const pageTheme = StyleSheet.create({
     fontSize: 30,
     fontFamily: "RobotoBold",
     color: "#ffffffe6",
-    textTransform: "capitalize",
     letterSpacing: 2,
     marginTop: 25,
   },
@@ -63,7 +62,7 @@ export const pageTheme = StyleSheet.create({
     fontSize: 28,
     fontFamily: "RobotoMedium",
     color: "#E8ECEE",
-    textTransform: "capitalize",
+
     marginBottom: 15,
   },
   textBig: {
@@ -71,14 +70,12 @@ export const pageTheme = StyleSheet.create({
     color: "#E8ECEE",
     fontFamily: "RobotoRegular",
     letterSpacing: 1,
-    textTransform: "capitalize",
   },
   textMed: {
     fontSize: 22,
     color: "#E8ECEE",
     fontFamily: "RobotoRegular",
     letterSpacing: 1,
-    textTransform: "capitalize",
   },
   regularText: {
     fontSize: 20,
@@ -95,7 +92,6 @@ export const pageTheme = StyleSheet.create({
     fontSize: 14,
     color: "#D0D9DC",
     fontFamily: "RobotoBold",
-    textTransform: "capitalize",
     textAlign: "center",
   },
 
@@ -137,6 +133,10 @@ export const pageTheme = StyleSheet.create({
   avatarVerySmall: {
     width: 22,
     height: 22,
+  },
+  avatar3x: {
+    width: 95,
+    height: 95,
   },
   fdCenter: {
     flexDirection: "row",

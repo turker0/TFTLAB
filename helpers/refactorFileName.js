@@ -4,9 +4,15 @@ const RefactorFileName = (fileName, type) => {
   //CLASSES LOWERCASE
   //ORIGINS LOWERCASE
 
-  return type === "trait"
-    ? fileName.replace(/\s/g, "").toLowerCase()
-    : fileName.replace(/\s/g, "");
+  if (type == "comp") {
+    fileName.map((item) => {
+      return item.replace(/\s/g, "");
+    });
+  } else {
+    return type === "trait"
+      ? fileName.replace(/\s/g, "").toLowerCase()
+      : fileName.replace(/\s/g, "");
+  }
 };
 
 export default RefactorFileName;

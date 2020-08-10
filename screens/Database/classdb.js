@@ -10,8 +10,8 @@ import RefactorFileName from "../../helpers/refactorFileName";
 export default function ItemBuilder({ route }) {
   const { classes } = route.params;
   return (
-    <View style={pageTheme.page}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={pageTheme.page}>
         <Text style={pageTheme.title}>Class Builder</Text>
         {classes.map((item, index) => (
           <View key={index} style={pageTheme.section}>
@@ -72,7 +72,7 @@ export default function ItemBuilder({ route }) {
             </View>
           </View>
         ))}
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 }
