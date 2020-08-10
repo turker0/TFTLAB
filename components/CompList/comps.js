@@ -6,6 +6,7 @@ import avatars from "../../assets/avatars/avatars";
 import getChampBorderColor from "../../helpers/getChampBorderColor";
 import getRelatedElement from "../../helpers/getRelatedElement";
 import { pageTheme } from "../../styles/page";
+import RefactorFileName from "../../helpers/refactorFileName";
 
 const TeamComp = ({ list, navigation, champions }) => {
   return (
@@ -37,14 +38,16 @@ const TeamComp = ({ list, navigation, champions }) => {
                       style={[
                         pageTheme.darkBGSmall,
                         {
-                          backgroundColor: getChampBorderColor(item),
+                          backgroundColor: getChampBorderColor(
+                            RefactorFileName(item)
+                          ),
                           margin: 2.5,
                         },
                       ]}
                     >
                       <Image
                         style={pageTheme.avatarMed}
-                        source={avatars[item]}
+                        source={avatars[RefactorFileName(item)]}
                       />
                     </View>
                   </TouchableOpacity>

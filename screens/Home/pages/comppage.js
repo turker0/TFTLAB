@@ -9,6 +9,7 @@ import getChampionClass from "../../../helpers/getChampionClass";
 import getCompTraits from "../../../helpers/getCompTraits";
 import { ScrollView } from "react-native-gesture-handler";
 import { pageTheme } from "../../../styles/page";
+import RefactorFileName from "../../../helpers/refactorFileName";
 
 const CompPage = ({ route, navigation }) => {
   const { name } = route.params;
@@ -35,16 +36,23 @@ const CompPage = ({ route, navigation }) => {
                   <View
                     style={[
                       pageTheme.champAvatarWrapper,
-                      { backgroundColor: getChampionBorderColor(item) },
+                      {
+                        backgroundColor: getChampionBorderColor(
+                          RefactorFileName(item)
+                        ),
+                      },
                     ]}
                   >
-                    <Image style={pageTheme.avatarBig} source={avatars[item]} />
+                    <Image
+                      style={pageTheme.avatarBig}
+                      source={avatars[RefactorFileName(item)]}
+                    />
                   </View>
                   <View style={[pageTheme.fdWrapper, { marginTop: 5 }]}>
                     <View style={pageTheme.darkBGSmall}>
                       <Image
                         style={pageTheme.avatarVerySmall}
-                        source={origins[getChampOrigin(item)]}
+                        source={origins[getChampOrigin(RefactorFileName(item))]}
                       />
                     </View>
                     {item != "Gangplank" && item != "Irelia" ? (
@@ -53,7 +61,9 @@ const CompPage = ({ route, navigation }) => {
                       >
                         <Image
                           style={pageTheme.avatarVerySmall}
-                          source={classes[getChampionClass(item)]}
+                          source={
+                            classes[getChampionClass(RefactorFileName(item))]
+                          }
                         />
                       </View>
                     ) : (
@@ -66,13 +76,22 @@ const CompPage = ({ route, navigation }) => {
                         >
                           <Image
                             style={pageTheme.avatarVerySmall}
-                            source={classes[getChampionClass(item)[0]]}
+                            source={
+                              classes[
+                                getChampionClass(RefactorFileName(item))[0]
+                              ]
+                            }
                           />
                         </View>
+
                         <View style={pageTheme.darkBGSmall}>
                           <Image
                             style={pageTheme.avatarVerySmall}
-                            source={classes[getChampionClass(item)[1]]}
+                            source={
+                              classes[
+                                getChampionClass(RefactorFileName(item))[1]
+                              ]
+                            }
                           />
                         </View>
                       </View>
@@ -92,7 +111,9 @@ const CompPage = ({ route, navigation }) => {
                   <Image
                     style={pageTheme.avatarMed}
                     source={
-                      origins[item] != undefined ? origins[item] : classes[item]
+                      origins[RefactorFileName(item, "trait")] != undefined
+                        ? origins[RefactorFileName(item, "trait")]
+                        : classes[RefactorFileName(item, "trait")]
                     }
                   />
                   <Text

@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, Image } from "react-native";
 import Classes from "../../assets/classes/classes";
 import getRelatedElement from "../../helpers/getRelatedElement";
 import { pageTheme } from "../../styles/page";
+import RefactorFileName from "../../helpers/refactorFileName";
 
 export default function ClassTier({
   tier,
@@ -42,7 +43,7 @@ export default function ClassTier({
           >
             <Image
               style={[pageTheme.avatarMed, { margin: 2.5 }]}
-              source={Classes[item]}
+              source={Classes[RefactorFileName(item, "trait")]}
             />
           </TouchableOpacity>
         ))}

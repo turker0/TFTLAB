@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, Image } from "react-native";
 import Origins from "../../assets/origins/origins";
 import getRelatedElement from "../../helpers/getRelatedElement";
 import { pageTheme } from "../../styles/page";
+import RefactorFileName from "../../helpers/refactorFileName";
 
 export default function OriginTier({
   tier,
@@ -42,7 +43,7 @@ export default function OriginTier({
           >
             <Image
               style={[pageTheme.avatarMed, { margin: 2.5 }]}
-              source={Origins[item]}
+              source={Origins[RefactorFileName(item, "trait")]}
             />
           </TouchableOpacity>
         ))}

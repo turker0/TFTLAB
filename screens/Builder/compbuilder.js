@@ -17,6 +17,7 @@ import classes from "../../assets/classes/classes";
 import { pageTheme } from "../../styles/page";
 import { Easing } from "react-native-reanimated";
 import { MaterialIcons } from "@expo/vector-icons";
+import RefactorFileName from "../../helpers/refactorFileName";
 
 const getChampions = async (setChampions, setIsFetched) => {
   fetch("https://tftlab.herokuapp.com/api/static/champions", {
@@ -86,7 +87,7 @@ const CompBuilder = () => {
             }
             source={
               comp[i] != undefined
-                ? avatars[comp[i]]
+                ? avatars[RefactorFileName(comp[i])]
                 : require("../../assets/builder/plus.png")
             }
           />
@@ -143,9 +144,9 @@ const CompBuilder = () => {
                       <Image
                         style={pageTheme.avatarMed}
                         source={
-                          origins[item] != undefined
-                            ? origins[item]
-                            : classes[item]
+                          origins[RefactorFileName(item, "trait")] != undefined
+                            ? origins[RefactorFileName(item, "trait")]
+                            : classes[RefactorFileName(item, "trait")]
                         }
                       />
                       <Text
@@ -178,9 +179,9 @@ const CompBuilder = () => {
                     <Image
                       style={pageTheme.avatarSmall}
                       source={
-                        origins[item] != undefined
-                          ? origins[item]
-                          : classes[item]
+                        origins[RefactorFileName(item, "trait")] != undefined
+                          ? origins[RefactorFileName(item, "trait")]
+                          : classes[RefactorFileName(item, "trait")]
                       }
                     />
                     <Text
@@ -291,7 +292,7 @@ const CompBuilder = () => {
                 >
                   <ImageBackground
                     style={pageTheme.avatarMed}
-                    source={avatars[item.name]}
+                    source={avatars[RefactorFileName(item.name)]}
                     imageStyle={{ opacity: comp.includes(item.name) ? 0.5 : 1 }}
                   />
                 </View>

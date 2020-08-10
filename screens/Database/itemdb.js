@@ -3,6 +3,7 @@ import { Text, View, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Items from "../../assets/items/items";
 import { pageTheme } from "../../styles/page";
+import RefactorFileName from "../../helpers/refactorFileName";
 
 export default function ItemBuilder({ route }) {
   const { items } = route.params;
@@ -17,7 +18,7 @@ export default function ItemBuilder({ route }) {
                 <View>
                   <Image
                     style={pageTheme.avatarMed}
-                    source={Items[item.name]}
+                    source={Items[RefactorFileName(item.name)]}
                   />
                   <View style={{ marginTop: 2.5 }}>
                     {item.contribution.map((item2, index2) => (
@@ -38,15 +39,15 @@ export default function ItemBuilder({ route }) {
                   <View style={[pageTheme.fdWrapperAIC, { marginVertical: 5 }]}>
                     <Image
                       style={pageTheme.avatarSmall}
-                      source={Items[item2]}
+                      source={Items[RefactorFileName(item2)]}
                     />
                     <Image
                       style={[pageTheme.avatarSmall, { marginHorizontal: 5 }]}
-                      source={Items[item.second[index2]]}
+                      source={Items[RefactorFileName(item.second[index2])]}
                     />
                     <Image
                       style={pageTheme.avatarSmall}
-                      source={Items[item.third[index2]]}
+                      source={Items[RefactorFileName(item.third[index2])]}
                     />
                     <Text
                       style={[

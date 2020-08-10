@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, Image } from "react-native";
 import Items from "../../assets/items/items";
 import getRelatedElement from "../../helpers/getRelatedElement";
 import { pageTheme } from "../../styles/page";
+import RefactorFileName from "../../helpers/refactorFileName";
 
 export default function ItemTier({ tier, list, items, navigation }) {
   return (
@@ -37,7 +38,7 @@ export default function ItemTier({ tier, list, items, navigation }) {
           >
             <Image
               style={[pageTheme.avatarMed, { margin: 2.5 }]}
-              source={Items[item]}
+              source={Items[RefactorFileName(item)]}
             />
           </TouchableOpacity>
         ))}

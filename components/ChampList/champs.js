@@ -4,6 +4,7 @@ import getChampBorderColor from "../../helpers/getChampBorderColor";
 import getRelatedElement from "../../helpers/getRelatedElement";
 import avatars from "../../assets/avatars/avatars";
 import { pageTheme } from "../../styles/page";
+import RefactorFileName from "../../helpers/refactorFileName";
 
 export default function ChampTier({ tier, list, navigation, champions }) {
   return (
@@ -23,6 +24,7 @@ export default function ChampTier({ tier, list, navigation, champions }) {
           <TouchableOpacity
             onPress={() => {
               let champ = getRelatedElement(item, champions);
+
               navigation.navigate("ChampPage", {
                 name: champ[0].name,
                 item: champ[0].items,
@@ -40,7 +42,10 @@ export default function ChampTier({ tier, list, navigation, champions }) {
                 { backgroundColor: getChampBorderColor(item), margin: 2.5 },
               ]}
             >
-              <Image style={pageTheme.avatarMed} source={avatars[item]} />
+              <Image
+                style={pageTheme.avatarMed}
+                source={avatars[RefactorFileName(item)]}
+              />
             </View>
           </TouchableOpacity>
         ))}

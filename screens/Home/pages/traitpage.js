@@ -12,6 +12,7 @@ import origins from "../../../assets/origins/origins";
 import avatars from "../../../assets/avatars/avatars";
 import getChampBorderColor from "../../../helpers/getChampBorderColor";
 import { pageTheme } from "../../../styles/page";
+import RefactorFileName from "../../../helpers/refactorFileName";
 
 const TraitPage = ({ route, navigation }) => {
   const { name } = route.params;
@@ -36,7 +37,11 @@ const TraitPage = ({ route, navigation }) => {
         <Image
           style={pageTheme.avatarBig}
           resizeMode="contain"
-          source={type == 0 ? classes[name] : origins[name]}
+          source={
+            type == 0
+              ? classes[RefactorFileName(name, "trait")]
+              : origins[RefactorFileName(name, "trait")]
+          }
         />
 
         <Text style={pageTheme.title}>{name}</Text>
@@ -95,12 +100,15 @@ const TraitPage = ({ route, navigation }) => {
                     pageTheme.champAvatarWrapper,
                     {
                       backgroundColor: getChampBorderColor(item, champions),
-                      marginVertical: 5,
+                      margin: 2.5,
                     },
                   ]}
                   key={index}
                 >
-                  <Image style={pageTheme.avatarMed} source={avatars[item]} />
+                  <Image
+                    style={pageTheme.avatarMed}
+                    source={avatars[RefactorFileName(item)]}
+                  />
                 </View>
               ))}
             </View>

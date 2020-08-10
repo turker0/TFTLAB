@@ -7,6 +7,7 @@ import classes from "../../assets/classes/classes";
 import origins from "../../assets/origins/origins";
 import { MaterialIcons } from "@expo/vector-icons";
 import { pageTheme } from "../../styles/page";
+import RefactorFileName from "../../helpers/refactorFileName";
 
 export default function ChampionDB({ route }) {
   const { champions } = route.params;
@@ -33,19 +34,19 @@ export default function ChampionDB({ route }) {
                   </Text>
                   <Image
                     style={pageTheme.avatarBig}
-                    source={avatars[item.name]}
+                    source={avatars[RefactorFileName(item.name)]}
                   />
                   <View style={[pageTheme.fdWrapper, { marginTop: 2.5 }]}>
                     {item.class.map((item, index) => (
                       <Image
                         style={pageTheme.avatarSmall}
-                        source={classes[item]}
+                        source={classes[RefactorFileName(item, "trait")]}
                         key={index}
                       />
                     ))}
                     <Image
                       style={pageTheme.avatarSmall}
-                      source={origins[item.origin]}
+                      source={origins[RefactorFileName(item.origin, "trait")]}
                     />
                   </View>
                   <View style={pageTheme.fdWrapperAIC}>

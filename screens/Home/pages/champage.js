@@ -10,6 +10,7 @@ import getSyndergyChampions from "../../../helpers/getSynergyChampions";
 import getChampBorderColor from "../../../helpers/getChampBorderColor";
 import { pageTheme } from "../../../styles/page";
 import LineWithOrangeDot from "../../../components/shared/linewithorangedot";
+import RefactorFileName from "../../../helpers/refactorFileName";
 
 const ChampPage = ({ route, navigation }) => {
   const { name } = route.params;
@@ -48,7 +49,7 @@ const ChampPage = ({ route, navigation }) => {
             <Image
               style={pageTheme.avatarBig}
               resizeMode="contain"
-              source={avatars[name]}
+              source={avatars[RefactorFileName(name)]}
             />
           </View>
           <View style={pageTheme.traitsWrapper}>
@@ -58,7 +59,7 @@ const ChampPage = ({ route, navigation }) => {
                   <Image
                     style={pageTheme.avatarMed}
                     resizeMode="contain"
-                    source={classes[type[0]]}
+                    source={classes[RefactorFileName(type[0], "trait")]}
                   />
                   <Text style={pageTheme.smallText}>{type[0]}</Text>
                 </View>
@@ -66,7 +67,7 @@ const ChampPage = ({ route, navigation }) => {
                   <Image
                     style={pageTheme.avatarMed}
                     resizeMode="contain"
-                    source={classes[type[1]]}
+                    source={classes[RefactorFileName(type[1], "trait")]}
                   />
                   <Text style={pageTheme.smallText}>{type[1]}</Text>
                 </View>
@@ -76,16 +77,16 @@ const ChampPage = ({ route, navigation }) => {
                 <Image
                   style={pageTheme.avatarMed}
                   resizeMode="contain"
-                  source={classes[type]}
+                  source={classes[RefactorFileName(type[0], "trait")]}
                 />
-                <Text style={pageTheme.smallText}>{type}</Text>
+                <Text style={pageTheme.smallText}>{type[0]}</Text>
               </View>
             )}
             <View style={pageTheme.centeredFlex}>
               <Image
                 style={pageTheme.avatarMed}
                 resizeMode="contain"
-                source={origins[origin]}
+                source={origins[RefactorFileName(origin, "trait")]}
               />
               <Text style={pageTheme.smallText}>{origin}</Text>
             </View>
@@ -117,7 +118,7 @@ const ChampPage = ({ route, navigation }) => {
                   <Image
                     style={pageTheme.avatarMed}
                     resizeMode="contain"
-                    source={items[item[0]]}
+                    source={items[RefactorFileName(item[0])]}
                   />
                 </View>
                 <View
@@ -126,14 +127,14 @@ const ChampPage = ({ route, navigation }) => {
                   <Image
                     style={pageTheme.avatarMed}
                     resizeMode="contain"
-                    source={items[item[1]]}
+                    source={items[RefactorFileName(item[1])]}
                   />
                 </View>
                 <View style={pageTheme.darkBGMedium}>
                   <Image
                     style={pageTheme.avatarMed}
                     resizeMode="contain"
-                    source={items[item[2]]}
+                    source={items[RefactorFileName(item[2])]}
                   />
                 </View>
               </View>
@@ -144,7 +145,7 @@ const ChampPage = ({ route, navigation }) => {
                 <Image
                   style={[pageTheme.avatarMed, { borderRadius: 26 }]}
                   resizeMode="contain"
-                  source={skills[name]}
+                  source={skills[RefactorFileName(name)]}
                 />
                 <View
                   style={{
@@ -187,54 +188,66 @@ const ChampPage = ({ route, navigation }) => {
             </View>
             <View style={pageTheme.section}>
               <Text style={pageTheme.header}>Synergies</Text>
-              {getSyndergyChampions(name).map((item, index) => (
-                <View
-                  style={[pageTheme.fdWrapperAIC, { marginBottom: 15 }]}
-                  key={index}
-                >
-                  {name != "Gangplank" && name != "Irelia" ? (
-                    <Image
-                      style={pageTheme.avatarMed}
-                      resizeMode="contain"
-                      source={index < 1 ? origins[origin] : classes[type]}
-                    />
-                  ) : (
-                    <Image
-                      style={pageTheme.avatarMed}
-                      resizeMode="contain"
-                      source={
-                        index < 1 ? origins[origin] : classes[type[index - 1]]
-                      }
-                    />
-                  )}
-                  <View style={[pageTheme.flexWrap, { marginLeft: 15 }]}>
-                    {item.length > 0 ? (
-                      item.map((item, index) => (
-                        <View
-                          key={index}
-                          style={[
-                            pageTheme.champAvatarWrapper,
-                            {
-                              backgroundColor: getChampBorderColor(item),
-                              margin: 3,
-                            },
-                          ]}
-                        >
-                          <Image
-                            style={pageTheme.avatarMed}
-                            resizeMode="contain"
-                            source={avatars[item]}
-                          />
-                        </View>
-                      ))
+              {getSyndergyChampions(RefactorFileName(name)).map(
+                (item, index) => (
+                  <View
+                    style={[pageTheme.fdWrapperAIC, { marginBottom: 15 }]}
+                    key={index}
+                  >
+                    {name != "Gangplank" && name != "Irelia" ? (
+                      <Image
+                        style={pageTheme.avatarMed}
+                        resizeMode="contain"
+                        source={
+                          index < 1
+                            ? origins[RefactorFileName(origin, "trait")]
+                            : classes[RefactorFileName(type[0], "trait")]
+                        }
+                      />
                     ) : (
-                      <Text style={pageTheme.regularText}>
-                        No champion synergy for {name}
-                      </Text>
+                      <Image
+                        style={pageTheme.avatarMed}
+                        resizeMode="contain"
+                        source={
+                          index < 1
+                            ? origins[RefactorFileName(origin, "trait")]
+                            : classes[
+                                RefactorFileName(type[index - 1], "trait")
+                              ]
+                        }
+                      />
                     )}
+                    <View style={[pageTheme.flexWrap, { marginLeft: 15 }]}>
+                      {item.length > 0 ? (
+                        item.map((item, index) => (
+                          <View
+                            key={index}
+                            style={[
+                              pageTheme.champAvatarWrapper,
+                              {
+                                backgroundColor: getChampBorderColor(
+                                  RefactorFileName(item)
+                                ),
+                                margin: 3,
+                              },
+                            ]}
+                          >
+                            <Image
+                              style={pageTheme.avatarMed}
+                              resizeMode="contain"
+                              source={avatars[RefactorFileName(item)]}
+                            />
+                          </View>
+                        ))
+                      ) : (
+                        <Text style={pageTheme.regularText}>
+                          No champion synergy for {name}
+                        </Text>
+                      )}
+                    </View>
                   </View>
-                </View>
-              ))}
+                )
+              )}
             </View>
           </View>
         </ScrollView>

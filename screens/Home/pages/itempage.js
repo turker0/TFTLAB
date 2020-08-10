@@ -5,6 +5,7 @@ import { Feather } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { pageTheme } from "../../../styles/page";
 import LineWithOrangeDot from "../../../components/shared/linewithorangedot";
+import RefactorFileName from "../../../helpers/refactorFileName";
 
 const ItemPage = ({ route, navigation }) => {
   const { name } = route.params;
@@ -29,7 +30,7 @@ const ItemPage = ({ route, navigation }) => {
         <Image
           style={pageTheme.avatarBig}
           resizeMode="contain"
-          source={items[name]}
+          source={items[RefactorFileName(name)]}
         />
 
         <Text style={pageTheme.title}>{name}</Text>
@@ -78,7 +79,7 @@ const ItemPage = ({ route, navigation }) => {
                     <Image
                       style={pageTheme.avatarMed}
                       resizeMode="contain"
-                      source={items[item]}
+                      source={items[RefactorFileName(item)]}
                     />
                   </View>
                   <Feather name="plus" size={24} color="#E8ECEE" />
@@ -86,7 +87,7 @@ const ItemPage = ({ route, navigation }) => {
                     <Image
                       style={pageTheme.avatarMed}
                       resizeMode="contain"
-                      source={items[second[index]]}
+                      source={items[RefactorFileName(second[index])]}
                     />
                   </View>
                   <MaterialCommunityIcons
@@ -98,7 +99,7 @@ const ItemPage = ({ route, navigation }) => {
                     <Image
                       style={pageTheme.avatarMed}
                       resizeMode="contain"
-                      source={items[third[index]]}
+                      source={items[RefactorFileName(third[index])]}
                     />
                   </View>
                 </View>

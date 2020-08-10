@@ -5,6 +5,7 @@ import Classes from "../../assets/classes/classes";
 import avatars from "../../assets/avatars/avatars";
 import getChampBorderColor from "../../helpers/getChampBorderColor";
 import { pageTheme } from "../../styles/page";
+import RefactorFileName from "../../helpers/refactorFileName";
 
 export default function ItemBuilder({ route }) {
   const { classes } = route.params;
@@ -16,7 +17,10 @@ export default function ItemBuilder({ route }) {
           <View key={index} style={pageTheme.section}>
             <Text style={pageTheme.header}>{item.name}</Text>
             <View style={pageTheme.fdWrapperAIC}>
-              <Image style={pageTheme.avatarMed} source={Classes[item.name]} />
+              <Image
+                style={pageTheme.avatarMed}
+                source={Classes[RefactorFileName(item.name, "trait")]}
+              />
               <View style={[pageTheme.flexWrap, { marginLeft: 5 }]}>
                 {item.units.map((item, index) => (
                   <View
@@ -29,7 +33,10 @@ export default function ItemBuilder({ route }) {
                     ]}
                     key={index}
                   >
-                    <Image style={pageTheme.avatarMed} source={avatars[item]} />
+                    <Image
+                      style={pageTheme.avatarMed}
+                      source={avatars[RefactorFileName(item)]}
+                    />
                   </View>
                 ))}
               </View>

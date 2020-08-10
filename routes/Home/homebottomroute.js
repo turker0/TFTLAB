@@ -42,24 +42,6 @@ export default function HomeRoute() {
         }}
       />
       <Tab.Screen
-        name="PatchNotes"
-        component={PatchNotes}
-        options={{
-          tabBarLabel: "Patch Notes",
-          tabBarIcon: ({ focused }) => (
-            <FontAwesome5
-              name="scroll"
-              size={20}
-              color={
-                focused
-                  ? routeTheme.focusedButton.color
-                  : routeTheme.noFocusedButton.color
-              }
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
         name="CompBuilder"
         component={CompBuilder}
         options={{
@@ -85,6 +67,24 @@ export default function HomeRoute() {
           tabBarIcon: ({ focused }) => (
             <Entypo
               name="database"
+              size={20}
+              color={
+                focused
+                  ? routeTheme.focusedButton.color
+                  : routeTheme.noFocusedButton.color
+              }
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="PatchNotes"
+        component={PatchNotes}
+        options={{
+          tabBarLabel: "Patch Notes",
+          tabBarIcon: ({ focused }) => (
+            <FontAwesome5
+              name="scroll"
               size={20}
               color={
                 focused
