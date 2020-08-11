@@ -19,41 +19,19 @@ import { Easing } from "react-native-reanimated";
 import { MaterialIcons } from "@expo/vector-icons";
 import RefactorFileName from "../../helpers/refactorFileName";
 
-const getChampions = async (setChampions, setIsFetched) => {
-  fetch("https://tftlab.herokuapp.com/api/static/champions", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-      Accept: "application/json, text/plain, */*", // It can be used to overcome cors errors
-    },
-  })
-    .then((res) => res.json())
-    .then((resJson) => {
-      setChampions(resJson);
-    })
-    .catch((error) => console.error(error));
-  setIsFetched(true);
-};
-
-const CompBuilder = () => {
-  const [isFetched, setIsFetched] = useState(false);
+const CompBuilder = ({ route, navigation }) => {
   const [comp, setComp] = useState([]);
   const [traits, setTraits] = useState(0);
-  const [champions, setChampions] = useState(0);
+  const { champions } = route.params;
   const [isShrunk, setIsShrunk] = useState(true);
   const topScrollRef = useRef(null);
-  let bababa;
 
   useEffect(() => {
-    if (!isFetched) {
-      getChampions(setChampions, setIsFetched);
-    }
-    setComp([...comp, bababa]);
-  }, [comp, bababa]);
+    setTraits(getCompTraits(comp));
+  }, [comp]);
 
   const deneme = (item) => {
     setComp([...comp, item]);
-    setTraits(getCompTraits(comp));
   };
 
   const topHeight = new Animated.Value(Dimensions.get("window").height - 200);
@@ -147,27 +125,62 @@ const CompBuilder = () => {
               {traits.traits != undefined ? (
                 traits.traits.map((item, index) =>
                   traits.details[index] != 0 ? (
-                    <View key={index} style={pageTheme.fdWrapperAIC}>
-                      <Image
-                        style={pageTheme.avatarMed}
-                        source={
-                          origins[RefactorFileName(item, "trait")] != undefined
-                            ? origins[RefactorFileName(item, "trait")]
-                            : classes[RefactorFileName(item, "trait")]
-                        }
-                      />
-                      <Text
-                        style={[
-                          pageTheme.regularText,
-                          { color: traits.colors[index], marginHorizontal: 10 },
-                        ]}
+                    <View
+                      key={index}
+                      style={[pageTheme.fdWrapper, { marginVertical: 10 }]}
+                    >
+                      <View
+                        style={{
+                          width: 80,
+                          alignItems: "flex-start",
+                        }}
                       >
-                        x{traits.counts[index]}
-                      </Text>
+                        <Text
+                          numberOfLines={1}
+                          style={[
+                            pageTheme.textDetail,
+                            {
+                              marginTop: 0,
+                              textTransform: "capitalize",
+                              color: pageTheme.regularText.color,
+                            },
+                          ]}
+                        >
+                          {traits.traits[index]}
+                        </Text>
+                        <Image
+                          style={pageTheme.avatarMed}
+                          source={
+                            origins[RefactorFileName(item, "trait")] !=
+                            undefined
+                              ? origins[RefactorFileName(item, "trait")]
+                              : classes[RefactorFileName(item, "trait")]
+                          }
+                        />
+                      </View>
 
-                      <Text style={pageTheme.regularText}>
-                        {traits.details[index]}
-                      </Text>
+                      <View style={[pageTheme.fdWrapperAIC, { flex: 1 }]}>
+                        <Text
+                          style={[
+                            pageTheme.regularText,
+                            {
+                              color: traits.colors[index],
+                              marginTop: 0,
+                              fontFamily: "RobotoBold",
+                            },
+                          ]}
+                        >
+                          {traits.counts[index]}
+                        </Text>
+                        <Text
+                          style={[
+                            pageTheme.regularText,
+                            { marginTop: 0, marginHorizontal: 10, flex: 1 },
+                          ]}
+                        >
+                          {traits.details[index]}
+                        </Text>
+                      </View>
                     </View>
                   ) : null
                 )
@@ -181,44 +194,61 @@ const CompBuilder = () => {
                 traits.traits.map((item, index) => (
                   <View
                     key={index}
-                    style={[pageTheme.fdWrapperAIC, pageTheme.flexWrap]}
+                    style={[pageTheme.fdWrapper, { marginVertical: 10 }]}
                   >
-                    <Image
-                      style={pageTheme.avatarSmall}
-                      source={
-                        origins[RefactorFileName(item, "trait")] != undefined
-                          ? origins[RefactorFileName(item, "trait")]
-                          : classes[RefactorFileName(item, "trait")]
-                      }
-                    />
-                    <Text
-                      style={[
-                        pageTheme.regularText,
-                        {
-                          color: traits.colors[index],
-                          marginHorizontal: 5,
-                        },
-                      ]}
+                    <View
+                      style={{
+                        alignItems: "flex-start",
+                        width: 80,
+                      }}
                     >
-                      x{traits.counts[index]}
-                    </Text>
-                    <Text
-                      style={[
-                        pageTheme.regularText,
-                        {
-                          color: traits.colors[index],
-                          textTransform: "capitalize",
-                          marginHorizontal: 5,
-                        },
-                      ]}
-                    >
-                      {item}:
-                    </Text>
-                    <Text style={pageTheme.regularText}>
-                      {traits.details[index] != 0
-                        ? traits.details[index]
-                        : "No bonus earned yet."}
-                    </Text>
+                      <Text
+                        numberOfLines={1}
+                        style={[
+                          pageTheme.textDetail,
+                          {
+                            marginTop: 0,
+                            textTransform: "capitalize",
+                            color: pageTheme.regularText.color,
+                          },
+                        ]}
+                      >
+                        {item}
+                      </Text>
+                      <Image
+                        style={pageTheme.avatarMed}
+                        source={
+                          origins[RefactorFileName(item, "trait")] != undefined
+                            ? origins[RefactorFileName(item, "trait")]
+                            : classes[RefactorFileName(item, "trait")]
+                        }
+                      />
+                    </View>
+                    <View style={[pageTheme.fdWrapperAIC, { flex: 1 }]}>
+                      <Text
+                        style={[
+                          pageTheme.regularText,
+                          {
+                            color: traits.colors[index],
+                            marginTop: 0,
+                            fontFamily: "RobotoBold",
+                          },
+                        ]}
+                      >
+                        {traits.counts[index]}
+                      </Text>
+                      <Text
+                        style={[
+                          pageTheme.regularText,
+
+                          { marginTop: 0, marginHorizontal: 10, flex: 1 },
+                        ]}
+                      >
+                        {traits.details[index] != 0
+                          ? traits.details[index]
+                          : "No bonus earned yet."}
+                      </Text>
+                    </View>
                   </View>
                 ))
               ) : (
@@ -279,7 +309,7 @@ const CompBuilder = () => {
                 key={index}
                 onPress={() => {
                   comp.length < 10 && !comp.includes(item.name)
-                    ? [(bababa = item.name)]
+                    ? deneme(item.name)
                     : null;
                 }}
               >

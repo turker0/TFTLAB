@@ -1,0 +1,243 @@
+[
+  {
+    "tier": "S",
+    "comps": [
+      {
+        "name": "Mech Sorcerers",
+        "champs": [
+          "Annie",
+          "Cassiopeia",
+          "Rumble",
+          "Fizz",
+          "Viktor",
+          "Soraka",
+          "Ekko",
+          "Gangplank"
+        ]
+      },
+      {
+        "name": "Rebel Blademasters",
+        "champs": [
+          "Shen",
+          "Yasuo",
+          "Zed",
+          "MasterYi",
+          "Fizz",
+          "Irelia",
+          "Riven"
+        ]
+      },
+      {
+        "name": "Star Guardian Sorcerers",
+        "champs": [
+          "JarvanIV",
+          "Zoe",
+          "Ahri",
+          "Neeko",
+          "Syndra",
+          "Soraka",
+          "Janna",
+          "Xerath"
+        ]
+      },
+      {
+        "name": "Astro Snipers",
+        "champs": [
+          "Caitlyn",
+          "Nautilus",
+          "Ashe",
+          "Gnar",
+          "Jhin",
+          "Teemo",
+          "Wukong",
+          "Lulu"
+        ]
+      },
+      {
+        "name": "Hyperroll Blademasters",
+        "champs": [
+          "Fiora",
+          "JarvanIV",
+          "Xayah",
+          "Rakan",
+          "Shen",
+          "MasterYi",
+          "Irelia",
+          "Riven"
+        ]
+      }
+    ]
+  },
+  {
+    "tier": "A",
+    "comps": [
+      {
+        "name": "Battlecast",
+        "champs": [
+          "Illaoi",
+          "Nocturne",
+          "Blitzcrank",
+          "KogMaw",
+          "Cassiopeia",
+          "Ezreal",
+          "Viktor",
+          "Urgot"
+        ]
+      },
+      {
+        "name": "Vanguard Mystics",
+        "champs": [
+          "Mordekaiser",
+          "Nautilus",
+          "Jayce",
+          "Cassiopeia",
+          "Karma",
+          "Soraka",
+          "Wukong",
+          "Lulu"
+        ]
+      },
+      {
+        "name": "Cybernetics",
+        "champs": [
+          "Fiora",
+          "Leona",
+          "Shen",
+          "Vayne",
+          "Vi",
+          "Irelia",
+          "Ekko",
+          "Thresh"
+        ]
+      },
+      {
+        "name": "Protector Mystics",
+        "champs": [
+          "Rakan",
+          "XinZhao",
+          "Ashe",
+          "Cassiopeia",
+          "Karma",
+          "Soraka",
+          "Lulu",
+          "Urgot"
+        ]
+      },
+      {
+        "name": "Rebel Demolitionists",
+        "champs": [
+          "Malphite",
+          "Ziggs",
+          "Blitzcrank",
+          "Yasuo",
+          "Ezreal",
+          "MasterYi",
+          "Jinx",
+          "AurelionSol",
+          "Gangplank"
+        ]
+      }
+    ]
+  },
+  {
+    "tier": "B",
+    "comps": [
+      {
+        "name": "Brawler Blasters",
+        "champs": [
+          "Malphite",
+          "Blitzcrank",
+          "Ezreal",
+          "Vi",
+          "Gnar",
+          "Jinx",
+          "Soraka",
+          "AurelionSol",
+          "Lulu"
+        ]
+      },
+      {
+        "name": "Dark Star Snipers",
+        "champs": [
+          "JarvanIV",
+          "Mordekaiser",
+          "Ashe",
+          "Karma",
+          "Jhin",
+          "Wukong",
+          "Lulu",
+          "Thresh"
+        ]
+      },
+      {
+        "name": "Protector Dark Starts",
+        "champs": [
+          "JarvanIV",
+          "Rakan",
+          "XinZhao",
+          "Neeko",
+          "Ashe",
+          "Karma",
+          "Jhin",
+          "Lulu"
+        ]
+      },
+      {
+        "name": "Mech Infiltrators",
+        "champs": [
+          "Nocturne",
+          "Annie",
+          "Zed",
+          "Rumble",
+          "Shaco",
+          "Fizz",
+          "Viktor"
+        ]
+      },
+      {
+        "name": "Sorcerers",
+        "champs": [
+          "TwistedFate",
+          "Zoe",
+          "Ahri",
+          "Annie",
+          "Syndra",
+          "Riven",
+          "Viktor",
+          "Janna"
+        ]
+      }
+    ]
+  },
+  {
+    "tier": "C",
+    "comps": [
+      {
+        "name": "Hyperroll Sorcerers",
+        "champs": [
+          "Poppy",
+          "TwistedFate",
+          "Zoe",
+          "Ahri",
+          "Syndra",
+          "Wukong",
+          "Viktor",
+          "Xerath"
+        ]
+      },
+      {
+        "name": "Mech Rebels",
+        "champs": [
+          "TwistedFate",
+          "Ziggs",
+          "Annie",
+          "Zed",
+          "Rumble",
+          "Ezreal",
+          "Fizz",
+          "Jinx"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "tier": "S",
+    "classes": ["mystic", "paragon"]
+  },
+  {
+    "tier": "A",
+    "classes": ["blademaster", "sniper", "starship", "vanguard"]
+  },
+  {
+    "tier": "B",
+    "classes": [
+      "blaster",
+      "demolitionist",
+      "manareaver",
+      "mercenary",
+      "protector"
+    ]
+  },
+  {
+    "tier": "C",
+    "classes": ["brawler", "infiltrator", "sorcerer"]
+  }
+]

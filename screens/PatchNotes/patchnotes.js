@@ -4,30 +4,11 @@ import NoteAvatar from "../../components/PatchNotes/noteavatar";
 import Loading from "../../components/shared/loading";
 import { ScrollView } from "react-native-gesture-handler";
 import { pageTheme } from "../../styles/page";
-const getNotes = async (setIsFetched, setNotes, setCurrent) => {
-  fetch("https://tftlab.herokuapp.com/api/dynamic/patchnotes/", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-    },
-  })
-    .then((res) => res.json())
-    .then((resJson) => {
-      setNotes(resJson.reverse());
-      setCurrent(0);
-    })
-    .catch((error) => console.error(error));
-  setIsFetched(true);
-};
 
-export default function PatchNotes() {
-  const [isFetched, setIsFetched] = useState(false);
-  const [notes, setNotes] = useState(0);
-  const [current, setCurrent] = useState(-1);
+export default function PatchNotes({ route, navigation }) {
+  const { notes } = route.params;
+  const [current, setCurrent] = useState(0);
   const scrollY = new Animated.Value(0);
-  useEffect(() => {
-    if (!isFetched) getNotes(setIsFetched, setNotes, setCurrent);
-  });
 
   const headerHeight = scrollY.interpolate({
     inputRange: [0, 500],

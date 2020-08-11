@@ -1,0 +1,899 @@
+[
+  {
+    "name": "BFSword",
+    "desc": "15 Attack damage.",
+    "contribution": ["+15 AD"],
+    "first": [
+      "BFSword",
+      "BFSword",
+      "BFSword",
+      "BFSword",
+      "BFSword",
+      "BFSword",
+      "BFSword",
+      "BFSword",
+      "BFSword"
+    ],
+    "second": [
+      "BFSword",
+      "ChainVest",
+      "GiantsBelt",
+      "NeedlesslyLargeRod",
+      "NegatronCloak",
+      "RecurveBow",
+      "SparringGloves",
+      "Spatula",
+      "TearoftheGoddess"
+    ],
+    "third": [
+      "Deathblade",
+      "GuardianAngel",
+      "ZekesHerald",
+      "HextechGunblade",
+      "Bloodthirster",
+      "GiantSlayer",
+      "InfinityEdge",
+      "BladeoftheRuinedKing",
+      "SpearofShojin"
+    ],
+    "detail": [
+      "Contributing to a kill grants +25 Attack Damage for the remainder of combat. This effect can stack any number of times (starting at 1).",
+      "Wearer revives with 400 HP",
+      "When combat begins, the wearer and all allies within 1 hex in the same row gain +30% Attack Speed for the rest of combat.",
+      "Heal for 45% of all spell damage dealt",
+      "Basic Attacks heal the wearer for 45% of the damage dealt.",
+      "Attacks and spells deal 20% bonus damage as true damage. If enemy max Health is over 1750, deal 80% bonus true damage instead.",
+      "[UNIQUE] The holder gains 100% critical hit chance, and 20% bonus critical strike damage.",
+      "Wearer is also a Blademaster.",
+      "After casting, wearer gains 18% of its max Mana per attack"
+    ]
+  },
+  {
+    "name": "ChainVest",
+    "desc": "25 Armor.",
+    "contribution": ["+25 Armor"],
+    "first": [
+      "ChainVest",
+      "ChainVest",
+      "ChainVest",
+      "ChainVest",
+      "ChainVest",
+      "ChainVest",
+      "ChainVest",
+      "ChainVest",
+      "ChainVest"
+    ],
+    "second": [
+      "BFSword",
+      "ChainVest",
+      "GiantsBelt",
+      "NeedlesslyLargeRod",
+      "NegatronCloak",
+      "RecurveBow",
+      "SparringGloves",
+      "Spatula",
+      "TearoftheGoddess"
+    ],
+    "third": [
+      "GuardianAngel",
+      "BrambleVest",
+      "RedBuff",
+      "LocketoftheIronSolari",
+      "SwordBreaker",
+      "TitansResolve",
+      "ShroudofStillness",
+      "RebelMedal",
+      "FrozenHeart"
+    ],
+    "detail": [
+      "Wearer revives with 400 HP",
+      "Negates bonus damage from incoming critical hits. On being hit by a Basic Attack, deal 100 / 140 / 200 magic damage to all nearby enemies (once every 2.5 second maximum). Scales with wearer’s Star Level.",
+      "Wearer's Basic Attacks burn the target on-hit, dealing 10% of the target's Maximum Health as true damage over 4 seconds and reducing healing by 50% for the duration of the burn.",
+      "Shields allies within two hexes in the same row for 250 / 275 / 350 damage for 8 seconds (scales with wearer’s Star Level)",
+      "25% chance to disarm for 3 seconds",
+      "When the wearer takes damage or inflicts a critical hit, they gain a 2% stacking damage bonus. Stacks up to 50 times, at which point the wearer gains 25 Armor and Magic Resistance, and increases in size.",
+      "When combat begins, shoots a beam straight ahead that delays affected enemies' first spellcast, increasing their max Mana by 40% until they cast.",
+      "Wearer is also a Rebel.",
+      "Adjacent enemies lose 50% Attack Speed. (Stacking increases the radius of this effect, not the amount of the slow)"
+    ]
+  },
+  {
+    "name": "GiantsBelt",
+    "desc": "200 Health.",
+    "contribution": ["+200 HP"],
+    "first": [
+      "GiantsBelt",
+      "GiantsBelt",
+      "GiantsBelt",
+      "GiantsBelt",
+      "GiantsBelt",
+      "GiantsBelt",
+      "GiantsBelt",
+      "GiantsBelt",
+      "GiantsBelt"
+    ],
+    "second": [
+      "BFSword",
+      "ChainVest",
+      "GiantsBelt",
+      "NeedlesslyLargeRod",
+      "NegatronCloak",
+      "RecurveBow",
+      "SparringGloves",
+      "Spatula",
+      "TearoftheGoddess"
+    ],
+    "third": [
+      "ZekesHerald",
+      "RedBuff",
+      "WarmogsArmor",
+      "Morellonomicon",
+      "Zephyr",
+      "ZzRotPortal",
+      "TrapClaw",
+      "ProtectorsChestguard",
+      "Redemption"
+    ],
+    "detail": [
+      "When combat begins, the wearer and all allies within 1 hex in the same row gain +30% Attack Speed for the rest of combat.",
+      "Wearer's Basic Attacks burn the target on-hit, dealing 10% of the target's Maximum Health as true damage over 4 seconds and reducing healing by 50% for the duration of the burn.",
+      "Grants 600 health.",
+      "When the wearer deals damage with their spell, they burn the target, dealing 25% of the target's Maximum Health as true damage over 10 seconds and reducing healing by 50% for the duration of the burn.",
+      "When combat begins, the wearer summons a whirlwind on the opposite side of the arena that removes the closest enemy from combat for 5 seconds.",
+      "When the wearer dies, a Construct with 1500/2250/3000 ★ Health aries to continue the fight.",
+      "Start combat with a spell shield. Stun the champion that breaks it for 4 sec",
+      "Wearer is also a Protector.",
+      "When the wearer dies, allies are healed for 800 Health."
+    ]
+  },
+  {
+    "name": "NeedlesslyLargeRod",
+    "desc": "20 Spell power.",
+    "contribution": ["+20 AP"],
+    "first": [
+      "NeedlesslyLargeRod",
+      "NeedlesslyLargeRod",
+      "NeedlesslyLargeRod",
+      "NeedlesslyLargeRod",
+      "NeedlesslyLargeRod",
+      "NeedlesslyLargeRod",
+      "NeedlesslyLargeRod",
+      "NeedlesslyLargeRod",
+      "NeedlesslyLargeRod"
+    ],
+    "second": [
+      "BFSword",
+      "ChainVest",
+      "GiantsBelt",
+      "NeedlesslyLargeRod",
+      "NegatronCloak",
+      "RecurveBow",
+      "SparringGloves",
+      "Spatula",
+      "TearoftheGoddess"
+    ],
+    "third": [
+      "HextechGunblade",
+      "LocketoftheIronSolari",
+      "Morellonomicon",
+      "RabadonsDeathcap",
+      "IonicSpark",
+      "GuinsoosRageblade",
+      "JeweledGauntlet",
+      "BattlecastPlating",
+      "LudensEcho"
+    ],
+    "detail": [
+      "Heal for 45% of all spell damage dealt",
+      "Shields allies within two hexes in the same row for 250 / 275 / 350 damage for 8 seconds (scales with wearer’s Star Level)",
+      "When the wearer deals damage with their spell, they burn the target, dealing 25% of the target's Maximum Health as true damage over 10 seconds and reducing healing by 50% for the duration of the burn.",
+      "Wearer's Spell Power stat is amplified by 50%",
+      "Enemies within 2 hexes have their Magic Resist reduced by 40% (does not stack). When they cast a spell, they are zapped taking magic damage equal to 225% of their max Mana.",
+      "Basic Attacks grant +5% bonus Attack Speed for the rest of combat. No stacking limit.",
+      "The wearer's spells can critically strike and holder gains +30% Critical Strike Damage.",
+      "Wearer is also a Battlecast",
+      "When the wearer casts their spell, the first target dealt magic damage and up to 3 nearby enemies are dealt an additional 200 magic damage."
+    ]
+  },
+  {
+    "name": "NegatronCloak",
+    "desc": "25 Magic resist.",
+    "contribution": ["+25 MR"],
+    "first": [
+      "NegatronCloak",
+      "NegatronCloak",
+      "NegatronCloak",
+      "NegatronCloak",
+      "NegatronCloak",
+      "NegatronCloak",
+      "NegatronCloak",
+      "NegatronCloak",
+      "NegatronCloak"
+    ],
+    "second": [
+      "BFSword",
+      "ChainVest",
+      "GiantsBelt",
+      "NeedlesslyLargeRod",
+      "NegatronCloak",
+      "RecurveBow",
+      "SparringGloves",
+      "Spatula",
+      "TearoftheGoddess"
+    ],
+    "third": [
+      "Bloodthirster",
+      "SwordBreaker",
+      "Zephyr",
+      "IonicSpark",
+      "DragonsClaw",
+      "RunaansHurricane",
+      "Quicksilver",
+      "CelestialOrb",
+      "ChaliceofPower"
+    ],
+    "detail": [
+      "Basic Attacks heal the wearer for 45% of the damage dealt.",
+      "25% chance to disarm for 3 seconds",
+      "When combat begins, the wearer summons a whirlwind on the opposite side of the arena that removes the closest enemy from combat for 5 seconds.",
+      "Enemies within 2 hexes have their Magic Resist reduced by 40% (does not stack). When they cast a spell, they are zapped taking magic damage equal to 225% of their max Mana.",
+      "Reduces incoming magic damage by 50%",
+      "Basic Attacks fire a bolt at another nearby enemy, dealing 70% of the wearer's Attack Damage and applying on-hit effects.",
+      "[UNIQUE] The wearer is immute to croud control for the first 10 seconds of combat",
+      "The wearer gains the Celestial trait.",
+      "At start of combat, the holder and their left and right neighbors gain 30 AP for 20 seconds."
+    ]
+  },
+  {
+    "name": "RecurveBow",
+    "desc": "20% Attack speed.",
+    "contribution": ["+20% AS"],
+    "first": [
+      "RecurveBow",
+      "RecurveBow",
+      "RecurveBow",
+      "RecurveBow",
+      "RecurveBow",
+      "RecurveBow",
+      "RecurveBow",
+      "RecurveBow",
+      "RecurveBow"
+    ],
+    "second": [
+      "BFSword",
+      "ChainVest",
+      "GiantsBelt",
+      "NeedlesslyLargeRod",
+      "NegatronCloak",
+      "RecurveBow",
+      "SparringGloves",
+      "Spatula",
+      "TearoftheGoddess"
+    ],
+    "third": [
+      "GiantSlayer",
+      "TitansResolve",
+      "ZzRotPortal",
+      "GuinsoosRageblade",
+      "RunaansHurricane",
+      "RapidFirecannon",
+      "LastWhisper",
+      "InfiltratorsTalons",
+      "StatikkShiv"
+    ],
+    "detail": [
+      "Attacks and spells deal 20% bonus damage as true damage. If enemy max Health is over 1750, deal 80% bonus true damage instead.",
+      "When the wearer takes damage or inflicts a critical hit, they gain a 2% stacking damage bonus. Stacks up to 50 times, at which point the wearer gains 25 Armor and Magic Resistance, and increases in size.",
+      "When the wearer dies, a Construct with 1500/2250/3000 ★ Health aries to continue the fight.",
+      "Basic Attacks grant +5% bonus Attack Speed for the rest of combat. No stacking limit.",
+      "Basic Attacks fire a bolt at another nearby enemy, dealing 70% of the wearer's Attack Damage and applying on-hit effects.",
+      "Attack Range is tripled and attacks cannot miss.",
+      "Critical hits reduce the target’s Armor by 75% for 3 seconds. This effect does not stack.",
+      "Wearer is also an Infiltrator.",
+      "Every third Basic Attack from the wearer deals 90 magic damage to 3/4/5 enemies."
+    ]
+  },
+  {
+    "name": "SparringGloves",
+    "desc": "10% Crit and +10% Dodge chance.",
+    "contribution": ["+10% Crit", "+10% Dodge"],
+    "first": [
+      "SparringGloves",
+      "SparringGloves",
+      "SparringGloves",
+      "SparringGloves",
+      "SparringGloves",
+      "SparringGloves",
+      "SparringGloves",
+      "SparringGloves",
+      "SparringGloves"
+    ],
+    "second": [
+      "BFSword",
+      "ChainVest",
+      "GiantsBelt",
+      "NeedlesslyLargeRod",
+      "NegatronCloak",
+      "RecurveBow",
+      "SparringGloves",
+      "Spatula",
+      "TearoftheGoddess"
+    ],
+    "third": [
+      "InfinityEdge",
+      "ShroudofStillness",
+      "TrapClaw",
+      "JeweledGauntlet",
+      "Quicksilver",
+      "LastWhisper",
+      "ThiefsGloves",
+      "DarkStarsHeart",
+      "HandofJustice"
+    ],
+    "detail": [
+      "[UNIQUE] The holder gains 100% critical hit chance, and 20% bonus critical strike damage.",
+      "When combat begins, shoots a beam straight ahead that delays affected enemies' first spellcast, increasing their max Mana by 40% until they cast.",
+      "Start combat with a spell shield. Stun the champion that breaks it for 4 sec",
+      "The wearer's spells can critically strike and holder gains +30% Critical Strike Damage.",
+      "[UNIQUE] The wearer is immute to croud control for the first 10 seconds of combat",
+      "Critical hits reduce the target’s Armor by 75% for 3 seconds. This effect does not stack.",
+      "Each planning phase, fetch two temporary items, quality based upon your player level. [Consumes Three item Slots]",
+      "Wearer is also a Dark Star.",
+      "Each planning phase, gain one: Deal +50% more damage / Basic Attack heal 50 health on Hit"
+    ]
+  },
+  {
+    "name": "Spatula",
+    "desc": "It must do something...",
+    "contribution": [""],
+    "first": [
+      "Spatula",
+      "Spatula",
+      "Spatula",
+      "Spatula",
+      "Spatula",
+      "Spatula",
+      "Spatula",
+      "Spatula",
+      "Spatula"
+    ],
+    "second": [
+      "BFSword",
+      "ChainVest",
+      "GiantsBelt",
+      "NeedlesslyLargeRod",
+      "NegatronCloak",
+      "RecurveBow",
+      "SparringGloves",
+      "Spatula",
+      "TearoftheGoddess"
+    ],
+    "third": [
+      "BladeoftheRuinedKing",
+      "RebelMedal",
+      "ProtectorsChestguard",
+      "BattlecastPlating",
+      "CelestialOrb",
+      "InfiltratorsTalons",
+      "DarkStarsHeart",
+      "ForceofNature",
+      "StarGuardiansCharm"
+    ],
+    "detail": [
+      "Wearer is also a Blademaster.",
+      "Wearer is also a Rebel.",
+      "Wearer is also a Protector.",
+      "Wearer is also a Battlecast",
+      "The wearer gains the Celestial trait.",
+      "Wearer is also an Infiltrator.",
+      "Wearer is also a Dark Star.",
+      "Gain +1 team size.",
+      "Wearer is also a Star Guardian."
+    ]
+  },
+  {
+    "name": "TearoftheGoddess",
+    "desc": "15 Mana.",
+    "contribution": ["+15 Mana"],
+    "first": [
+      "TearoftheGoddess",
+      "TearoftheGoddess",
+      "TearoftheGoddess",
+      "TearoftheGoddess",
+      "TearoftheGoddess",
+      "TearoftheGoddess",
+      "TearoftheGoddess",
+      "TearoftheGoddess",
+      "TearoftheGoddess"
+    ],
+    "second": [
+      "BFSword",
+      "ChainVest",
+      "GiantsBelt",
+      "NeedlesslyLargeRod",
+      "NegatronCloak",
+      "RecurveBow",
+      "SparringGloves",
+      "Spatula",
+      "TearoftheGoddess"
+    ],
+    "third": [
+      "SpearofShojin",
+      "FrozenHeart",
+      "Redemption",
+      "LudensEcho",
+      "ChaliceofPower",
+      "StatikkShiv",
+      "HandofJustice",
+      "StarGuardiansCharm",
+      "BlueBuff"
+    ],
+    "detail": [
+      "After casting, wearer gains 18% of its max Mana per attack",
+      "Adjacent enemies lose 50% Attack Speed. (Stacking increases the radius of this effect, not the amount of the slow)",
+      "When the wearer dies, allies are healed for 800 Health.",
+      "When the wearer casts their spell, the first target dealt magic damage and up to 3 nearby enemies are dealt an additional 200 magic damage.",
+      "At start of combat, the holder and their left and right neighbors gain 30 AP for 20 seconds.",
+      "Every third Basic Attack from the wearer deals 90 magic damage to 3/4/5 enemies.",
+      "Each planning phase, gain one: Deal +50% more damage / Basic Attack heal 50 health on Hit",
+      "Wearer is also a Star Guardian.",
+      "[UNIQUE] After casting a spell, set your mana to 20."
+    ]
+  },
+  {
+    "name": "BattlecastPlating",
+    "desc": "Wearer is also a Battlecast",
+    "contribution": ["+20% AP"],
+    "first": ["Spatula"],
+    "second": ["NeedlesslyLargeRod"],
+    "third": ["BattlecastPlating"],
+    "detail": ["Wearer is also a Battlecast"]
+  },
+  {
+    "name": "BladeoftheRuinedKing",
+    "desc": "Wearer is also a Blademaster",
+    "contribution": ["+15 AD"],
+    "first": ["Spatula"],
+    "second": ["BFSword"],
+    "third": ["BladeoftheRuinedKing"],
+    "detail": ["Wearer is also a Blademaster"]
+  },
+  {
+    "name": "Bloodthirster",
+    "desc": "Basic Attacks heal the wearer for 45% of the damage dealt.",
+    "contribution": ["+15 AD", "+25 MR"],
+    "first": ["BFSword"],
+    "second": ["NegatronCloak"],
+    "third": ["Bloodthirster"],
+    "detail": ["Basic Attacks heal the wearer for 45% of the damage dealt."]
+  },
+  {
+    "name": "BlueBuff",
+    "desc": "[UNIQUE] After casting a spell, set your mana to 20.",
+    "contribution": ["+30 Mana"],
+    "first": ["TearoftheGoddess"],
+    "second": ["TearoftheGoddess"],
+    "third": ["BlueBuff"],
+    "detail": ["[UNIQUE] After casting a spell, set your mana to 20."]
+  },
+  {
+    "name": "BrambleVest",
+    "desc": "Negates bonus damage from incoming critical hits. On being hit by a Basic Attack, deal 100 / 140 / 200 magic damage to all nearby enemies (once every 2.5 second maximum). Scales with wearer’s Star Level.",
+    "contribution": ["+50 Armor"],
+    "first": ["ChainVest"],
+    "second": ["ChainVest"],
+    "third": ["BrambleVest"],
+    "detail": [
+      "Negates bonus damage from incoming critical hits. On being hit by a Basic Attack, deal 100 / 140 / 200 magic damage to all nearby enemies (once every 2.5 second maximum). Scales with wearer’s Star Level."
+    ]
+  },
+  {
+    "name": "CelestialOrb",
+    "desc": "The wearer gains the Celestial trait.",
+    "contribution": ["+25 MR"],
+    "first": ["Spatula"],
+    "second": ["NegatronCloak"],
+    "third": ["CelestialOrb"],
+    "detail": ["The wearer gains the Celestial trait."]
+  },
+  {
+    "name": "ChaliceofPower",
+    "desc": "At start of combat, the holder and their left and right neighbors gain 30 AP for 20 seconds.",
+    "contribution": ["+25 MR", "+15 Mana"],
+    "first": ["NegatronCloak"],
+    "second": ["TearoftheGoddess"],
+    "third": ["ChaliceofPower"],
+    "detail": [
+      "At start of combat, the holder and their left and right neighbors gain 30 AP for 20 seconds."
+    ]
+  },
+  {
+    "name": "DarkStarsHeart",
+    "desc": "Wearer is also a Dark Star.",
+    "contribution": ["+10% Crit", "+10% Dodge"],
+    "first": ["Spatula"],
+    "second": ["SparringGloves"],
+    "third": ["DarkStarsHeart"],
+    "detail": ["Wearer is also a Dark Star."]
+  },
+  {
+    "name": "Deathblade",
+    "desc": "Contributing to a kill grants +25 Attack Damage for the remainder of combat. This effect can stack any number of times (starting at 1).",
+    "contribution": ["+30 AD"],
+    "first": ["BFSword"],
+    "second": ["BFSword"],
+    "third": ["Deathblade"],
+    "detail": [
+      "Contributing to a kill grants +25 Attack Damage for the remainder of combat. This effect can stack any number of times (starting at 1)."
+    ]
+  },
+  {
+    "name": "DragonsClaw",
+    "desc": "Reduces incoming magic damage by 50%",
+    "contribution": ["+50 MR"],
+    "first": ["NegatronCloak"],
+    "second": ["NegatronCloak"],
+    "third": ["DragonsClaw"],
+    "detail": ["Reduces incoming magic damage by 50%"]
+  },
+  {
+    "name": "ForceofNature",
+    "desc": "Gain +1 team size.",
+    "contribution": [""],
+    "first": ["Spatula"],
+    "second": ["Spatula"],
+    "third": ["ForceofNature"],
+    "detail": ["Gain +1 team size."]
+  },
+  {
+    "name": "FrozenHeart",
+    "desc": "Adjacent enemies lose 50% Attack Speed. (Stacking increases the radius of this effect, not the amount of the slow)",
+    "contribution": ["+25 Armor", "+15 Mana"],
+    "first": ["ChainVest"],
+    "second": ["TearoftheGoddess"],
+    "third": ["FrozenHeart"],
+    "detail": [
+      "Adjacent enemies lose 50% Attack Speed. (Stacking increases the radius of this effect, not the amount of the slow)"
+    ]
+  },
+  {
+    "name": "GiantSlayer",
+    "desc": "Attacks and spells deal 20% bonus damage as true damage. If enemy max Health is over 1750, deal 80% bonus true damage instead.",
+    "contribution": ["+15 AD", "+15 AS"],
+    "first": ["BFSword"],
+    "second": ["RecurveBow"],
+    "third": ["GiantSlayer"],
+    "detail": [
+      "Attacks and spells deal 20% bonus damage as true damage. If enemy max Health is over 1750, deal 80% bonus true damage instead."
+    ]
+  },
+  {
+    "name": "GuardianAngel",
+    "desc": "Wearer revives with 400 HP",
+    "contribution": ["+15 AD", "+25 Armor"],
+    "first": ["BFSword"],
+    "second": ["ChainVest"],
+    "third": ["GuardianAngel"],
+    "detail": ["Wearer revives with 400 HP"]
+  },
+  {
+    "name": "GuinsoosRageblade",
+    "desc": "Basic Attacks grant +5% bonus Attack Speed for the rest of combat. No stacking limit.",
+    "contribution": ["+20 Mana", "+15% AS"],
+    "first": ["NeedlesslyLargeRod"],
+    "second": ["RecurveBow"],
+    "third": ["GuinsoosRageblade"],
+    "detail": [
+      "Basic Attacks grant +5% bonus Attack Speed for the rest of combat. No stacking limit."
+    ]
+  },
+  {
+    "name": "HandofJustice",
+    "desc": "Each planning phase, gain one: Deal +50% more damage / Basic Attack heal 50 health on Hit",
+    "contribution": ["+15 Mana", "+10% Crit", "+10 Dodge"],
+    "first": ["TearoftheGoddess"],
+    "second": ["SparringGloves"],
+    "third": ["HandofJustice"],
+    "detail": [
+      "Each planning phase, gain one: Deal +50% more damage / Basic Attack heal 50 health on Hit"
+    ]
+  },
+  {
+    "name": "HextechGunblade",
+    "desc": "Heal for 45% of all spell damage dealt",
+    "contribution": ["+15 AD", "+20% AP"],
+    "first": ["BFSword"],
+    "second": ["NeedlesslyLargeRod"],
+    "third": ["HextechGunblade"],
+    "detail": ["Heal for 45% of all spell damage dealt"]
+  },
+  {
+    "name": "InfiltratorsTalons",
+    "desc": "Wearer is also an Infiltrator.",
+    "contribution": ["+15% AS"],
+    "first": ["Spatula"],
+    "second": ["RecurveBow"],
+    "third": ["InfiltratorsTalons"],
+    "detail": ["Wearer is also an Infiltrator."]
+  },
+  {
+    "name": "InfinityEdge",
+    "desc": "[UNIQUE] The holder gains 100% critical hit chance, and 20% bonus critical strike damage.",
+    "contribution": ["+15 AD", "+20% Crit"],
+    "first": ["BFSword"],
+    "second": ["SparringGloves"],
+    "third": ["InfinityEdge"],
+    "detail": [
+      "[UNIQUE] The holder gains 100% critical hit chance, and 20% bonus critical strike damage."
+    ]
+  },
+  {
+    "name": "IonicSpark",
+    "desc": "Enemies within 2 hexes have their Magic Resist reduced by 40% (does not stack). When they cast a spell, they are zapped taking magic damage equal to 225% of their max Mana.",
+    "contribution": ["+20% AP", "+25 MR"],
+    "first": ["NeedlesslyLargeRod"],
+    "second": ["NegatronCloak"],
+    "third": ["IonicSpark"],
+    "detail": [
+      "Enemies within 2 hexes have their Magic Resist reduced by 40% (does not stack). When they cast a spell, they are zapped taking magic damage equal to 225% of their max Mana."
+    ]
+  },
+  {
+    "name": "JeweledGauntlet",
+    "desc": "The wearer's spells can critically strike and holder gains +30% Critical Strike Damage.",
+    "contribution": ["+20% AP", "+20% Crit"],
+    "first": ["NeedlesslyLargeRod"],
+    "second": ["SparringGloves"],
+    "third": ["JeweledGauntlet"],
+    "detail": [
+      "The wearer's spells can critically strike and holder gains +30% Critical Strike Damage."
+    ]
+  },
+  {
+    "name": "LastWhisper",
+    "desc": "Critical hits reduce the target’s Armor by 75% for 3 seconds. This effect does not stack.",
+    "contribution": ["+15 AS", "+20% Crit"],
+    "first": ["RecurveBow"],
+    "second": ["SparringGloves"],
+    "third": ["LastWhisper"],
+    "detail": [
+      "Critical hits reduce the target’s Armor by 75% for 3 seconds. This effect does not stack."
+    ]
+  },
+  {
+    "name": "LocketoftheIronSolari",
+    "desc": "Shields allies within two hexes in the same row for 250 / 275 / 350 damage for 8 seconds (scales with wearer’s Star Level)",
+    "contribution": ["+20% AP", "+25 Armor"],
+    "first": ["ChainVest"],
+    "second": ["NeedlesslyLargeRod"],
+    "third": ["LocketoftheIronSolari"],
+    "detail": [
+      "Shields allies within two hexes in the same row for 250 / 275 / 350 damage for 8 seconds (scales with wearer’s Star Level)"
+    ]
+  },
+  {
+    "name": "LudensEcho",
+    "desc": "When the wearer casts their spell, the first target dealt magic damage and up to 3 nearby enemies are dealt an additional 200 magic damage.",
+    "contribution": ["+20% AP", "+15 Mana"],
+    "first": ["NeedlesslyLargeRod"],
+    "second": ["TearoftheGoddess"],
+    "third": ["LudensEcho"],
+    "detail": [
+      "When the wearer casts their spell, the first target dealt magic damage and up to 3 nearby enemies are dealt an additional 200 magic damage."
+    ]
+  },
+  {
+    "name": "Morellonomicon",
+    "desc": "When the wearer deals damage with their spell, they burn the target, dealing 25% of the target's Maximum Health as true damage over 10 seconds and reducing healing by 50% for the duration of the burn.",
+    "contribution": ["+20% AP", "200 HP"],
+    "first": ["GiantsBelt"],
+    "second": ["NeedlesslyLargeRod"],
+    "third": ["Morellonomicon"],
+    "detail": [
+      "When the wearer deals damage with their spell, they burn the target, dealing 25% of the target's Maximum Health as true damage over 10 seconds and reducing healing by 50% for the duration of the burn."
+    ]
+  },
+  {
+    "name": "ProtectorsChestguard",
+    "desc": "Wearer is also an Protector.",
+    "contribution": ["+200 HP"],
+    "first": ["Spatula"],
+    "second": ["GiantsBelt"],
+    "third": ["ProtectorsChestguard"],
+    "detail": ["Wearer is also an Protector."]
+  },
+  {
+    "name": "Quicksilver",
+    "desc": "[UNIQUE] The wearer is immute to croud control for the first 10 seconds of combat",
+    "contribution": ["+25 MR", "+20% Dodge"],
+    "first": ["NegatronCloak"],
+    "second": ["SparringGloves"],
+    "third": ["Quicksilver"],
+    "detail": [
+      "[UNIQUE] The wearer is immute to croud control for the first 10 seconds of combat"
+    ]
+  },
+  {
+    "name": "RabadonsDeathcap",
+    "desc": "Wearer's Spell Power stat is amplified by 50%",
+    "contribution": ["+40% AP"],
+    "first": ["NeedlesslyLargeRod"],
+    "second": ["NeedlesslyLargeRod"],
+    "third": ["RabadonsDeathcap"],
+    "detail": ["Wearer's Spell Power stat is amplified by 50%"]
+  },
+  {
+    "name": "RapidFirecannon",
+    "desc": "Attack Range is tripled and attacks cannot miss.",
+    "contribution": ["+30% AS"],
+    "first": ["RecurveBow"],
+    "second": ["RecurveBow"],
+    "third": ["RapidFirecannon"],
+    "detail": ["Attack Range is tripled and attacks cannot miss."]
+  },
+  {
+    "name": "RebelMedal",
+    "desc": "Wearer is also an Rebel.",
+    "contribution": ["+25 Armor"],
+    "first": ["Spatula"],
+    "second": ["ChainVest"],
+    "third": ["RebelMedal"],
+    "detail": ["Wearer is also an Rebel."]
+  },
+  {
+    "name": "RedBuff",
+    "desc": "Wearer's Basic Attacks burn the target on-hit, dealing 10% of the target's Maximum Health as true damage over 4 seconds and reducing healing by 50% for the duration of the burn.",
+    "contribution": ["+200 HP", "+25 Armor"],
+    "first": ["ChainVest"],
+    "second": ["GiantsBelt"],
+    "third": ["RedBuff"],
+    "detail": [
+      "Wearer's Basic Attacks burn the target on-hit, dealing 10% of the target's Maximum Health as true damage over 4 seconds and reducing healing by 50% for the duration of the burn."
+    ]
+  },
+  {
+    "name": "Redemption",
+    "desc": "When the wearer dies, allies are healed for 800 Health.",
+    "contribution": ["+200 HP", "+15 Mana"],
+    "first": ["GiantsBelt"],
+    "second": ["TearoftheGoddess"],
+    "third": ["Redemption"],
+    "detail": ["When the wearer dies, allies are healed for 800 Health."]
+  },
+  {
+    "name": "RunaansHurricane",
+    "desc": "Basic Attacks fire a bolt at another nearby enemy, dealing 70% of the wearer's Attack Damage and applying on-hit effects.",
+    "contribution": ["+25 MR", "+15% AS"],
+    "first": ["NegatronCloak"],
+    "second": ["RecurveBow"],
+    "third": ["RunaansHurricane"],
+    "detail": [
+      "Basic Attacks fire a bolt at another nearby enemy, dealing 70% of the wearer's Attack Damage and applying on-hit effects."
+    ]
+  },
+  {
+    "name": "ShroudofStillness",
+    "desc": "When combat begins, shoots a beam straight ahead that delays affected enemies' first spellcast, increasing their max Mana by 40% until they cast.",
+    "contribution": ["+25 Armor"],
+    "first": ["ChainVest"],
+    "second": ["SparringGloves"],
+    "third": ["ShroudofStillness"],
+    "detail": [
+      "When combat begins, shoots a beam straight ahead that delays affected enemies' first spellcast, increasing their max Mana by 40% until they cast."
+    ]
+  },
+
+  {
+    "name": "SpearofShojin",
+    "desc": "After casting, wearer gains 18% of its max Mana per attack",
+    "contribution": ["+15 AD", "+15 Mana"],
+    "first": ["BFSword"],
+    "second": ["TearoftheGoddess"],
+    "third": ["SpearofShojin"],
+    "detail": ["After casting, wearer gains 18% of its max Mana per attack"]
+  },
+  {
+    "name": "StarGuardiansCharm",
+    "desc": "Wearer is also an Guardian.",
+    "contribution": ["+15 Mana"],
+    "first": ["Spatula"],
+    "second": ["TearoftheGoddess"],
+    "third": ["StarGuardiansCharm"],
+    "detail": ["Wearer is also an Guardian."]
+  },
+  {
+    "name": "StatikkShiv",
+    "desc": "Every third Basic Attack from the wearer deals 90 magic damage to 3/4/5 enemies.",
+    "contribution": ["+15% AS", "+15 Mana"],
+    "first": ["RecurveBow"],
+    "second": ["TearoftheGoddess"],
+    "third": ["StatikkShiv"],
+    "detail": [
+      "Every third Basic Attack from the wearer deals 90 magic damage to 3/4/5 enemies."
+    ]
+  },
+  {
+    "name": "SwordBreaker",
+    "desc": "25% chance to disarm for 3 seconds",
+    "contribution": ["+25 MR", "+25 Armor"],
+    "first": ["ChainVest"],
+    "second": ["NegatronCloak"],
+    "third": ["SwordBreaker"],
+    "detail": ["25% chance to disarm for 3 seconds"]
+  },
+  {
+    "name": "ThiefsGloves",
+    "desc": "Each planning phase, fetch two temporary items, quality based upon your player level. [Consumes Three item Slots]",
+    "contribution": ["+20% Crit", "+20% Dodge"],
+    "first": ["SparringGloves"],
+    "second": ["SparringGloves"],
+    "third": ["ThiefsGloves"],
+    "detail": [
+      "Each planning phase, fetch two temporary items, quality based upon your player level. [Consumes Three item Slots]"
+    ]
+  },
+  {
+    "name": "TitansResolve",
+    "desc": "When the wearer takes damage or inflicts a critical hit, they gain a 2% stacking damage bonus. Stacks up to 50 times, at which point the wearer gains 25 Armor and Magic Resistance, and increases in size.",
+    "contribution": ["+15 AS", "+25 AD"],
+    "first": ["ChainVest"],
+    "second": ["RecurveBow"],
+    "third": ["TitansResolve"],
+    "detail": [
+      "When the wearer takes damage or inflicts a critical hit, they gain a 2% stacking damage bonus. Stacks up to 50 times, at which point the wearer gains 25 Armor and Magic Resistance, and increases in size."
+    ]
+  },
+  {
+    "name": "TrapClaw",
+    "desc": "Start combat with a spell shield. Stun the champion that breaks it for 4 sec",
+    "contribution": ["+200 HP", "+20% Dodge"],
+    "first": ["GiantsBelt"],
+    "second": ["SparringGloves"],
+    "third": ["TrapClaw"],
+    "detail": [
+      "Start combat with a spell shield. Stun the champion that breaks it for 4 sec"
+    ]
+  },
+  {
+    "name": "WarmogsArmor",
+    "desc": "Grants 600 health.",
+    "contribution": ["+400 HP"],
+    "first": ["GiantsBelt"],
+    "second": ["GiantsBelt"],
+    "third": ["WarmogsArmor"],
+    "detail": ["Grants 600 health."]
+  },
+  {
+    "name": "ZekesHerald",
+    "desc": "When combat begins, the wearer and all allies within 1 hex in the same row gain +30% Attack Speed for the rest of combat.",
+    "contribution": ["+15 AD", "+200 HP"],
+    "first": ["BFSword"],
+    "second": ["GiantsBelt"],
+    "third": ["ZekesHerald"],
+    "detail": [
+      "When combat begins, the wearer and all allies within 1 hex in the same row gain +30% Attack Speed for the rest of combat."
+    ]
+  },
+  {
+    "name": "Zephyr",
+    "desc": "When combat begins, the wearer summons a whirlwind on the opposite side of the arena that removes the closest enemy from combat for 5 seconds.",
+    "contribution": ["+25 MR", "+200 HP"],
+    "first": ["GiantsBelt"],
+    "second": ["NegatronCloak"],
+    "third": ["Zephyr"],
+    "detail": [
+      "When combat begins, the wearer summons a whirlwind on the opposite side of the arena that removes the closest enemy from combat for 5 seconds."
+    ]
+  },
+  {
+    "name": "ZzRotPortal",
+    "desc": "When the wearer dies, a Construct with 1500/2250/3000 ★ Health aries to continue the fight.",
+    "contribution": ["+200 HP", "+15% AS"],
+    "first": ["GiantsBelt"],
+    "second": ["RecurveBow"],
+    "third": ["ZzRotPortal"],
+    "detail": [
+      "When the wearer dies, a Construct with 1500/2250/3000 ★ Health aries to continue the fight."
+    ]
+  }
+]

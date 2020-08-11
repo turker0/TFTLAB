@@ -170,4 +170,12 @@ export const pageTheme = StyleSheet.create({
   cardFillWidth: {
     width: Dimensions.get("window").width - 40,
   },
+  logoTitle: {
+    fontSize: 64,
+    fontFamily: "RobotoBold",
+    color: "#D0D9DC",
+    marginLeft: 10,
+    paddingBottom: 10,
+    letterSpacing: 3,
+  },
 });

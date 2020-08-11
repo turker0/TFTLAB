@@ -1,0 +1,22 @@
+[
+  {
+    "tier": "S",
+    "origins": ["astro"]
+  },
+  {
+    "tier": "A",
+    "origins": ["celestial", "chrono", "cybernetic"]
+  },
+  {
+    "tier": "B",
+    "origins": ["battlecast", "darkstar", "rebel", "starguardian"]
+  },
+  {
+    "tier": "C",
+    "origins": ["spacepirate"]
+  },
+  {
+    "tier": "D",
+    "origins": ["mechpilot"]
+  }
+]

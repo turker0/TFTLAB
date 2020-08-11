@@ -12,7 +12,8 @@ import { routeTheme } from "../../styles/route";
 
 const Stack = createStackNavigator();
 
-const ChampRoute = () => {
+const ChampRoute = ({ route, navigation }) => {
+  const { database } = route.params;
   return (
     <Stack.Navigator
       screenOptions={{
@@ -27,6 +28,9 @@ const ChampRoute = () => {
       <Stack.Screen
         name="Home"
         component={Home}
+        initialParams={{
+          database: database,
+        }}
         options={{
           headerShown: false,
         }}

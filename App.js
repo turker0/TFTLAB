@@ -5,6 +5,8 @@ import { useFonts } from "expo-font";
 import { AppLoading } from "expo";
 import HomeBottomRoute from "./routes/Home/homebottomroute";
 import { global } from "./styles/global";
+import Updater from "./screens/Updater/updater";
+import checkIsUpToDate from "./helpers/checkIsUpToDate";
 
 const MyTheme = {
   ...DefaultTheme,
@@ -28,7 +30,9 @@ export default function App() {
   if (!loaded) {
     return <AppLoading />;
   } else {
-    return (
+    return !checkIsUpToDate() ? (
+      <Updater />
+    ) : (
       <NavigationContainer theme={MyTheme}>
         <HomeBottomRoute />
       </NavigationContainer>

@@ -1,0 +1,70 @@
+[
+  {
+    "tier": "S",
+    "items": [
+      "Spatula",
+      "BlueBuff",
+      "ForceofNature",
+      "GiantSlayer",
+      "GuardianAngel",
+      "InfinityEdge",
+      "IonicSpark",
+      "Morellonomicon",
+      "Quicksilver",
+      "ThiefsGloves",
+      "Zephyr"
+    ]
+  },
+  {
+    "tier": "A",
+    "items": [
+      "BFSword",
+      "ChainVest",
+      "BrambleVest",
+      "DragonsClaw",
+      "LastWhisper",
+      "RabadonsDeathcap",
+      "RedBuff",
+      "Redemption",
+      "TitansResolve",
+      "TrapClaw",
+      "WarmogsArmor"
+    ]
+  },
+  {
+    "tier": "B",
+    "items": [
+      "NeedlesslyLargeRod",
+      "NegatronCloak",
+      "RecurveBow",
+      "SparringGloves",
+      "TearoftheGoddess",
+      "Deathblade",
+      "FrozenHeart",
+      "GuinsoosRageblade",
+      "HandofJustice",
+      "JeweledGauntlet",
+      "LudensEcho",
+      "RapidFirecannon",
+      "RunaansHurricane",
+      "ShroudofStillness",
+      "SpearofShojin",
+      "StatikkShiv",
+      "ZzRotPortal"
+    ]
+  },
+  {
+    "tier": "C",
+    "items": [
+      "GiantsBelt",
+      "Bloodthirster",
+      "ChaliceofPower",
+      "LocketoftheIronSolari",
+      "ZekesHerald"
+    ]
+  },
+  {
+    "tier": "C",
+    "items": ["HextechGunblade", "SwordBreaker"]
+  }
+]
