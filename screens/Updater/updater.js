@@ -6,7 +6,7 @@ import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import HomeBottomRoute from "../../routes/Home/homebottomroute";
 import { Easing } from "react-native-reanimated";
 import Loader from "../../components/Updater/loader";
-import storeDb from "../../helpers/storeDb";
+import AsyncStorage from "@react-native-community/async-storage";
 
 const MyTheme = {
   ...DefaultTheme,
@@ -15,6 +15,15 @@ const MyTheme = {
     ...DefaultTheme.colors,
     background: global.theme.backgroundColor,
   },
+};
+
+const writeFile = async (key, value) => {
+  try {
+    const file = JSON.stringify(value);
+    await AsyncStorage.setItem(key, file).then((name) => {});
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 export default function Updater() {
@@ -200,7 +209,7 @@ export default function Updater() {
     database.items != 0 &&
     database.itemList != 0 &&
     database.patchNotes != 0
-      ? storeDb(database)
+      ? writeFile("@database", database)
       : null;
   }, [database]);
 

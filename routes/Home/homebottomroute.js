@@ -10,21 +10,6 @@ import Home from "./homedbroute";
 import Database from "../Database/databasetoproute";
 import { routeTheme } from "../../styles/route";
 
-//import db json files
-//import statics
-import champions from "../../db/static/champions.json";
-import classes from "../../db/static/classes.json";
-import items from "../../db/static/items.json";
-import origins from "../../db/static/origins.json";
-
-//import dynamics
-import champList from "../../db/dynamic/champlist.json";
-import classList from "../../db/dynamic/classlist.json";
-import compList from "../../db/dynamic/complist.json";
-import itemList from "../../db/dynamic/itemlist.json";
-import originList from "../../db/dynamic/originlist.json";
-import patchNotes from "../../db/dynamic/patchnotes.json";
-
 const Tab = createBottomTabNavigator();
 
 export default function HomeRoute({ database }) {
@@ -42,21 +27,7 @@ export default function HomeRoute({ database }) {
         name="Home"
         component={Home}
         initialParams={{
-          database:
-            database != undefined
-              ? database
-              : {
-                  champions: champions,
-                  classes: classes,
-                  items: items,
-                  origins: origins,
-                  champList: champList,
-                  classList: classList,
-                  compList: compList,
-                  itemList: itemList,
-                  originList: originList,
-                  patchNotes: patchNotes,
-                },
+          database: database,
         }}
         options={{
           tabBarLabel: "Home",
@@ -77,7 +48,7 @@ export default function HomeRoute({ database }) {
         name="CompBuilder"
         component={CompBuilder}
         initialParams={{
-          champions: database != undefined ? database.champions : champions,
+          champions: database.champions,
         }}
         options={{
           tabBarLabel: "Comp Builder",
@@ -98,10 +69,10 @@ export default function HomeRoute({ database }) {
         name="Database"
         component={Database}
         initialParams={{
-          champions: database != undefined ? database.champions : champions,
-          clas: database != undefined ? database.classes : classes,
-          items: database != undefined ? database.items : items,
-          origins: database != undefined ? database.origins : origins,
+          champions: database.champions,
+          clas: database.classes,
+          items: database.items,
+          origins: database.origins,
         }}
         options={{
           tabBarLabel: "Database",
@@ -122,7 +93,7 @@ export default function HomeRoute({ database }) {
         name="PatchNotes"
         component={PatchNotes}
         initialParams={{
-          notes: database != undefined ? database.patchNotes : patchNotes,
+          notes: database.patchNotes.reverse(),
         }}
         options={{
           tabBarLabel: "Patch Notes",

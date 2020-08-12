@@ -34,7 +34,7 @@ const CompBuilder = ({ route, navigation }) => {
     setComp([...comp, item]);
   };
 
-  const topHeight = new Animated.Value(Dimensions.get("window").height - 200);
+  const topHeight = new Animated.Value(Dimensions.get("window").height - 170);
 
   let compComponent = [];
 
@@ -95,27 +95,28 @@ const CompBuilder = ({ route, navigation }) => {
               {compComponent}
             </View>
             {comp.length >= 1 ? (
-              <View style={pageTheme.section}>
-                <Text style={[pageTheme.header]}>{comp.length}/10</Text>
+              <View
+                style={[
+                  pageTheme.centeredFlex,
+                  pageTheme.fdWrapperAIC,
+                  { marginTop: 10 },
+                ]}
+              >
+                <Text style={pageTheme.textBig}>{comp.length}/10</Text>
                 <TouchableOpacity
                   onPress={() => {
                     setComp([]);
                     setTraits(0);
                   }}
+                  style={[
+                    pageTheme.darkBGSmall,
+                    {
+                      paddingHorizontal: 5,
+                      marginLeft: 10,
+                    },
+                  ]}
                 >
-                  <Text
-                    style={[
-                      pageTheme.regularText,
-                      pageTheme.darkBGSmall,
-                      {
-                        alignSelf: "flex-start",
-                        paddingVertical: 6,
-                        paddingHorizontal: 10,
-                      },
-                    ]}
-                  >
-                    reset
-                  </Text>
+                  <Text style={pageTheme.textMed}>reset</Text>
                 </TouchableOpacity>
               </View>
             ) : null}
@@ -260,10 +261,10 @@ const CompBuilder = ({ route, navigation }) => {
           </View>
         </ScrollView>
       </Animated.View>
-      <View style={{ flex: 1, elevation: 5 }}>
+      <View style={{ flex: 1, elevation: 5, position: "relative" }}>
         <ScrollView
           showsVerticalScrollIndicator={false}
-          scrollEventThrottle={1}
+          scrollEventThrottle={16}
           alwaysBounceVertical={false}
           bounces={false}
         >
@@ -274,7 +275,7 @@ const CompBuilder = ({ route, navigation }) => {
                 y: isShrunk ? 25 : 0,
               });
               Animated.timing(topHeight, {
-                toValue: isShrunk ? 200 : Dimensions.get("window").height - 200,
+                toValue: isShrunk ? 200 : Dimensions.get("window").height - 170,
                 duration: 666,
                 easing: Easing.linear,
                 delay: 0,
@@ -283,11 +284,16 @@ const CompBuilder = ({ route, navigation }) => {
                 setIsShrunk(!isShrunk);
               });
             }}
-            style={{ alignSelf: "center" }}
+            style={{
+              alignSelf: "center",
+              marginBottom: 0,
+              elevation: 1,
+              backgroundColor: "transparent",
+            }}
           >
             <MaterialIcons
               name={!isShrunk ? "expand-more" : "expand-less"}
-              size={54}
+              size={32}
               color="#fff"
             />
           </TouchableOpacity>
@@ -301,6 +307,8 @@ const CompBuilder = ({ route, navigation }) => {
                 borderTopRightRadius: 18,
                 paddingVertical: 10,
                 width: Dimensions.get("window").width * 0.95,
+                elevation: -1,
+                paddingTop: 5,
               },
             ]}
           >
