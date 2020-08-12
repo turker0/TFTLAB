@@ -10,9 +10,8 @@ import Updater from "./screens/Updater/updater";
 
 const readFile = async (key) => {
   try {
-    const file = await AsyncStorage.getItem(key).then((name) => {
-      return JSON.parse(name);
-    });
+    const jsonValue = await AsyncStorage.getItem(key);
+    return jsonValue != null ? JSON.parse(jsonValue) : null;
   } catch (e) {
     console.log(e);
   }
@@ -21,7 +20,9 @@ const readFile = async (key) => {
 const writeFile = async (key, value) => {
   try {
     const file = JSON.stringify(value);
-    await AsyncStorage.setItem(key, file).then((name) => {});
+    await AsyncStorage.setItem(key, file).then(() => {
+      console.log("saved");
+    });
   } catch (e) {
     console.log(e);
   }
@@ -39,6 +40,7 @@ const App = () => {
 
   const [db, setDb] = useState(0);
   const [isUpToDate, setIsUpToDate] = useState(0);
+  const [lastExecuteDate, setLastExecuteDate] = useState(0);
 
   const currentDate = {
     year: new Date().getFullYear(),
@@ -47,7 +49,14 @@ const App = () => {
   };
 
   useEffect(() => {
-    const lastExecuteDate = readFile("@last");
+    readFile("@last")
+      .then((res) => {
+        setLastExecuteDate(res);
+      })
+      .then((resJson) => {
+        console.log("777", resJson);
+      })
+      .catch((e) => console.log(e));
 
     if (lastExecuteDate != null) {
       fetch("https://tftlab.herokuapp.com/api/dynamic/update", {
@@ -69,6 +78,8 @@ const App = () => {
           );
         })
         .catch((error) => console.error(error));
+
+      console.log("113", isUpToDate);
 
       if (isUpToDate) {
         //LOCALDAN DB YI OKU
