@@ -82,7 +82,7 @@ const App = () => {
               if (tempUp2Date) {
                 //LOCALDAN DB YI OKU
                 //CALISTIR
-                console.log("guncel");
+
                 let tmpDB = readFile("@database");
                 tmpDB.then((el) => {
                   setDb(el);
@@ -91,12 +91,6 @@ const App = () => {
               } else {
                 //GUNCELLE
                 //CALISTIR
-                console.log(
-                  "Guncel degil1",
-                  isUpToDate,
-                  lastExecuteDate,
-                  resJson[0]
-                );
                 setIsUpToDate(false);
                 setIsResolved(true);
               }
@@ -105,7 +99,6 @@ const App = () => {
         } else {
           //GUNCELLE
           //CALISTIR
-          console.log("Guncel degil2");
           setIsUpToDate(false);
         }
         writeFile("@last", currentDate);

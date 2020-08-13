@@ -288,6 +288,7 @@ const CompBuilder = ({ route, navigation }) => {
               alignSelf: "center",
               marginBottom: 0,
               elevation: 1,
+              zIndex: 1,
               backgroundColor: "transparent",
             }}
           >
@@ -308,6 +309,7 @@ const CompBuilder = ({ route, navigation }) => {
                 paddingVertical: 10,
                 width: Dimensions.get("window").width * 0.95,
                 elevation: -1,
+                zIndex: -1,
                 paddingTop: 5,
               },
             ]}

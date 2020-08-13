@@ -4,6 +4,7 @@ export const routeTheme = StyleSheet.create({
   bar: {
     height: 50,
     elevation: 5,
+    zIndex: 5,
     borderTopWidth: 0,
     alignItems: "center",
     justifyContent: "center",

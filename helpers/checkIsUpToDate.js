@@ -6,9 +6,7 @@ import Updater from "../screens/Updater/updater";
 
 const readFile = async (key) => {
   try {
-    const file = await AsyncStorage.getItem(key).then((name) =>
-      console.log(name)
-    );
+    const file = await AsyncStorage.getItem(key).then((name) => {});
     return JSON.parse(file);
   } catch (e) {
     console.log(e);
@@ -18,7 +16,7 @@ const readFile = async (key) => {
 const writeFile = async (key, value) => {
   try {
     const file = JSON.stringify(value);
-    await AsyncStorage.setItem(key, value).then((name) => console.log(name));
+    await AsyncStorage.setItem(key, value).then((name) => {});
   } catch (e) {
     console.log(e);
   }
