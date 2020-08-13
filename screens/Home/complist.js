@@ -10,7 +10,9 @@ export default function CompList({ route }) {
   const { navigation } = route.params;
   const { list } = route.params;
   const { champions } = route.params;
-  return (
+  return navigation != undefined &&
+    list != undefined &&
+    champions != undefined ? (
     <ScrollView showsVerticalScrollIndicator={false}>
       <StatusBar
         backgroundColor={global.statusBar.backgroundColor}
@@ -31,5 +33,5 @@ export default function CompList({ route }) {
         )}
       </View>
     </ScrollView>
-  );
+  ) : null;
 }

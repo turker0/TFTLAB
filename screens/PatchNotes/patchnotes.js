@@ -41,7 +41,7 @@ export default function PatchNotes({ route, navigation }) {
                   { alignItems: "flex-end" },
                 ]}
               >
-                {notes.map((item, index) => (
+                {notes.reverse().map((item, index) => (
                   <NoteAvatar
                     version={item.version}
                     index={index}

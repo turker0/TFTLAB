@@ -8,7 +8,7 @@ export default function ItemList({ route }) {
   const { navigation } = route.params;
   const { list } = route.params;
   const { items } = route.params;
-  return { list } ? (
+  return list ? (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={pageTheme.page}>
         {list != 0 ? (

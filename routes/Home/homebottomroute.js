@@ -93,7 +93,7 @@ export default function HomeRoute({ database }) {
         name="PatchNotes"
         component={PatchNotes}
         initialParams={{
-          notes: database.patchNotes.reverse(),
+          notes: database.patchNotes,
         }}
         options={{
           tabBarLabel: "Patch Notes",
