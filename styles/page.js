@@ -178,4 +178,7 @@ export const pageTheme = StyleSheet.create({
     paddingBottom: 10,
     letterSpacing: 3,
   },
+  splash: {
+    color: "#34B5B0",
+  },
 });

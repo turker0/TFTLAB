@@ -6,39 +6,89 @@ import { pageTheme } from "../../styles/page";
 import RefactorFileName from "../../helpers/refactorFileName";
 import FilterBox from "../../components/Database/filterbox";
 import Tag from "../../components/Database/tag";
+import OtherItems from "../../components/Database/otherItems";
 
 export default function ItemDB({ route }) {
   const contributions = [
     "AD",
     "AP",
+    "AS",
     "Armor",
     "MR",
     "HP",
-    "AS",
+    "Mana",
     "Crit",
     "Dodge",
-    "Mana",
-    "Wearer",
   ];
+  const otherItems = ["Base items", "Combined items", "Traits items"];
   const [filter, setFilter] = useState("");
   const [listData, setListData] = useState(route.params.items);
   const [listFullData, setListFullData] = useState(route.params.items);
-  const [tags, setTags] = useState(costs);
+  const [tags, setTags] = useState([]);
+  const [otherTags, setOtherTags] = useState(0);
   useEffect(() => {
     setListData(
       listFullData.filter((item) => {
-        return item.name.toLowerCase().includes(filter.toLowerCase());
+        return (
+          item.name.toLowerCase().includes(filter.toLowerCase()) &&
+          (tags.length > 0
+            ? item.contribution.length > 1
+              ? tags.includes(item.contribution[0].split(" ")[1]) ||
+                tags.includes(item.contribution[1].split(" ")[1])
+              : tags.includes(item.contribution[0].split(" ")[1])
+            : 1)
+        );
       })
     );
-  }, [filter]);
+  }, [filter, tags]);
+
+  useEffect(() => {
+    setListData(
+      otherTags == 1
+        ? listFullData.filter((item) => {
+            return item.first.length > 1;
+          })
+        : otherTags == 2
+        ? listFullData.filter((item) => {
+            return item.first.length == 1 && item.first[0] !== "Spatula";
+          })
+        : otherTags == 3
+        ? listFullData.filter((item) => {
+            return item.first.length == 1 && item.first[0] == "Spatula";
+          })
+        : listFullData
+    );
+  }, [otherTags]);
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={pageTheme.page}>
         <Text style={pageTheme.title}>Item Builder</Text>
         <FilterBox filter={filter} setFilter={setFilter} type={"item"} />
-        {contributions.map((item, index) => (
-          <Tag tag={item} key={index} tags={tags} setTags={setTags} type={""} />
-        ))}
+        <View style={[pageTheme.fdWrapperAIC, pageTheme.flexWrap]}>
+          {contributions.map((item, index) => (
+            <Tag
+              tag={item}
+              key={index}
+              tags={tags}
+              setTags={setTags}
+              type={""}
+            />
+          ))}
+        </View>
+        <View
+          style={[pageTheme.centeredFlex, pageTheme.fdWrapperAIC, { flex: 1 }]}
+        >
+          {otherItems.map((item, index) => (
+            <OtherItems
+              tag={item}
+              key={index}
+              index={index + 1}
+              otherTags={otherTags}
+              setOtherTags={setOtherTags}
+            />
+          ))}
+        </View>
         <View style={pageTheme.section}>
           {listData.map((item, index) => (
             <View style={pageTheme.section} key={index}>

@@ -21,16 +21,19 @@ export default function Tag({ tag, tags, setTags, type }) {
         pageTheme.fdWrapperAIC,
         {
           paddingHorizontal: 7.5,
+          margin: 2.5,
           backgroundColor:
-            tag == 5
-              ? "#b89d27"
-              : tag == 4
-              ? "#893088"
-              : tag == 3
-              ? "#12407c"
-              : tag == 2
-              ? "#156831"
-              : "#213042",
+            type == "gold"
+              ? tag == 5
+                ? "#b89d27"
+                : tag == 4
+                ? "#893088"
+                : tag == 3
+                ? "#12407c"
+                : tag == 2
+                ? "#156831"
+                : "#213042"
+              : pageTheme.darkBGMedium.backgroundColor,
         },
       ]}
     >

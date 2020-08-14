@@ -18,35 +18,25 @@ export default function ChampionDB({ route }) {
   const [filter, setFilter] = useState("");
   const [listData, setListData] = useState(route.params.champions);
   const [listFullData, setListFullData] = useState(route.params.champions);
-  const [tags, setTags] = useState(costs);
+  const [tags, setTags] = useState([]);
 
   useEffect(() => {
     setListData(
       listFullData.filter((item) => {
         return (
           item.name.toLowerCase().includes(filter.toLowerCase()) &&
-          tags.includes(item.stats.cost)
+          (tags.length > 0 ? tags.includes(item.stats.cost) : 1)
         );
       })
     );
   }, [filter, tags]);
-
-  useEffect(() => {
-    console.log(tags);
-  }, [tags]);
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} scrollEventThrottle={16}>
       <View style={pageTheme.page}>
         <Text style={pageTheme.title}>Champion Database</Text>
         <FilterBox filter={filter} setFilter={setFilter} type={"champion"} />
-        <View
-          style={[
-            pageTheme.fdWrapperAIC,
-            pageTheme.flexWrap,
-            { justifyContent: "space-evenly" },
-          ]}
-        >
+        <View style={[pageTheme.fdWrapperAIC, pageTheme.flexWrap]}>
           {costs.map((item, index) => (
             <Tag
               tag={item}

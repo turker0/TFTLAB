@@ -15,7 +15,14 @@ export default function ClassDB({ route }) {
   useEffect(() => {
     setListData(
       listFullData.filter((item) => {
-        return item.name.toLowerCase().includes(filter.toLowerCase());
+        return (
+          item.name.toLowerCase().includes(filter.toLowerCase()) ||
+          item.units
+            .toLocaleString()
+            .toLowerCase()
+            .split(",")
+            .includes(filter.toLowerCase())
+        );
       })
     );
   }, [filter]);
