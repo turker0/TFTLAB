@@ -1,5 +1,12 @@
 import React from "react";
-import { Text, View, Image, Animated } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  Animated,
+  ImageBackground,
+  Dimensions,
+} from "react-native";
 import avatars from "../../../assets/avatars/avatars";
 import origins from "../../../assets/origins/origins";
 import classes from "../../../assets/classes/classes";
@@ -11,6 +18,9 @@ import getChampBorderColor from "../../../helpers/getChampBorderColor";
 import { pageTheme } from "../../../styles/page";
 import LineWithOrangeDot from "../../../components/shared/linewithorangedot";
 import RefactorFileName from "../../../helpers/refactorFileName";
+import avatarbg from "../../../assets/avatarbg/avatarbg";
+import { LinearGradient } from "expo-linear-gradient";
+import { global } from "../../../styles/global";
 
 const ChampPage = ({ route, navigation }) => {
   const { name } = route.params;
@@ -30,33 +40,70 @@ const ChampPage = ({ route, navigation }) => {
 
   return (
     <View>
-      <Animated.View
-        style={[pageTheme.absoWrapper, { height: headerHeight, padding: 10 }]}
-      >
-        <View style={pageTheme.fdWrapper}>
-          <View
-            style={[
-              pageTheme.champAvatarWrapper,
-              stats.cost === 1
-                ? { backgroundColor: "#213042" }
-                : stats.cost === 2
-                ? { backgroundColor: "#156831" }
-                : stats.cost === 3
-                ? { backgroundColor: "#12407c" }
-                : stats.cost === 4
-                ? { backgroundColor: "#893088" }
-                : { backgroundColor: "#b89d27" },
-            ]}
-          >
-            <Image
-              style={pageTheme.avatarBig}
-              resizeMode="contain"
-              source={avatars[RefactorFileName(name)]}
-            />
-          </View>
-          <View style={pageTheme.traitsWrapper}>
-            {name === "Irelia" || name === "Gangplank" ? (
-              <View style={[pageTheme.fdWrapper, { flex: 2 }]}>
+      <Animated.View style={[pageTheme.absoWrapper, { height: headerHeight }]}>
+        <ImageBackground
+          source={avatarbg[RefactorFileName(name)]}
+          resizeMode="cover"
+          style={{
+            justifyContent: "flex-end",
+            flex: 1,
+            padding: 10,
+            elevation: 5,
+            zIndex: 5,
+          }}
+        >
+          <LinearGradient
+            colors={["transparent", global.theme.backgroundColor]}
+            style={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              top: 0,
+              height: 200,
+            }}
+          />
+          <View style={pageTheme.fdWrapper}>
+            <View
+              style={[
+                pageTheme.champAvatarWrapper,
+                stats.cost === 1
+                  ? { backgroundColor: "#213042" }
+                  : stats.cost === 2
+                  ? { backgroundColor: "#156831" }
+                  : stats.cost === 3
+                  ? { backgroundColor: "#12407c" }
+                  : stats.cost === 4
+                  ? { backgroundColor: "#893088" }
+                  : { backgroundColor: "#b89d27" },
+              ]}
+            >
+              <Image
+                style={pageTheme.avatarBig}
+                resizeMode="contain"
+                source={avatars[RefactorFileName(name)]}
+              />
+            </View>
+            <View style={pageTheme.traitsWrapper}>
+              {name === "Irelia" || name === "Gangplank" ? (
+                <View style={[pageTheme.fdWrapper, { flex: 2 }]}>
+                  <View style={pageTheme.centeredFlex}>
+                    <Image
+                      style={pageTheme.avatarMed}
+                      resizeMode="contain"
+                      source={classes[RefactorFileName(type[0], "trait")]}
+                    />
+                    <Text style={pageTheme.smallText}>{type[0]}</Text>
+                  </View>
+                  <View style={pageTheme.centeredFlex}>
+                    <Image
+                      style={pageTheme.avatarMed}
+                      resizeMode="contain"
+                      source={classes[RefactorFileName(type[1], "trait")]}
+                    />
+                    <Text style={pageTheme.smallText}>{type[1]}</Text>
+                  </View>
+                </View>
+              ) : (
                 <View style={pageTheme.centeredFlex}>
                   <Image
                     style={pageTheme.avatarMed}
@@ -65,36 +112,19 @@ const ChampPage = ({ route, navigation }) => {
                   />
                   <Text style={pageTheme.smallText}>{type[0]}</Text>
                 </View>
-                <View style={pageTheme.centeredFlex}>
-                  <Image
-                    style={pageTheme.avatarMed}
-                    resizeMode="contain"
-                    source={classes[RefactorFileName(type[1], "trait")]}
-                  />
-                  <Text style={pageTheme.smallText}>{type[1]}</Text>
-                </View>
-              </View>
-            ) : (
+              )}
               <View style={pageTheme.centeredFlex}>
                 <Image
                   style={pageTheme.avatarMed}
                   resizeMode="contain"
-                  source={classes[RefactorFileName(type[0], "trait")]}
+                  source={origins[RefactorFileName(origin, "trait")]}
                 />
-                <Text style={pageTheme.smallText}>{type[0]}</Text>
+                <Text style={pageTheme.smallText}>{origin}</Text>
               </View>
-            )}
-            <View style={pageTheme.centeredFlex}>
-              <Image
-                style={pageTheme.avatarMed}
-                resizeMode="contain"
-                source={origins[RefactorFileName(origin, "trait")]}
-              />
-              <Text style={pageTheme.smallText}>{origin}</Text>
             </View>
           </View>
-        </View>
-        <Text style={pageTheme.title}>{name}</Text>
+          <Text style={pageTheme.title}>{name}</Text>
+        </ImageBackground>
       </Animated.View>
       <Animated.View
         style={{

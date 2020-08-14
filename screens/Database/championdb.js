@@ -47,6 +47,7 @@ export default function ChampionDB({ route }) {
             />
           ))}
         </View>
+
         {listData.map((item, index) => (
           <View key={index} style={pageTheme.section}>
             <Text

@@ -12,6 +12,7 @@ export default function ClassDB({ route }) {
   const [filter, setFilter] = useState("");
   const [listData, setListData] = useState(route.params.classes);
   const [listFullData, setListFullData] = useState(route.params.classes);
+
   useEffect(() => {
     setListData(
       listFullData.filter((item) => {

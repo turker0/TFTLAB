@@ -5,6 +5,7 @@ import ItemDB from "../../screens/Database/itemdb";
 import ClassDB from "../../screens/Database/classdb";
 import OriginDB from "../../screens/Database/origindb";
 import { routeTheme } from "../../styles/route";
+import Rolling from "../../screens/Database/rolling";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -70,6 +71,13 @@ export default function DatabaseTopRoute({ navigation, route }) {
         initialParams={{
           navigation: navigation,
           origins: origins,
+        }}
+      />
+      <Tab.Screen
+        name="Rolling"
+        component={Rolling}
+        options={{
+          tabBarLabel: "Rolling",
         }}
       />
     </Tab.Navigator>

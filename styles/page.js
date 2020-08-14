@@ -12,7 +12,6 @@ export const pageTheme = StyleSheet.create({
     left: 0,
     right: 0,
     overflow: "hidden",
-    paddingHorizontal: 10,
     justifyContent: "flex-end",
   },
   fdWrapper: {
