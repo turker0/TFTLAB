@@ -15,10 +15,18 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kidnapp.tftlab",
+      "buildNumber": "1.0.0"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "primaryColor": "#123040",
+    "android": {
+      "package": "com.kidnapp.tftlab",
+      "versionCode": 1,
+      "permissions": []
     }
   }
 }

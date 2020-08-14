@@ -14,7 +14,7 @@ export default function DatabaseTopRoute({ navigation, route }) {
   return (
     <Tab.Navigator
       backBehavior="none"
-      initialRouteName="CompList"
+      initialRouteName="ChampionDB"
       swipeEnabled={true}
       tabBarOptions={{
         activeTintColor: routeTheme.focusedButton.color,

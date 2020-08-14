@@ -8,7 +8,7 @@ export default function ChampList({ route }) {
   const { navigation } = route.params;
   const { list } = route.params;
   const { champions } = route.params;
-  return list ? (
+  return list !== undefined ? (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={pageTheme.page}>
         {list != 0 && champions != 0 ? (

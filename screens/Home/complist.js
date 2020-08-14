@@ -11,7 +11,7 @@ export default function CompList({ route }) {
   const { list } = route.params;
   const { champions } = route.params;
   return navigation != undefined &&
-    list != undefined &&
+    list !== undefined &&
     champions != undefined ? (
     <ScrollView showsVerticalScrollIndicator={false}>
       <StatusBar

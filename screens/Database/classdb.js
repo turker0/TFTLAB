@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Classes from "../../assets/classes/classes";
@@ -6,14 +6,25 @@ import avatars from "../../assets/avatars/avatars";
 import getChampBorderColor from "../../helpers/getChampBorderColor";
 import { pageTheme } from "../../styles/page";
 import RefactorFileName from "../../helpers/refactorFileName";
+import FilterBox from "../../components/Database/filterbox";
 
-export default function ItemBuilder({ route }) {
-  const { classes } = route.params;
+export default function ClassDB({ route }) {
+  const [filter, setFilter] = useState("");
+  const [listData, setListData] = useState(route.params.classes);
+  const [listFullData, setListFullData] = useState(route.params.classes);
+  useEffect(() => {
+    setListData(
+      listFullData.filter((item) => {
+        return item.name.toLowerCase().includes(filter.toLowerCase());
+      })
+    );
+  }, [filter]);
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={pageTheme.page}>
         <Text style={pageTheme.title}>Class Builder</Text>
-        {classes.map((item, index) => (
+        <FilterBox filter={filter} setFilter={setFilter} type={"class"} />
+        {listData.map((item, index) => (
           <View key={index} style={pageTheme.section}>
             <Text style={pageTheme.header}>{item.name}</Text>
             <View style={pageTheme.fdWrapperAIC}>

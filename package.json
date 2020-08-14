@@ -26,7 +26,8 @@
     "react-native-screens": "~2.9.0",
     "react-native-tab-view": "^2.15.0",
     "react-native-walkthrough-tooltip": "^1.1.9",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "expo-asset": "~8.1.7"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

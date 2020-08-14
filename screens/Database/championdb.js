@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import avatars from "../../assets/avatars/avatars";
@@ -10,14 +10,54 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { pageTheme } from "../../styles/page";
 import RefactorFileName from "../../helpers/refactorFileName";
 import getChampBorderColor from "../../helpers/getChampBorderColor";
+import FilterBox from "../../components/Database/filterbox";
+import Tag from "../../components/Database/tag";
 
 export default function ChampionDB({ route }) {
-  const { champions } = route.params;
+  const costs = [1, 2, 3, 4, 5];
+  const [filter, setFilter] = useState("");
+  const [listData, setListData] = useState(route.params.champions);
+  const [listFullData, setListFullData] = useState(route.params.champions);
+  const [tags, setTags] = useState(costs);
+
+  useEffect(() => {
+    setListData(
+      listFullData.filter((item) => {
+        return (
+          item.name.toLowerCase().includes(filter.toLowerCase()) &&
+          tags.includes(item.stats.cost)
+        );
+      })
+    );
+  }, [filter, tags]);
+
+  useEffect(() => {
+    console.log(tags);
+  }, [tags]);
+
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView showsVerticalScrollIndicator={false} scrollEventThrottle={16}>
       <View style={pageTheme.page}>
         <Text style={pageTheme.title}>Champion Database</Text>
-        {champions.map((item, index) => (
+        <FilterBox filter={filter} setFilter={setFilter} type={"champion"} />
+        <View
+          style={[
+            pageTheme.fdWrapperAIC,
+            pageTheme.flexWrap,
+            { justifyContent: "space-evenly" },
+          ]}
+        >
+          {costs.map((item, index) => (
+            <Tag
+              tag={item}
+              key={index}
+              tags={tags}
+              setTags={setTags}
+              type={"gold"}
+            />
+          ))}
+        </View>
+        {listData.map((item, index) => (
           <View key={index} style={pageTheme.section}>
             <Text
               style={[
@@ -48,14 +88,14 @@ export default function ChampionDB({ route }) {
                   />
                 </View>
                 <View style={[pageTheme.fdWrapper, { marginTop: 2.5 }]}>
-                  {item.items.map((item, index) => (
+                  {item.items.map((item, index2) => (
                     <Image
                       style={[
                         pageTheme.avatarSmall,
-                        { marginHorizontal: index == 1 ? 2.5 : 0 },
+                        { marginHorizontal: index2 == 1 ? 2.5 : 0 },
                       ]}
                       source={Items[RefactorFileName(item)]}
-                      key={index}
+                      key={index2}
                     />
                   ))}
                 </View>
@@ -64,14 +104,14 @@ export default function ChampionDB({ route }) {
                     style={pageTheme.avatarSmall}
                     source={origins[RefactorFileName(item.origin, "trait")]}
                   />
-                  {item.class.map((item, index) => (
+                  {item.class.map((item, index3) => (
                     <Image
                       style={[
                         pageTheme.avatarSmall,
-                        { marginHorizontal: index == 0 ? 2.5 : 0 },
+                        { marginHorizontal: index3 == 0 ? 2.5 : 0 },
                       ]}
                       source={classes[RefactorFileName(item, "trait")]}
-                      key={index}
+                      key={index3}
                     />
                   ))}
                 </View>
@@ -137,6 +177,7 @@ export default function ChampionDB({ route }) {
                 </View>
                 {item.skill.desc.map((item2, index2) => (
                   <Text
+                    key={index2}
                     style={[
                       pageTheme.darkBGMedium,
                       pageTheme.textDetail,
@@ -146,7 +187,6 @@ export default function ChampionDB({ route }) {
                         color: pageTheme.regularText.color,
                       },
                     ]}
-                    key={index2}
                   >
                     {item2}
                   </Text>
