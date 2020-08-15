@@ -84,7 +84,11 @@ export default function PatchNotes({ route, navigation }) {
                     {item.descs.map((item, index) => (
                       <View key={index}>
                         {item.title != "" ? (
-                          <Text style={pageTheme.textMed}>{item.title}</Text>
+                          <Text
+                            style={[pageTheme.textMed, { marginVertical: 5 }]}
+                          >
+                            {item.title}
+                          </Text>
                         ) : null}
 
                         {item.detail != "" ? (

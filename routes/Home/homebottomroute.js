@@ -16,6 +16,7 @@ export default function HomeRoute({ database }) {
   return (
     <Tab.Navigator
       initialRouteName="Home"
+      lazy={false}
       tabBarOptions={{
         showLabel: false,
         activeBackgroundColor: routeTheme.barBG.backgroundColor,

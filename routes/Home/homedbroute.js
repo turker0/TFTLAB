@@ -14,6 +14,7 @@ const Stack = createStackNavigator();
 
 const ChampRoute = ({ route, navigation }) => {
   const { database } = route.params;
+
   return (
     <Stack.Navigator
       screenOptions={{

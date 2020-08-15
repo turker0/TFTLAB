@@ -62,6 +62,7 @@ const TeamComp = ({ list, navigation, champions }) => {
                   champions: item.champs,
                 });
               }}
+              activeOpacity={0.8}
             >
               <View style={[pageTheme.flexWrap, { width: 252 }]}>
                 {getCompTraits(item.champs).traits.map((item2, index) =>

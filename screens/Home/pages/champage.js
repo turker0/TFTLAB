@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Text,
-  View,
-  Image,
-  Animated,
-  ImageBackground,
-  Dimensions,
-} from "react-native";
+import { Text, View, Image, Animated, ImageBackground } from "react-native";
 import avatars from "../../../assets/avatars/avatars";
 import origins from "../../../assets/origins/origins";
 import classes from "../../../assets/classes/classes";
@@ -138,7 +131,13 @@ const ChampPage = ({ route, navigation }) => {
           alwaysBounceVertical={false}
           bounces={false}
           onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+            [
+              {
+                nativeEvent: {
+                  contentOffset: { y: scrollY },
+                },
+              },
+            ],
             { useNativeDriver: false }
           )}
         >

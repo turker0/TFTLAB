@@ -28,6 +28,8 @@ export default function Rolling() {
                 margin: 2.5,
                 paddingHorizontal: 10,
                 paddingVertical: 10,
+                borderBottomWidth: 3,
+                borderBottomColor: pageTheme.pointer.color,
               },
             ]}
           >

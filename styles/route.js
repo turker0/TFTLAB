@@ -12,6 +12,8 @@ export const routeTheme = StyleSheet.create({
   },
   barBG: {
     backgroundColor: "#102531",
+    elevation: 5,
+    zIndex: 5,
   },
   focusedButton: {
     color: "#fff",
