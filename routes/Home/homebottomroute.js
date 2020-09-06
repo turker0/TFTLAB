@@ -70,7 +70,9 @@ export default function HomeRoute({ database }) {
         name="Database"
         component={Database}
         initialParams={{
-          champions: database.champions,
+          champions: database.champions.sort((first, second) => {
+            return first.name.localeCompare(second.name);
+          }),
           clas: database.classes,
           items: database.items,
           origins: database.origins,
@@ -94,7 +96,9 @@ export default function HomeRoute({ database }) {
         name="PatchNotes"
         component={PatchNotes}
         initialParams={{
-          notes: database.patchNotes,
+          notes: database.patchNotes.sort((first, second) => {
+            return second.version.localeCompare(first.version);
+          }),
         }}
         options={{
           tabBarLabel: "Patch Notes",

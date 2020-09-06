@@ -32,7 +32,15 @@ export default function HomeTopRoute({ navigation, database }) {
         component={CompList}
         initialParams={{
           navigation: navigation,
-          list: database.compList,
+          list: database.compList.sort((first, second) => {
+            if (first.tier[0] === "S") {
+              return -1;
+            } else if (second.tier[0] === "S") {
+              return 1;
+            } else {
+              return first.tier.localeCompare(second.tier);
+            }
+          }),
           champions: database.champions,
         }}
       />
@@ -41,7 +49,15 @@ export default function HomeTopRoute({ navigation, database }) {
         component={ChampList}
         initialParams={{
           navigation: navigation,
-          list: database.champList,
+          list: database.champList.sort((first, second) => {
+            if (first.tier[0] === "S") {
+              return -1;
+            } else if (second.tier[0] === "S") {
+              return 1;
+            } else {
+              return first.tier.localeCompare(second.tier);
+            }
+          }),
           champions: database.champions,
         }}
       />
@@ -50,7 +66,15 @@ export default function HomeTopRoute({ navigation, database }) {
         component={ItemList}
         initialParams={{
           navigation: navigation,
-          list: database.itemList,
+          list: database.itemList.sort((first, second) => {
+            if (first.tier[0] === "S") {
+              return -1;
+            } else if (second.tier[0] === "S") {
+              return 1;
+            } else {
+              return first.tier.localeCompare(second.tier);
+            }
+          }),
           items: database.items,
         }}
       />
@@ -59,7 +83,15 @@ export default function HomeTopRoute({ navigation, database }) {
         component={ClassList}
         initialParams={{
           navigation: navigation,
-          list: database.classList,
+          list: database.classList.sort((first, second) => {
+            if (first.tier[0] === "S") {
+              return -1;
+            } else if (second.tier[0] === "S") {
+              return 1;
+            } else {
+              return first.tier.localeCompare(second.tier);
+            }
+          }),
           classes: database.classes,
           champions: database.champions,
         }}
@@ -69,7 +101,15 @@ export default function HomeTopRoute({ navigation, database }) {
         component={OriginList}
         initialParams={{
           navigation: navigation,
-          list: database.originList,
+          list: database.originList.sort((first, second) => {
+            if (first.tier[0] === "S") {
+              return -1;
+            } else if (second.tier[0] === "S") {
+              return 1;
+            } else {
+              return first.tier.localeCompare(second.tier);
+            }
+          }),
           origins: database.origins,
           champions: database.champions,
         }}
